@@ -167,8 +167,8 @@
       "settings": {
         "eyebrow": "/ 01 - THE DROP",
         "heading": "FEATURED",
-        "link_label": "VIEW ALL 24 ->",
-        "link": "shopify://collections/all"
+        "link_label": "Shop Now ->",
+        "link": "shopify://collections/hats"
       }
     },
     "jf_editorial": {
