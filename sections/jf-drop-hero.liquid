@@ -7,7 +7,7 @@
   endif
 -%}
 
-<section class="jf-hero" aria-label="{{ section.settings.heading | escape }}">
+<section class="jf-hero jf-hero--{{ section.settings.height }}" aria-label="{{ section.settings.heading | escape }}">
   <div class="jf-hero__image jf-image-cover" style="--jf-image: url('{{ hero_image_url }}');"></div>
 
   <div class="jf-hero__content">
@@ -60,6 +60,26 @@
       "type": "image_picker",
       "id": "image",
       "label": "Hero image"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Vertical height",
+      "options": [
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "fit-screen",
+          "label": "Fit to screen"
+        }
+      ],
+      "default": "large"
     },
     {
       "type": "text",

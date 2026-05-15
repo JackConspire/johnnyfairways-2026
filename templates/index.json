@@ -27,6 +27,7 @@
       },
       "block_order": ["meta_release", "meta_drop", "meta_date"],
       "settings": {
+        "height": "large",
         "barcode_text": "00 0123456 000001 8",
         "kicker": "NEW RELEASE",
         "heading": "BLADE COLLAR",
