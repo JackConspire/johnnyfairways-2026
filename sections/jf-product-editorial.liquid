@@ -1,0 +1,87 @@
+{%- liquid
+  assign eyebrow = product.metafields.custom.product_story_eyebrow.value | default: section.settings.eyebrow
+  assign heading = product.metafields.custom.product_story_heading.value | default: section.settings.heading
+  assign body = product.metafields.custom.product_story_body | metafield_tag
+  if body == blank
+    assign body = section.settings.body
+  endif
+  assign image = product.metafields.custom.product_story_image.value
+  if section.settings.image != blank
+    assign image_url = section.settings.image | image_url: width: 1600
+  elsif image != blank
+    assign image_url = image | image_url: width: 1600
+  else
+    assign image_url = 'jf-editorial-course.jpg' | asset_url
+  endif
+-%}
+
+<section class="jf-product-editorial jf-product-editorial--{{ section.settings.image_position }}">
+  <div class="jf-product-editorial__image jf-image-cover" style="--jf-image: url('{{ image_url }}');"></div>
+  <div class="jf-product-editorial__content">
+    {%- if eyebrow != blank -%}
+      <div class="jf-label">{{ eyebrow | escape }}</div>
+    {%- endif -%}
+    {%- if heading != blank -%}
+      <h2 class="jf-product-editorial__heading jf-display">{{ heading | escape }}</h2>
+    {%- endif -%}
+    {%- if body != blank -%}
+      <div class="jf-product-editorial__body">{{ body }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JF product editorial",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Uses product metafields custom.product_story_eyebrow, custom.product_story_heading, custom.product_story_body, and custom.product_story_image when present."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Fallback eyebrow",
+      "default": "/ 01 - PRODUCT NOTES"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Fallback heading",
+      "default": "BUILT FOR THE ROUND."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Fallback body",
+      "default": "<p>Use product metafields to add product-specific story copy, campaign language, or fit notes here.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Fallback image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF product editorial"
+    }
+  ]
+}
+{% endschema %}

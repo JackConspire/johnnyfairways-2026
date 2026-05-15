@@ -1,0 +1,119 @@
+<section class="jf-product-image-band">
+  <div class="jf-product-image-band__header">
+    <div class="jf-label">{{ section.settings.eyebrow | escape }}</div>
+    <h2 class="jf-product-image-band__heading jf-display">{{ section.settings.heading | escape }}</h2>
+  </div>
+
+  <div class="jf-product-image-band__grid">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign field = product.metafields[block.settings.namespace][block.settings.key].value
+        if block.settings.image != blank
+          assign image_url = block.settings.image | image_url: width: 1200
+        elsif field != blank
+          assign image_url = field | image_url: width: 1200
+        elsif block.settings.fallback_asset != blank
+          assign image_url = block.settings.fallback_asset | asset_url
+        else
+          assign image_url = ''
+        endif
+      -%}
+      {%- if image_url != blank or request.design_mode -%}
+        <figure class="jf-product-image-band__item" {{ block.shopify_attributes }}>
+          <div class="jf-product-image-band__image jf-image-cover" style="{% if image_url != blank %}--jf-image: url('{{ image_url }}');{% endif %}"></div>
+          {%- if block.settings.caption != blank -%}
+            <figcaption class="jf-product-image-band__caption jf-label">{{ block.settings.caption | escape }}</figcaption>
+          {%- endif -%}
+        </figure>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JF product image band",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "/ 03 - IN FRAME"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "ON COURSE"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "text",
+          "id": "namespace",
+          "label": "Namespace",
+          "default": "custom"
+        },
+        {
+          "type": "text",
+          "id": "key",
+          "label": "Key",
+          "default": "editorial_image_1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Fallback image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_asset",
+          "label": "Fallback asset filename",
+          "default": "jf-lookbook-01.jpg"
+        },
+        {
+          "type": "text",
+          "id": "caption",
+          "label": "Caption",
+          "default": "FRAME / 01"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF product image band",
+      "blocks": [
+        {
+          "type": "image",
+          "settings": {
+            "key": "editorial_image_1",
+            "fallback_asset": "jf-lookbook-01.jpg",
+            "caption": "FRAME / 01"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "key": "editorial_image_2",
+            "fallback_asset": "jf-lookbook-02.jpg",
+            "caption": "FRAME / 02"
+          }
+        },
+        {
+          "type": "image",
+          "settings": {
+            "key": "editorial_image_3",
+            "fallback_asset": "jf-lookbook-03.jpg",
+            "caption": "FRAME / 03"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

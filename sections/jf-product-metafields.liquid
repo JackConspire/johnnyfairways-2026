@@ -1,0 +1,107 @@
+<section class="jf-product-metafields">
+  <div class="jf-product-metafields__header">
+    <div class="jf-label">{{ section.settings.eyebrow | escape }}</div>
+    <h2 class="jf-product-metafields__heading jf-display">{{ section.settings.heading | escape }}</h2>
+  </div>
+
+  <div class="jf-product-metafields__grid">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign field = product.metafields[block.settings.namespace][block.settings.key]
+        assign content = field | metafield_tag
+        if content == blank
+          assign content = block.settings.fallback
+        endif
+      -%}
+      {%- if content != blank or request.design_mode -%}
+        <div class="jf-product-metafields__item" {{ block.shopify_attributes }}>
+          <div class="jf-product-metafields__label jf-label">{{ block.settings.label | escape }}</div>
+          <div class="jf-product-metafields__content">{{ content }}</div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JF product metafields",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "/ 02 - DETAILS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SPECIFICATION"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "metafield",
+      "name": "Metafield row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "FIT"
+        },
+        {
+          "type": "text",
+          "id": "namespace",
+          "label": "Namespace",
+          "default": "custom"
+        },
+        {
+          "type": "text",
+          "id": "key",
+          "label": "Key",
+          "default": "fit_notes"
+        },
+        {
+          "type": "richtext",
+          "id": "fallback",
+          "label": "Fallback content",
+          "default": "<p>Add this product metafield in Shopify to replace this fallback copy.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF product metafields",
+      "blocks": [
+        {
+          "type": "metafield",
+          "settings": {
+            "label": "FIT",
+            "namespace": "custom",
+            "key": "fit_notes"
+          }
+        },
+        {
+          "type": "metafield",
+          "settings": {
+            "label": "FABRIC",
+            "namespace": "custom",
+            "key": "fabric_notes"
+          }
+        },
+        {
+          "type": "metafield",
+          "settings": {
+            "label": "CARE",
+            "namespace": "custom",
+            "key": "care_notes"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

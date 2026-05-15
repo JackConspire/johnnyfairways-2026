@@ -264,6 +264,97 @@
         "padding-block-end": 0
       }
     },
+    "jf_product_editorial": {
+      "type": "jf-product-editorial",
+      "settings": {
+        "eyebrow": "/ 01 - PRODUCT NOTES",
+        "heading": "BUILT FOR THE ROUND.",
+        "body": "<p>Use product metafields to add product-specific story copy, campaign language, or fit notes here.</p>",
+        "image_position": "left"
+      }
+    },
+    "jf_product_metafields": {
+      "type": "jf-product-metafields",
+      "blocks": {
+        "fit": {
+          "type": "metafield",
+          "settings": {
+            "label": "FIT",
+            "namespace": "custom",
+            "key": "fit_notes",
+            "fallback": "<p>Add custom.fit_notes to this product in Shopify.</p>"
+          }
+        },
+        "fabric": {
+          "type": "metafield",
+          "settings": {
+            "label": "FABRIC",
+            "namespace": "custom",
+            "key": "fabric_notes",
+            "fallback": "<p>Add custom.fabric_notes to this product in Shopify.</p>"
+          }
+        },
+        "care": {
+          "type": "metafield",
+          "settings": {
+            "label": "CARE",
+            "namespace": "custom",
+            "key": "care_notes",
+            "fallback": "<p>Add custom.care_notes to this product in Shopify.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "fit",
+        "fabric",
+        "care"
+      ],
+      "settings": {
+        "eyebrow": "/ 02 - DETAILS",
+        "heading": "SPECIFICATION"
+      }
+    },
+    "jf_product_image_band": {
+      "type": "jf-product-image-band",
+      "blocks": {
+        "image_1": {
+          "type": "image",
+          "settings": {
+            "namespace": "custom",
+            "key": "editorial_image_1",
+            "fallback_asset": "jf-lookbook-01.jpg",
+            "caption": "FRAME / 01"
+          }
+        },
+        "image_2": {
+          "type": "image",
+          "settings": {
+            "namespace": "custom",
+            "key": "editorial_image_2",
+            "fallback_asset": "jf-lookbook-02.jpg",
+            "caption": "FRAME / 02"
+          }
+        },
+        "image_3": {
+          "type": "image",
+          "settings": {
+            "namespace": "custom",
+            "key": "editorial_image_3",
+            "fallback_asset": "jf-lookbook-03.jpg",
+            "caption": "FRAME / 03"
+          }
+        }
+      },
+      "block_order": [
+        "image_1",
+        "image_2",
+        "image_3"
+      ],
+      "settings": {
+        "eyebrow": "/ 03 - IN FRAME",
+        "heading": "ON COURSE"
+      }
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -408,6 +499,9 @@
   },
   "order": [
     "main",
+    "jf_product_editorial",
+    "jf_product_metafields",
+    "jf_product_image_band",
     "product_recommendations_qggXJq"
   ]
 }
