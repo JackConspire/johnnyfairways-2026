@@ -6,11 +6,11 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "main": {
       "type": "product-information",
-      "disabled": true,
       "blocks": {
         "media-gallery": {
           "type": "_product-media-gallery",
@@ -71,7 +71,6 @@
               "type": "group",
               "name": "Header",
               "settings": {
-                "open_in_new_tab": false,
                 "content_direction": "column",
                 "vertical_on_mobile": true,
                 "horizontal_alignment": "flex-start",
@@ -99,6 +98,7 @@
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
+                "open_in_new_tab": false,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -254,6 +254,7 @@
           ]
         }
       },
+      "disabled": true,
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
@@ -340,7 +341,6 @@
         "heading": "9 FLAG // CAMO",
         "copy": "A six-panel performance cap for the round and the after-round. Laser-perforated crown, JF wave embroidered at the front, structured brim broken in just enough.",
         "fallback_asset": "jf-pdp-cap-hero.png",
-        "info_width": "35",
         "add_to_cart_label": "ADD TO CART",
         "spec_label": "Product specifications"
       }
@@ -675,7 +675,6 @@
     },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
-      "disabled": true,
       "blocks": {
         "text_cbcgyb": {
           "type": "text",
@@ -795,6 +794,7 @@
       "block_order": [
         "text_cbcgyb"
       ],
+      "disabled": true,
       "name": "t:names.product_recommendations",
       "settings": {
         "product": "{{ closest.product }}",
