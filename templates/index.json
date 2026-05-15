@@ -246,7 +246,9 @@
       "settings": {
         "eyebrow": "/ 04 - LOOKBOOK",
         "heading": "SS '26",
-        "link_label": "SEE FULL LOOKBOOK ->"
+        "link_label": "SEE FULL LOOKBOOK ->",
+        "auto_rotate": true,
+        "rotation_speed": 35
       }
     },
     "jf_newsletter": {

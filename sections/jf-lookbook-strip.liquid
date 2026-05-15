@@ -1,4 +1,11 @@
-<section class="jf-lookbook">
+{%- liquid
+  assign autoplay_enabled = section.settings.auto_rotate
+  if section.blocks.size < 2
+    assign autoplay_enabled = false
+  endif
+-%}
+
+<section class="jf-lookbook{% if autoplay_enabled %} jf-lookbook--autoplay{% endif %}">
   <div class="jf-section-header">
     <div class="jf-label">{{ section.settings.eyebrow | escape }}</div>
     <h2 class="jf-section-header__title jf-display">{{ section.settings.heading | escape }}</h2>
@@ -10,25 +17,48 @@
   </div>
   <div class="jf-spacer-line" aria-hidden="true"></div>
 
-  <div class="jf-lookbook__strip">
-    {%- for block in section.blocks -%}
-      {%- liquid
-        if block.settings.image != blank
-          assign image_url = block.settings.image | image_url: width: 900
-        elsif block.settings.fallback_asset != blank
-          assign image_url = block.settings.fallback_asset | asset_url
-        else
-          assign image_url = ''
-        endif
-      -%}
-      <figure class="jf-lookbook-card" {{ block.shopify_attributes }}>
-        <div class="jf-lookbook-card__image jf-image-cover" style="{% if image_url != blank %}--jf-image: url('{{ image_url }}');{% endif %}"></div>
-        <figcaption class="jf-lookbook-card__meta">
-          <span>{{ block.settings.label | escape }}</span>
-          <span>{{ block.settings.season | escape }}</span>
-        </figcaption>
-      </figure>
-    {%- endfor -%}
+  <div class="jf-lookbook__strip" style="--jf-lookbook-speed: {{ section.settings.rotation_speed }}s;">
+    <div class="jf-lookbook__track">
+      {%- for block in section.blocks -%}
+        {%- liquid
+          if block.settings.image != blank
+            assign image_url = block.settings.image | image_url: width: 900
+          elsif block.settings.fallback_asset != blank
+            assign image_url = block.settings.fallback_asset | asset_url
+          else
+            assign image_url = ''
+          endif
+        -%}
+        <figure class="jf-lookbook-card" {{ block.shopify_attributes }}>
+          <div class="jf-lookbook-card__image jf-image-cover" style="{% if image_url != blank %}--jf-image: url('{{ image_url }}');{% endif %}"></div>
+          <figcaption class="jf-lookbook-card__meta">
+            <span>{{ block.settings.label | escape }}</span>
+            <span>{{ block.settings.season | escape }}</span>
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+
+      {%- if autoplay_enabled -%}
+        {%- for block in section.blocks -%}
+          {%- liquid
+            if block.settings.image != blank
+              assign image_url = block.settings.image | image_url: width: 900
+            elsif block.settings.fallback_asset != blank
+              assign image_url = block.settings.fallback_asset | asset_url
+            else
+              assign image_url = ''
+            endif
+          -%}
+          <figure class="jf-lookbook-card" aria-hidden="true">
+            <div class="jf-lookbook-card__image jf-image-cover" style="{% if image_url != blank %}--jf-image: url('{{ image_url }}');{% endif %}"></div>
+            <figcaption class="jf-lookbook-card__meta">
+              <span>{{ block.settings.label | escape }}</span>
+              <span>{{ block.settings.season | escape }}</span>
+            </figcaption>
+          </figure>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
   </div>
 </section>
 
@@ -58,6 +88,23 @@
       "type": "url",
       "id": "link",
       "label": "Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "Auto-rotate carousel",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "rotation_speed",
+      "label": "Rotation speed",
+      "min": 15,
+      "max": 90,
+      "step": 5,
+      "unit": "s",
+      "default": 35,
+      "visible_if": "{{ section.settings.auto_rotate }}"
     }
   ],
   "blocks": [

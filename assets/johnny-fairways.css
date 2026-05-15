@@ -565,11 +565,38 @@
 }
 
 .jf-lookbook__strip {
-  display: flex;
-  gap: 20px;
   overflow-x: auto;
   padding: 0 32px 8px;
   scroll-snap-type: x mandatory;
+}
+
+.jf-lookbook__track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+}
+
+.jf-lookbook--autoplay .jf-lookbook__strip {
+  overflow: hidden;
+}
+
+.jf-lookbook--autoplay .jf-lookbook__track {
+  animation: jf-lookbook-scroll var(--jf-lookbook-speed, 35s) linear infinite;
+}
+
+.jf-lookbook--autoplay:hover .jf-lookbook__track,
+.jf-lookbook--autoplay:focus-within .jf-lookbook__track {
+  animation-play-state: paused;
+}
+
+@keyframes jf-lookbook-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 10px));
+  }
 }
 
 .jf-lookbook-card {
@@ -908,6 +935,10 @@
     padding-right: 16px;
   }
 
+  .jf-lookbook--autoplay .jf-lookbook__strip {
+    overflow: hidden;
+  }
+
   .jf-lookbook-card {
     flex-basis: 78vw;
   }
@@ -942,6 +973,16 @@
   .jf-footer__bottom-links {
     flex-wrap: wrap;
     gap: 16px 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jf-lookbook--autoplay .jf-lookbook__strip {
+    overflow-x: auto;
+  }
+
+  .jf-lookbook--autoplay .jf-lookbook__track {
+    animation: none;
   }
 }
 
