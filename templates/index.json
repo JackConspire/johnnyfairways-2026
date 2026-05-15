@@ -40,6 +40,7 @@
         "meta_date"
       ],
       "settings": {
+        "image": "shopify://shop_images/DSC08374.jpg",
         "height": "fit-screen",
         "barcode_text": "00 0123456 000001 8",
         "kicker": "NEW RELEASE",
