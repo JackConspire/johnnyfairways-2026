@@ -340,6 +340,7 @@
         "heading": "9 FLAG // CAMO",
         "copy": "A six-panel performance cap for the round and the after-round. Laser-perforated crown, JF wave embroidered at the front, structured brim broken in just enough.",
         "fallback_asset": "jf-pdp-cap-hero.png",
+        "info_width": "35",
         "add_to_cart_label": "ADD TO CART",
         "spec_label": "Product specifications"
       }

@@ -951,7 +951,7 @@ main[data-template^="product"] .shopify-payment-button__button {
   background: var(--jf-black);
   color: var(--jf-white);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 600px;
+  grid-template-columns: minmax(0, calc(100% - var(--jf-pdp-info-width, 40%))) minmax(320px, var(--jf-pdp-info-width, 40%));
   min-height: 792px;
 }
 

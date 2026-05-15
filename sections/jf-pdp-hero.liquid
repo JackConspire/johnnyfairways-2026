@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <div class="jf-pdp-hero__main">
+  <div class="jf-pdp-hero__main" style="--jf-pdp-info-width: {{ section.settings.info_width }}%;">
     <div class="jf-pdp-hero__media">
       <img src="{{ hero_image_url }}" alt="{{ product.title | escape }}" loading="eager" width="1200" height="1200">
       <div class="jf-pdp-barcode" aria-hidden="true">
@@ -107,6 +107,20 @@
     { "type": "textarea", "id": "copy", "label": "Fallback copy", "default": "A six-panel performance cap for the round and the after-round. Laser-perforated crown, JF wave embroidered at the front, structured brim broken in just enough." },
     { "type": "image_picker", "id": "hero_image", "label": "Fallback hero image" },
     { "type": "text", "id": "fallback_asset", "label": "Fallback asset filename", "default": "jf-pdp-cap-hero.png" },
+    {
+      "type": "select",
+      "id": "info_width",
+      "label": "Information box width",
+      "info": "Desktop only. The product image uses the remaining width.",
+      "options": [
+        { "value": "30", "label": "30%" },
+        { "value": "35", "label": "35%" },
+        { "value": "40", "label": "40%" },
+        { "value": "45", "label": "45%" },
+        { "value": "50", "label": "50%" }
+      ],
+      "default": "40"
+    },
     { "type": "text", "id": "add_to_cart_label", "label": "Add to cart label", "default": "ADD TO CART" },
     { "type": "text", "id": "spec_label", "label": "Spec strip accessibility label", "default": "Product specifications" }
   ],
