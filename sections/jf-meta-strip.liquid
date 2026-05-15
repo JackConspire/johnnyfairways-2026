@@ -1,0 +1,113 @@
+<section class="jf-meta-strip" aria-label="{{ section.settings.label | escape }}">
+  <div class="jf-meta-strip__group jf-meta-strip__group--left">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.placement == 'left' -%}
+        <span {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <div class="jf-meta-strip__group jf-meta-strip__group--center">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.placement == 'center' -%}
+        <span {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <div class="jf-meta-strip__group jf-meta-strip__group--right">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.placement == 'right' -%}
+        <span {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JF meta strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Accessibility label",
+      "default": "Drop details"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Text item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "J.F CLOTHING"
+        },
+        {
+          "type": "select",
+          "id": "placement",
+          "label": "Placement",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF meta strip",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "text": "ALL RIGHTS RESERVED",
+            "placement": "left"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "text": "J.F CLOTHING",
+            "placement": "left"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "text": "- LIMITED EDITION FW / 2021 -",
+            "placement": "center"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "text": "INSPIRED BY - GOLF",
+            "placement": "right"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "text": "EST. 2021",
+            "placement": "right"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

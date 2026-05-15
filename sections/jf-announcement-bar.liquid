@@ -1,0 +1,86 @@
+<div class="jf-announcement">
+  <div class="jf-announcement__items" aria-label="{{ section.settings.label | escape }}">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'message' -%}
+        <span {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <div class="jf-announcement__right">
+    {%- if section.settings.locale_text != blank -%}
+      <span>{{ section.settings.locale_text | escape }}</span>
+    {%- endif -%}
+    {%- if section.settings.secondary_text != blank -%}
+      <span>{{ section.settings.secondary_text | escape }}</span>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "JF announcement bar",
+  "class": "jf-announcement-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Accessibility label",
+      "default": "Store announcements"
+    },
+    {
+      "type": "text",
+      "id": "locale_text",
+      "label": "Right text",
+      "default": "EN / USD"
+    },
+    {
+      "type": "text",
+      "id": "secondary_text",
+      "label": "Right secondary text",
+      "default": "STORE LOCATOR"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "FW '21 - JUST DROPPED"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF announcement bar",
+      "blocks": [
+        {
+          "type": "message",
+          "settings": {
+            "text": "FW '21 - JUST DROPPED"
+          }
+        },
+        {
+          "type": "message",
+          "settings": {
+            "text": "FREE GROUND SHIPPING OVER $150"
+          }
+        },
+        {
+          "type": "message",
+          "settings": {
+            "text": "INSPIRED BY - GOLF"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

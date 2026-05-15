@@ -1,0 +1,66 @@
+<section class="jf-newsletter">
+  <h2 class="jf-newsletter__title jf-display">{{ section.settings.heading | escape }}</h2>
+  <div>
+    <div class="jf-label">{{ section.settings.eyebrow | escape }}</div>
+    {%- form 'customer', class: 'jf-newsletter__form' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input
+        class="jf-newsletter__input"
+        type="email"
+        name="contact[email]"
+        value="{{ form.email }}"
+        aria-label="{{ section.settings.placeholder | escape }}"
+        placeholder="{{ section.settings.placeholder | escape }}"
+        autocorrect="off"
+        autocapitalize="off"
+        autocomplete="email"
+        required
+      >
+      <button class="jf-newsletter__submit" type="submit">{{ section.settings.button_label | escape }} <span aria-hidden="true">-&gt;</span></button>
+    {%- endform -%}
+    <div class="jf-newsletter__text">{{ section.settings.text }}</div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JF newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "JOIN THE TEE TIME LIST."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "/ 05 - EARLY ACCESS"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Placeholder",
+      "default": "ENTER YOUR EMAIL"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "SUBSCRIBE"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Drop announcements, early access to limited editions, and the occasional dispatch from the back nine. No filler."
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF newsletter"
+    }
+  ]
+}
+{% endschema %}

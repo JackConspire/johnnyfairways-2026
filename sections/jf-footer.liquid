@@ -1,0 +1,181 @@
+<section class="jf-footer">
+  <div class="jf-footer__grid">
+    <div class="jf-footer__brand">
+      <div class="jf-footer__brand-title jf-display">{{ section.settings.brand_text | escape }}</div>
+      <div class="jf-footer__address">{{ section.settings.address }}</div>
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'link_column' -%}
+        <div {{ block.shopify_attributes }}>
+          <div class="jf-footer__heading jf-label">{{ block.settings.heading | escape }}</div>
+          {%- if block.settings.menu != blank -%}
+            {%- for link in block.settings.menu.links -%}
+              <a class="jf-footer__link" href="{{ link.url }}">{{ link.title | escape }}</a>
+            {%- endfor -%}
+          {%- else -%}
+            {%- assign manual_links = block.settings.links | newline_to_br | split: '<br />' -%}
+            {%- for item in manual_links -%}
+              {%- assign label = item | strip -%}
+              {%- if label != blank -%}
+                <a class="jf-footer__link" href="{{ routes.root_url }}">{{ label | escape }}</a>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="jf-footer__bottom">
+    <div>{{ section.settings.copyright | escape }}</div>
+    <div class="jf-footer__bottom-links">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'utility_link' -%}
+          <a href="{{ block.settings.url | default: routes.root_url }}" {{ block.shopify_attributes }}>{{ block.settings.label | escape }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  {%- if section.settings.massive_text != blank -%}
+    <div class="jf-footer__massive jf-display">{{ section.settings.massive_text | escape }}</div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "JF footer",
+  "class": "jf-footer-section",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_text",
+      "label": "Brand text",
+      "default": "JOHNNY FAIRWAYS"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address text",
+      "default": "Metrotech Center<br>Brooklyn, NY 11201<br>info@johnnyfairways.com<br>(416) 456 78 90"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright",
+      "default": "2026 J.F CLOTHING - ALL RIGHTS RESERVED"
+    },
+    {
+      "type": "text",
+      "id": "massive_text",
+      "label": "Large bottom text",
+      "default": "JOHNNY FAIRWAYS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_column",
+      "name": "Link column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "SHOP"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        },
+        {
+          "type": "textarea",
+          "id": "links",
+          "label": "Manual links",
+          "default": "FW '21\nPerformance\nEveryday\nAccessories\nSale"
+        }
+      ]
+    },
+    {
+      "type": "utility_link",
+      "name": "Utility link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "PRIVACY"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF footer",
+      "blocks": [
+        {
+          "type": "link_column",
+          "settings": {
+            "heading": "SHOP",
+            "links": "FW '21\nPerformance\nEveryday\nAccessories\nSale"
+          }
+        },
+        {
+          "type": "link_column",
+          "settings": {
+            "heading": "BRAND",
+            "links": "Story\nLookbook\nJournal\nPress"
+          }
+        },
+        {
+          "type": "link_column",
+          "settings": {
+            "heading": "HELP",
+            "links": "Shipping\nReturns\nSize Guide\nContact"
+          }
+        },
+        {
+          "type": "link_column",
+          "settings": {
+            "heading": "FOLLOW",
+            "links": "Instagram\nYouTube\nTikTok\nSpotify"
+          }
+        },
+        {
+          "type": "utility_link",
+          "settings": {
+            "label": "PRIVACY"
+          }
+        },
+        {
+          "type": "utility_link",
+          "settings": {
+            "label": "TERMS"
+          }
+        },
+        {
+          "type": "utility_link",
+          "settings": {
+            "label": "ACCESSIBILITY"
+          }
+        },
+        {
+          "type": "utility_link",
+          "settings": {
+            "label": "V.1.0 - FW / 21"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

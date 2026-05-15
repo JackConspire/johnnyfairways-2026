@@ -1,0 +1,86 @@
+{%- liquid
+  if section.settings.image != blank
+    assign image_url = section.settings.image | image_url: width: 1600
+  else
+    assign image_url = 'jf-editorial-course.jpg' | asset_url
+  endif
+-%}
+
+<section class="jf-editorial">
+  <div class="jf-editorial__image jf-image-cover" style="--jf-image: url('{{ image_url }}');"></div>
+  <div class="jf-editorial__content">
+    <div>
+      <div class="jf-label">{{ section.settings.eyebrow | escape }}</div>
+      <h2 class="jf-editorial__title jf-display">{{ section.settings.heading | escape }}</h2>
+      <div class="jf-editorial__body">{{ section.settings.text }}</div>
+      {%- if section.settings.link_label != blank -%}
+        <a class="jf-btn jf-btn--ghost" href="{{ section.settings.link | default: routes.root_url }}">
+          <span class="jf-btn__text">{{ section.settings.link_label | escape }}</span><span class="jf-arrow" aria-hidden="true">-&gt;</span>
+        </a>
+      {%- endif -%}
+    </div>
+    <div class="jf-editorial__footer">
+      <span>{{ section.settings.credit | escape }}</span>
+      <span>{{ section.settings.index_text | escape }}</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JF editorial split",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "/ 02 - THE STORY"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "BORN OUT OF A DESIRE TO HONOR THE GAME."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Our products aren't designed in a cubicle and tested in a factory. They're born out of a quiet obsession with the rhythm of the round - the early tee times, the long walks, the dress codes worth keeping."
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "READ THE MANIFESTO"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "text",
+      "id": "credit",
+      "label": "Credit",
+      "default": "PHOTOGRAPHED AT BETHPAGE BLACK, NY - FW '21"
+    },
+    {
+      "type": "text",
+      "id": "index_text",
+      "label": "Index text",
+      "default": "/ 02 - 04"
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF editorial split"
+    }
+  ]
+}
+{% endschema %}

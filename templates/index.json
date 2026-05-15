@@ -1,0 +1,271 @@
+{
+  "sections": {
+    "jf_drop_hero": {
+      "type": "jf-drop-hero",
+      "blocks": {
+        "meta_release": {
+          "type": "meta",
+          "settings": {
+            "label": "RELEASE",
+            "value": "FW / 21"
+          }
+        },
+        "meta_drop": {
+          "type": "meta",
+          "settings": {
+            "label": "DROP NO.",
+            "value": "/ 001"
+          }
+        },
+        "meta_date": {
+          "type": "meta",
+          "settings": {
+            "label": "DROPPED",
+            "value": "JAN 12 / 2:20 PM"
+          }
+        }
+      },
+      "block_order": ["meta_release", "meta_drop", "meta_date"],
+      "settings": {
+        "barcode_text": "00 0123456 000001 8",
+        "kicker": "NEW RELEASE",
+        "heading": "BLADE COLLAR",
+        "text": "FROM PERFORMANCE GOLF APPAREL PERFECT FOR ANY SEASON - TO EVERY DAY ATTIRE THAT'S FIT FOR ANY OCCASION.",
+        "primary_label": "SHOP THE DROP",
+        "primary_link": "shopify://collections/all",
+        "secondary_label": "READ THE STORY"
+      }
+    },
+    "jf_meta_strip": {
+      "type": "jf-meta-strip",
+      "blocks": {
+        "left_1": {
+          "type": "item",
+          "settings": {
+            "text": "ALL RIGHTS RESERVED",
+            "placement": "left"
+          }
+        },
+        "left_2": {
+          "type": "item",
+          "settings": {
+            "text": "J.F CLOTHING",
+            "placement": "left"
+          }
+        },
+        "center_1": {
+          "type": "item",
+          "settings": {
+            "text": "- LIMITED EDITION FW / 2021 -",
+            "placement": "center"
+          }
+        },
+        "right_1": {
+          "type": "item",
+          "settings": {
+            "text": "INSPIRED BY - GOLF",
+            "placement": "right"
+          }
+        },
+        "right_2": {
+          "type": "item",
+          "settings": {
+            "text": "EST. 2021",
+            "placement": "right"
+          }
+        }
+      },
+      "block_order": ["left_1", "left_2", "center_1", "right_1", "right_2"],
+      "settings": {
+        "label": "Drop details"
+      }
+    },
+    "jf_product_drop": {
+      "type": "jf-product-drop",
+      "blocks": {
+        "product_1": {
+          "type": "product_tile",
+          "settings": {
+            "fallback_asset": "jf-product-01.jpg",
+            "badge": "NEW",
+            "number": "/ 001",
+            "title": "THE CADDY POLO",
+            "price": "$148",
+            "subtitle": "PERFORMANCE - 3 COLORS"
+          }
+        },
+        "product_2": {
+          "type": "product_tile",
+          "settings": {
+            "fallback_asset": "jf-product-02.jpg",
+            "badge": "LIMITED",
+            "number": "/ 002",
+            "title": "THE 18TH TROUSER",
+            "price": "$215",
+            "subtitle": "EVERYDAY - 4 COLORS"
+          }
+        },
+        "product_3": {
+          "type": "product_tile",
+          "settings": {
+            "fallback_asset": "jf-product-03.jpg",
+            "badge": "NEW",
+            "number": "/ 003",
+            "title": "THE TEE TIME 1/4",
+            "price": "$185",
+            "subtitle": "PERFORMANCE - 2 COLORS"
+          }
+        },
+        "product_4": {
+          "type": "product_tile",
+          "settings": {
+            "fallback_asset": "jf-product-04.jpg",
+            "badge": "FW / 21",
+            "number": "/ 004",
+            "title": "THE FAIRWAY CAP",
+            "price": "$58",
+            "subtitle": "ACCESSORIES - 5 COLORS"
+          }
+        }
+      },
+      "block_order": ["product_1", "product_2", "product_3", "product_4"],
+      "settings": {
+        "eyebrow": "/ 01 - THE DROP",
+        "heading": "FEATURED",
+        "link_label": "VIEW ALL 24 ->",
+        "link": "shopify://collections/all"
+      }
+    },
+    "jf_editorial": {
+      "type": "jf-editorial-split",
+      "settings": {
+        "eyebrow": "/ 02 - THE STORY",
+        "heading": "BORN OUT OF A DESIRE TO HONOR THE GAME.",
+        "text": "Our products aren't designed in a cubicle and tested in a factory. They're born out of a quiet obsession with the rhythm of the round - the early tee times, the long walks, the dress codes worth keeping.",
+        "link_label": "READ THE MANIFESTO",
+        "credit": "PHOTOGRAPHED AT BETHPAGE BLACK, NY - FW '21",
+        "index_text": "/ 02 - 04"
+      }
+    },
+    "jf_categories": {
+      "type": "jf-category-tiles",
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "index": "/ 01",
+            "count": "12 PIECES",
+            "title": "PERFORMANCE",
+            "cta": "SHOP ->",
+            "fallback_asset": "jf-category-01.jpg"
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "index": "/ 02",
+            "count": "18 PIECES",
+            "title": "EVERYDAY",
+            "cta": "SHOP ->",
+            "fallback_asset": "jf-category-02.jpg"
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": {
+            "index": "/ 03",
+            "count": "9 PIECES",
+            "title": "ACCESSORIES",
+            "cta": "SHOP ->",
+            "fallback_asset": "jf-category-03.jpg"
+          }
+        }
+      },
+      "block_order": ["cat_1", "cat_2", "cat_3"],
+      "settings": {
+        "eyebrow": "/ 03 - SHOP BY PURSUIT",
+        "heading": "BUILT FOR THE ROUND.",
+        "link_label": "ALL CATEGORIES ->",
+        "link": "shopify://collections/all"
+      }
+    },
+    "jf_lookbook": {
+      "type": "jf-lookbook-strip",
+      "blocks": {
+        "frame_1": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-01.jpg",
+            "label": "FRAME / 01",
+            "season": "FW / 21"
+          }
+        },
+        "frame_2": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-02.jpg",
+            "label": "FRAME / 02",
+            "season": "FW / 21"
+          }
+        },
+        "frame_3": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-03.jpg",
+            "label": "FRAME / 03",
+            "season": "FW / 21"
+          }
+        },
+        "frame_4": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-04.jpg",
+            "label": "FRAME / 04",
+            "season": "FW / 21"
+          }
+        },
+        "frame_5": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-05.jpg",
+            "label": "FRAME / 05",
+            "season": "FW / 21"
+          }
+        },
+        "frame_6": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-06.jpg",
+            "label": "FRAME / 06",
+            "season": "FW / 21"
+          }
+        }
+      },
+      "block_order": ["frame_1", "frame_2", "frame_3", "frame_4", "frame_5", "frame_6"],
+      "settings": {
+        "eyebrow": "/ 04 - LOOKBOOK",
+        "heading": "SS '26",
+        "link_label": "SEE FULL LOOKBOOK ->"
+      }
+    },
+    "jf_newsletter": {
+      "type": "jf-newsletter",
+      "settings": {
+        "heading": "JOIN THE TEE TIME LIST.",
+        "eyebrow": "/ 05 - EARLY ACCESS",
+        "placeholder": "ENTER YOUR EMAIL",
+        "button_label": "SUBSCRIBE",
+        "text": "Drop announcements, early access to limited editions, and the occasional dispatch from the back nine. No filler."
+      }
+    }
+  },
+  "order": [
+    "jf_drop_hero",
+    "jf_meta_strip",
+    "jf_product_drop",
+    "jf_editorial",
+    "jf_categories",
+    "jf_lookbook",
+    "jf_newsletter"
+  ]
+}

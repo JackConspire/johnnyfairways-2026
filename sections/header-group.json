@@ -1,0 +1,72 @@
+{
+  "type": "header",
+  "name": "Header",
+  "sections": {
+    "jf_announcement": {
+      "type": "jf-announcement-bar",
+      "blocks": {
+        "message_1": {
+          "type": "message",
+          "settings": {
+            "text": "FW '21 - JUST DROPPED"
+          }
+        },
+        "message_2": {
+          "type": "message",
+          "settings": {
+            "text": "FREE GROUND SHIPPING OVER $150"
+          }
+        },
+        "message_3": {
+          "type": "message",
+          "settings": {
+            "text": "INSPIRED BY - GOLF"
+          }
+        }
+      },
+      "block_order": ["message_1", "message_2", "message_3"],
+      "settings": {
+        "label": "Store announcements",
+        "locale_text": "EN / USD",
+        "secondary_text": "STORE LOCATOR"
+      }
+    },
+    "jf_header": {
+      "type": "jf-header",
+      "blocks": {
+        "nav_shop": {
+          "type": "nav_link",
+          "settings": {
+            "label": "SHOP",
+            "url": "shopify://collections/all"
+          }
+        },
+        "nav_lookbook": {
+          "type": "nav_link",
+          "settings": {
+            "label": "LOOKBOOK"
+          }
+        },
+        "nav_story": {
+          "type": "nav_link",
+          "settings": {
+            "label": "STORY"
+          }
+        },
+        "nav_journal": {
+          "type": "nav_link",
+          "settings": {
+            "label": "JOURNAL"
+          }
+        }
+      },
+      "block_order": ["nav_shop", "nav_lookbook", "nav_story", "nav_journal"],
+      "settings": {
+        "logo_text": "JF1",
+        "show_search": true,
+        "show_account": true
+      }
+    }
+  },
+  "order": ["jf_announcement", "jf_header"]
+}

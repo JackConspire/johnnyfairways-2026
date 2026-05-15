@@ -1,0 +1,115 @@
+<header class="jf-header" role="banner">
+  <button class="jf-header__menu-button" type="button" aria-label="Open menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav class="jf-header__nav" aria-label="Primary">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'nav_link' -%}
+        <a class="jf-header__link" href="{{ block.settings.url | default: routes.root_url }}" {{ block.shopify_attributes }}>
+          {{ block.settings.label | escape }}
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </nav>
+
+  <a class="jf-header__brand" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
+    {%- if section.settings.logo_text != blank -%}
+      {{ section.settings.logo_text | escape }}
+    {%- else -%}
+      {{ shop.name | escape }}
+    {%- endif -%}
+  </a>
+
+  <div class="jf-header__actions">
+    {%- if section.settings.show_search -%}
+      <a class="jf-header__link" href="{{ routes.search_url }}">Search</a>
+    {%- endif -%}
+    {%- if section.settings.show_account and shop.customer_accounts_enabled -%}
+      <a class="jf-header__link" href="{{ routes.account_url }}">Account</a>
+    {%- endif -%}
+    <a class="jf-header__link jf-header__cart" href="{{ routes.cart_url }}">Cart ({{ cart.item_count }})</a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "JF header",
+  "class": "jf-header-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "JF1"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_account",
+      "label": "Show account",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "nav_link",
+      "name": "Navigation link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "SHOP"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF header",
+      "blocks": [
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "SHOP"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "LOOKBOOK"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "STORY"
+          }
+        },
+        {
+          "type": "nav_link",
+          "settings": {
+            "label": "JOURNAL"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

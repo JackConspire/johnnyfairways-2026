@@ -1,0 +1,71 @@
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "jf_footer": {
+      "type": "jf-footer",
+      "blocks": {
+        "shop": {
+          "type": "link_column",
+          "settings": {
+            "heading": "SHOP",
+            "links": "FW '21\nPerformance\nEveryday\nAccessories\nSale"
+          }
+        },
+        "brand": {
+          "type": "link_column",
+          "settings": {
+            "heading": "BRAND",
+            "links": "Story\nLookbook\nJournal\nPress"
+          }
+        },
+        "help": {
+          "type": "link_column",
+          "settings": {
+            "heading": "HELP",
+            "links": "Shipping\nReturns\nSize Guide\nContact"
+          }
+        },
+        "follow": {
+          "type": "link_column",
+          "settings": {
+            "heading": "FOLLOW",
+            "links": "Instagram\nYouTube\nTikTok\nSpotify"
+          }
+        },
+        "privacy": {
+          "type": "utility_link",
+          "settings": {
+            "label": "PRIVACY"
+          }
+        },
+        "terms": {
+          "type": "utility_link",
+          "settings": {
+            "label": "TERMS"
+          }
+        },
+        "accessibility": {
+          "type": "utility_link",
+          "settings": {
+            "label": "ACCESSIBILITY"
+          }
+        },
+        "version": {
+          "type": "utility_link",
+          "settings": {
+            "label": "V.1.0 - FW / 21"
+          }
+        }
+      },
+      "block_order": ["shop", "brand", "help", "follow", "privacy", "terms", "accessibility", "version"],
+      "settings": {
+        "brand_text": "JOHNNY FAIRWAYS",
+        "address": "Metrotech Center<br>Brooklyn, NY 11201<br>info@johnnyfairways.com<br>(416) 456 78 90",
+        "copyright": "2026 J.F CLOTHING - ALL RIGHTS RESERVED",
+        "massive_text": "JOHNNY FAIRWAYS"
+      }
+    }
+  },
+  "order": ["jf_footer"]
+}
