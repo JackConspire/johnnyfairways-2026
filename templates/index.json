@@ -108,52 +108,52 @@
         "product_1": {
           "type": "product_tile",
           "settings": {
-            "product": "",
+            "product": "quickdry-perforated-hat-9-flag-camo",
             "fallback_asset": "jf-product-01.jpg",
             "badge": "NEW",
             "number": "/ 001",
-            "title": "THE CADDY POLO",
+            "title": "",
             "price": "$148",
-            "subtitle": "PERFORMANCE - 3 COLORS",
+            "subtitle": "Everyday - 3 colors",
             "link": ""
           }
         },
         "product_2": {
           "type": "product_tile",
           "settings": {
-            "product": "",
+            "product": "quickdry-perforated-hat-9-flag-black-gold",
             "fallback_asset": "jf-product-02.jpg",
-            "badge": "LIMITED",
+            "badge": "NEW",
             "number": "/ 002",
-            "title": "THE 18TH TROUSER",
-            "price": "$215",
-            "subtitle": "EVERYDAY - 4 COLORS",
+            "title": "",
+            "price": "",
+            "subtitle": "EVERYDAY - 3 COLORS",
             "link": ""
           }
         },
         "product_3": {
           "type": "product_tile",
           "settings": {
-            "product": "",
+            "product": "quickdry-perforated-hat-flag-royal",
             "fallback_asset": "jf-product-03.jpg",
-            "badge": "NEW",
+            "badge": "SS / 25",
             "number": "/ 003",
-            "title": "THE TEE TIME 1/4",
-            "price": "$185",
-            "subtitle": "PERFORMANCE - 2 COLORS",
+            "title": "",
+            "price": "",
+            "subtitle": "PERFORMANCE - 3 COLORS",
             "link": ""
           }
         },
         "product_4": {
           "type": "product_tile",
           "settings": {
-            "product": "",
+            "product": "quickdry-perforated-hat-flag-grey",
             "fallback_asset": "jf-product-04.jpg",
-            "badge": "FW / 21",
+            "badge": "SS / 25",
             "number": "/ 004",
-            "title": "THE FAIRWAY CAP",
-            "price": "$58",
-            "subtitle": "ACCESSORIES - 5 COLORS",
+            "title": "",
+            "price": "",
+            "subtitle": "Performance - 3 COLORS",
             "link": ""
           }
         }
