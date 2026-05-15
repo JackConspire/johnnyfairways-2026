@@ -1,0 +1,89 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+-%}
+
+<section class="jf-pdp-fit-purchase">
+  <div class="jf-pdp-fit">
+    <p class="jf-label">{{ section.settings.fit_eyebrow }}</p>
+    <h2>{{ section.settings.fit_heading }}</h2>
+    <div class="jf-pdp-fit__rows">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'fit_row' -%}
+          <div class="jf-pdp-fit__row" {{ block.shopify_attributes }}>
+            <span>{{ block.settings.label }}</span>
+            <strong>{% render 'jf-metafield-value', product: product, namespace: block.settings.namespace, key: block.settings.key, fallback: block.settings.value %}</strong>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="jf-pdp-make">
+    <div class="jf-pdp-section-head">
+      <p class="jf-label">{{ section.settings.make_eyebrow }}</p>
+      <h2>{{ section.settings.make_heading }}</h2>
+      <p class="jf-label">{{ section.settings.make_kicker }}</p>
+    </div>
+
+    {%- form 'product', product, id: 'JFPDPPurchaseForm', class: 'jf-pdp-make__form', data-type: 'add-to-cart-form' -%}
+      <div class="jf-pdp-make__body">
+        <div class="jf-pdp-swatch-list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'swatch' -%}
+              <label class="jf-pdp-swatch" style="--jf-swatch: {{ block.settings.color }};" {{ block.shopify_attributes }}>
+                <input type="radio" name="id" value="{{ block.settings.variant_id | default: current_variant.id }}" {% if forloop.first %}checked{% endif %}>
+                <span></span>
+                <small>{{ block.settings.label }}</small>
+              </label>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div class="jf-pdp-make__buy">
+          <label class="jf-label" for="JFPDPQty">{{ section.settings.quantity_label }}</label>
+          <input id="JFPDPQty" type="number" min="1" name="quantity" value="1">
+          <button type="submit" name="add" {% unless current_variant.available %}disabled{% endunless %}>
+            {% if current_variant.available %}{{ section.settings.button_label }} - {{ current_variant.price | money_without_trailing_zeros }}{% else %}Sold out{% endif %}
+          </button>
+        </div>
+      </div>
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JF PDP fit + purchase",
+  "settings": [
+    { "type": "text", "id": "fit_eyebrow", "label": "Fit eyebrow", "default": "/ 04 - SIZING" },
+    { "type": "text", "id": "fit_heading", "label": "Fit heading", "default": "ONE SIZE FOR ALL." },
+    { "type": "text", "id": "make_eyebrow", "label": "Purchase eyebrow", "default": "/ 05 - MAKE IT YOURS" },
+    { "type": "text", "id": "make_heading", "label": "Purchase heading", "default": "MAKE IT YOURS." },
+    { "type": "text", "id": "make_kicker", "label": "Purchase kicker", "default": "SELECT A COLOR" },
+    { "type": "text", "id": "quantity_label", "label": "Quantity label", "default": "QUANTITY" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "ADD TO CART" }
+  ],
+  "blocks": [
+    {
+      "type": "fit_row",
+      "name": "Fit row",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "CROWN" },
+        { "type": "text", "id": "value", "label": "Fallback value", "default": "STRUCTURED MID-PROFILE" },
+        { "type": "text", "id": "namespace", "label": "Metafield namespace", "default": "custom" },
+        { "type": "text", "id": "key", "label": "Metafield key", "default": "pdp_fit_crown" }
+      ]
+    },
+    {
+      "type": "swatch",
+      "name": "Swatch",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "CAMO" },
+        { "type": "color", "id": "color", "label": "Color", "default": "#454d3e" },
+        { "type": "text", "id": "variant_id", "label": "Optional variant ID" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "JF PDP fit + purchase" }]
+}
+{% endschema %}

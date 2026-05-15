@@ -1,0 +1,46 @@
+{%- liquid
+  assign body = product.metafields.custom.pdp_story_body | metafield_tag
+  if body == blank
+    assign body = section.settings.body
+  endif
+  assign story_image = product.metafields.custom.pdp_story_image.value
+  if section.settings.image != blank
+    assign image_url = section.settings.image | image_url: width: 1400
+  elsif story_image != blank
+    assign image_url = story_image | image_url: width: 1400
+  else
+    assign image_url = section.settings.fallback_asset | default: 'jf-pdp-editorial.png' | asset_url
+  endif
+-%}
+
+<section class="jf-pdp-story">
+  <div class="jf-pdp-story__content">
+    <p class="jf-label">{{ section.settings.eyebrow }}</p>
+    <h2>{{ product.metafields.custom.pdp_story_heading.value | default: section.settings.heading }}</h2>
+    <div class="jf-pdp-story__body">{{ body }}</div>
+    <div class="jf-pdp-story__meta jf-label">
+      <span>{{ section.settings.footer_left }}</span>
+      <span>{{ section.settings.footer_right }}</span>
+    </div>
+  </div>
+  <div class="jf-pdp-story__image">
+    <img src="{{ image_url }}" alt="{{ section.settings.image_alt | escape }}" loading="lazy" width="1000" height="1000">
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JF PDP story",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "/ 01 - THE STORY" },
+    { "type": "text", "id": "heading", "label": "Fallback heading", "default": "BUILT FOR WALKING." },
+    { "type": "richtext", "id": "body", "label": "Fallback body", "default": "<p>Eighteen holes. Four hours. Course-side weather that can turn on a single putt. The Fairway Cap was built for the entire round - UPF 50+ in the crown, laser perforation through the panels, and a metal buckle that holds tension when the wind picks up at the turn.</p>" },
+    { "type": "image_picker", "id": "image", "label": "Fallback image" },
+    { "type": "text", "id": "fallback_asset", "label": "Fallback asset filename", "default": "jf-pdp-editorial.png" },
+    { "type": "text", "id": "image_alt", "label": "Image alt text", "default": "Johnny Fairways model wearing the cap" },
+    { "type": "text", "id": "footer_left", "label": "Footer left", "default": "LIGHTWEIGHT, WATER-RESISTANT NYLON" },
+    { "type": "text", "id": "footer_right", "label": "Footer right", "default": "/ 01 - 08" }
+  ],
+  "presets": [{ "name": "JF PDP story" }]
+}
+{% endschema %}

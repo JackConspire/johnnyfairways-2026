@@ -1,0 +1,63 @@
+<section class="jf-pdp-image-row jf-pdp-image-row--{{ section.settings.theme }}">
+  <div class="jf-pdp-section-head">
+    <p class="jf-label">{{ section.settings.eyebrow }}</p>
+    <h2>{{ section.settings.heading }}</h2>
+    <p class="jf-label">{{ section.settings.kicker }}</p>
+  </div>
+  <div class="jf-pdp-image-row__grid">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign field_image = product.metafields[block.settings.namespace][block.settings.key].value
+        if block.settings.image != blank
+          assign image_url = block.settings.image | image_url: width: 900
+        elsif field_image != blank
+          assign image_url = field_image | image_url: width: 900
+        elsif block.settings.fallback_asset != blank
+          assign image_url = block.settings.fallback_asset | asset_url
+        else
+          assign image_url = ''
+        endif
+      -%}
+      <figure class="jf-pdp-image-row__item" {{ block.shopify_attributes }}>
+        <div class="jf-pdp-image-row__image"{% if image_url != blank %} style="--jf-image: url('{{ image_url }}');"{% endif %}></div>
+        <figcaption class="jf-label"><span>{{ block.settings.caption }}</span><span>{{ block.settings.meta }}</span></figcaption>
+      </figure>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JF PDP image row",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "/ 06 - ON THE COURSE" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "IN THE WILD." },
+    { "type": "text", "id": "kicker", "label": "Right label", "default": "#JOHNNYFAIRWAYS" },
+    {
+      "type": "select",
+      "id": "theme",
+      "label": "Theme",
+      "options": [
+        { "value": "paper", "label": "Paper" },
+        { "value": "black", "label": "Black" }
+      ],
+      "default": "paper"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        { "type": "text", "id": "caption", "label": "Caption", "default": "SHOT / 01" },
+        { "type": "text", "id": "meta", "label": "Meta", "default": "@JF_FW21" },
+        { "type": "image_picker", "id": "image", "label": "Fallback image" },
+        { "type": "text", "id": "fallback_asset", "label": "Fallback asset filename" },
+        { "type": "text", "id": "namespace", "label": "Image metafield namespace", "default": "custom" },
+        { "type": "text", "id": "key", "label": "Image metafield key", "default": "pdp_lifestyle_image_1" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "JF PDP image row" }]
+}
+{% endschema %}

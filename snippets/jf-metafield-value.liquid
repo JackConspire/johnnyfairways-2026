@@ -1,0 +1,20 @@
+{%- liquid
+  assign namespace = namespace | default: 'custom'
+  assign field = product.metafields[namespace][key]
+  assign output = ''
+
+  if field != blank
+    if field.type contains 'rich_text'
+      assign output = field | metafield_tag
+    elsif field.type contains 'file_reference'
+      assign output = field.value
+    else
+      assign output = field.value | default: field
+    endif
+  endif
+
+  if output == blank
+    assign output = fallback
+  endif
+-%}
+{{- output -}}

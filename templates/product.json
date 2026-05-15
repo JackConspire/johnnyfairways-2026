@@ -10,6 +10,7 @@
   "sections": {
     "main": {
       "type": "product-information",
+      "disabled": true,
       "blocks": {
         "media-gallery": {
           "type": "_product-media-gallery",
@@ -264,99 +265,416 @@
         "padding-block-end": 0
       }
     },
-    "jf_product_editorial": {
-      "type": "jf-product-editorial",
-      "settings": {
-        "eyebrow": "/ 01 - PRODUCT NOTES",
-        "heading": "BUILT FOR THE ROUND.",
-        "body": "<p>Use product metafields to add product-specific story copy, campaign language, or fit notes here.</p>",
-        "image_position": "left"
-      }
-    },
-    "jf_product_metafields": {
-      "type": "jf-product-metafields",
+    "jf_pdp_hero": {
+      "type": "jf-pdp-hero",
       "blocks": {
-        "fit": {
-          "type": "metafield",
+        "style": {
+          "type": "spec",
           "settings": {
-            "label": "FIT",
+            "label": "STYLE",
             "namespace": "custom",
-            "key": "fit_notes",
-            "fallback": "<p>Add custom.fit_notes to this product in Shopify.</p>"
+            "key": "pdp_style",
+            "value": "5-PANEL"
           }
         },
         "fabric": {
-          "type": "metafield",
+          "type": "spec",
           "settings": {
             "label": "FABRIC",
             "namespace": "custom",
-            "key": "fabric_notes",
-            "fallback": "<p>Add custom.fabric_notes to this product in Shopify.</p>"
+            "key": "pdp_fabric",
+            "value": "100% RECYCLED NYLON"
           }
         },
-        "care": {
-          "type": "metafield",
+        "fit": {
+          "type": "spec",
           "settings": {
-            "label": "CARE",
+            "label": "FIT",
             "namespace": "custom",
-            "key": "care_notes",
-            "fallback": "<p>Add custom.care_notes to this product in Shopify.</p>"
+            "key": "pdp_fit",
+            "value": "STRUCTURED"
+          }
+        },
+        "closure": {
+          "type": "spec",
+          "settings": {
+            "label": "CLOSURE",
+            "namespace": "custom",
+            "key": "pdp_closure",
+            "value": "PLASTIC SNAP"
+          }
+        },
+        "weight": {
+          "type": "spec",
+          "settings": {
+            "label": "WEIGHT",
+            "namespace": "custom",
+            "key": "pdp_weight",
+            "value": "54g"
+          }
+        },
+        "origin": {
+          "type": "spec",
+          "settings": {
+            "label": "ORIGIN",
+            "namespace": "custom",
+            "key": "pdp_origin",
+            "value": "MADE IN PORTUGAL"
           }
         }
       },
       "block_order": [
-        "fit",
+        "style",
         "fabric",
-        "care"
+        "fit",
+        "closure",
+        "weight",
+        "origin"
       ],
       "settings": {
-        "eyebrow": "/ 02 - DETAILS",
-        "heading": "SPECIFICATION"
+        "product_position": "4 / 24",
+        "drop_no": "/ 004",
+        "release": "FW / 21",
+        "dropped": "JAN 12 / 2:20 PM",
+        "eyebrow": "LIMITED EDITION - ACCESSORIES",
+        "heading": "9 FLAG // CAMO",
+        "copy": "A six-panel performance cap for the round and the after-round. Laser-perforated crown, JF wave embroidered at the front, structured brim broken in just enough.",
+        "fallback_asset": "jf-pdp-cap-hero.png",
+        "add_to_cart_label": "ADD TO CART",
+        "spec_label": "Product specifications"
       }
     },
-    "jf_product_image_band": {
-      "type": "jf-product-image-band",
+    "jf_pdp_story": {
+      "type": "jf-pdp-story",
+      "settings": {
+        "eyebrow": "/ 01 - THE STORY",
+        "heading": "BUILT FOR WALKING.",
+        "body": "<p>Eighteen holes. Four hours. Course-side weather that can turn on a single putt. The Fairway Cap was built for the entire round - UPF 50+ in the crown, laser perforation through the panels, and a metal buckle that holds tension when the wind picks up at the turn.</p>",
+        "fallback_asset": "jf-pdp-editorial.png",
+        "image_alt": "Johnny Fairways model wearing the Fairway Cap",
+        "footer_left": "LIGHTWEIGHT, WATER-RESISTANT NYLON",
+        "footer_right": "/ 01 - 08"
+      }
+    },
+    "jf_pdp_craft": {
+      "type": "jf-pdp-feature-grid",
       "blocks": {
-        "image_1": {
-          "type": "image",
+        "feature_1": {
+          "type": "feature",
           "settings": {
+            "title": "RECYCLED NYLON",
+            "index": "/ 01",
+            "copy": "Lightweight, water-resistant, and quick to dry after a humid back nine.",
+            "fallback_asset": "jf-pdp-detail-01.png",
             "namespace": "custom",
-            "key": "editorial_image_1",
-            "fallback_asset": "jf-lookbook-01.jpg",
-            "caption": "FRAME / 01"
+            "key": "pdp_feature_image_1",
+            "text_namespace": "custom",
+            "text_key": "pdp_feature_copy_1"
           }
         },
-        "image_2": {
-          "type": "image",
+        "feature_2": {
+          "type": "feature",
           "settings": {
+            "title": "BUILT IN PORTUGAL",
+            "index": "/ 02",
+            "copy": "Tight panel construction, clean seam work, and a brim that keeps its line.",
+            "fallback_asset": "jf-pdp-detail-02.png",
             "namespace": "custom",
-            "key": "editorial_image_2",
-            "fallback_asset": "jf-lookbook-02.jpg",
-            "caption": "FRAME / 02"
+            "key": "pdp_feature_image_2",
+            "text_namespace": "custom",
+            "text_key": "pdp_feature_copy_2"
           }
         },
-        "image_3": {
-          "type": "image",
+        "feature_3": {
+          "type": "feature",
           "settings": {
-            "namespace": "custom",
-            "key": "editorial_image_3",
+            "title": "LASTS THE COURSE",
+            "index": "/ 03",
+            "copy": "Breathable side panels and a structured brim keep the shape from the first tee to the clubhouse.",
             "fallback_asset": "jf-lookbook-03.jpg",
-            "caption": "FRAME / 03"
+            "namespace": "custom",
+            "key": "pdp_feature_image_3",
+            "text_namespace": "custom",
+            "text_key": "pdp_feature_copy_3"
           }
         }
       },
       "block_order": [
-        "image_1",
-        "image_2",
-        "image_3"
+        "feature_1",
+        "feature_2",
+        "feature_3"
       ],
       "settings": {
-        "eyebrow": "/ 03 - IN FRAME",
-        "heading": "ON COURSE"
+        "eyebrow": "/ 02 - CRAFT",
+        "heading": "CRAFTSMANSHIP, GRAM BY GRAM.",
+        "kicker": "06 TECHNICAL NOTES",
+        "theme": "paper"
+      }
+    },
+    "jf_pdp_fit_purchase": {
+      "type": "jf-pdp-fit-purchase",
+      "blocks": {
+        "crown": {
+          "type": "fit_row",
+          "settings": {
+            "label": "CROWN",
+            "value": "STRUCTURED MID-PROFILE",
+            "namespace": "custom",
+            "key": "pdp_fit_crown"
+          }
+        },
+        "brim": {
+          "type": "fit_row",
+          "settings": {
+            "label": "BRIM",
+            "value": "PRE-CURVED",
+            "namespace": "custom",
+            "key": "pdp_fit_brim"
+          }
+        },
+        "adjustment": {
+          "type": "fit_row",
+          "settings": {
+            "label": "ADJUSTMENT",
+            "value": "SNAPBACK CLOSURE",
+            "namespace": "custom",
+            "key": "pdp_fit_adjustment"
+          }
+        },
+        "color_1": {
+          "type": "swatch",
+          "settings": {
+            "label": "CAMO",
+            "color": "#3f4b3b"
+          }
+        },
+        "color_2": {
+          "type": "swatch",
+          "settings": {
+            "label": "BLACK",
+            "color": "#161716"
+          }
+        },
+        "color_3": {
+          "type": "swatch",
+          "settings": {
+            "label": "PINE",
+            "color": "#59664f"
+          }
+        },
+        "color_4": {
+          "type": "swatch",
+          "settings": {
+            "label": "KHAKI",
+            "color": "#796f55"
+          }
+        },
+        "color_5": {
+          "type": "swatch",
+          "settings": {
+            "label": "BONE",
+            "color": "#d8d7cb"
+          }
+        }
+      },
+      "block_order": [
+        "crown",
+        "brim",
+        "adjustment",
+        "color_1",
+        "color_2",
+        "color_3",
+        "color_4",
+        "color_5"
+      ],
+      "settings": {
+        "fit_eyebrow": "/ 04 - SIZING",
+        "fit_heading": "ONE SIZE FOR ALL.",
+        "make_eyebrow": "/ 05 - MAKE IT YOURS",
+        "make_heading": "MAKE IT YOURS.",
+        "make_kicker": "SELECT A COLOR",
+        "quantity_label": "QUANTITY",
+        "button_label": "ADD TO CART"
+      }
+    },
+    "jf_pdp_closeups": {
+      "type": "jf-pdp-image-row",
+      "blocks": {
+        "closeup_1": {
+          "type": "image",
+          "settings": {
+            "caption": "JF EMBROIDERY",
+            "meta": "/ 01",
+            "fallback_asset": "jf-pdp-detail-01.png",
+            "namespace": "custom",
+            "key": "pdp_closeup_image_1"
+          }
+        },
+        "closeup_2": {
+          "type": "image",
+          "settings": {
+            "caption": "PERFORATED PANEL",
+            "meta": "/ 02",
+            "fallback_asset": "jf-pdp-detail-02.png",
+            "namespace": "custom",
+            "key": "pdp_closeup_image_2"
+          }
+        },
+        "closeup_3": {
+          "type": "image",
+          "settings": {
+            "caption": "STRUCTURED BRIM",
+            "meta": "/ 03",
+            "fallback_asset": "jf-pdp-cap-hero.png",
+            "namespace": "custom",
+            "key": "pdp_closeup_image_3"
+          }
+        },
+        "closeup_4": {
+          "type": "image",
+          "settings": {
+            "caption": "BRASS BUCKLE",
+            "meta": "/ 04",
+            "fallback_asset": "jf-product-04.jpg",
+            "namespace": "custom",
+            "key": "pdp_closeup_image_4"
+          }
+        }
+      },
+      "block_order": [
+        "closeup_1",
+        "closeup_2",
+        "closeup_3",
+        "closeup_4"
+      ],
+      "settings": {
+        "eyebrow": "/ 05 - DETAILS",
+        "heading": "THE CLOSE-UPS.",
+        "kicker": "VIEW GALLERY",
+        "theme": "black"
+      }
+    },
+    "jf_pdp_lifestyle": {
+      "type": "jf-pdp-image-row",
+      "blocks": {
+        "shot_1": {
+          "type": "image",
+          "settings": {
+            "caption": "SHOT / 01",
+            "meta": "@JF_FW21",
+            "fallback_asset": "jf-lookbook-01.jpg",
+            "namespace": "custom",
+            "key": "pdp_lifestyle_image_1"
+          }
+        },
+        "shot_2": {
+          "type": "image",
+          "settings": {
+            "caption": "SHOT / 02",
+            "meta": "@JF_FW21",
+            "fallback_asset": "jf-lookbook-02.jpg",
+            "namespace": "custom",
+            "key": "pdp_lifestyle_image_2"
+          }
+        },
+        "shot_3": {
+          "type": "image",
+          "settings": {
+            "caption": "SHOT / 03",
+            "meta": "@JF_FW21",
+            "fallback_asset": "jf-lookbook-03.jpg",
+            "namespace": "custom",
+            "key": "pdp_lifestyle_image_3"
+          }
+        },
+        "shot_4": {
+          "type": "image",
+          "settings": {
+            "caption": "SHOT / 04",
+            "meta": "@JF_FW21",
+            "fallback_asset": "jf-lookbook-04.jpg",
+            "namespace": "custom",
+            "key": "pdp_lifestyle_image_4"
+          }
+        }
+      },
+      "block_order": [
+        "shot_1",
+        "shot_2",
+        "shot_3",
+        "shot_4"
+      ],
+      "settings": {
+        "eyebrow": "/ 06 - ON THE COURSE",
+        "heading": "IN THE WILD.",
+        "kicker": "#JOHNNYFAIRWAYS",
+        "theme": "paper"
+      }
+    },
+    "jf_pdp_complete_look": {
+      "type": "jf-pdp-complete-look",
+      "blocks": {
+        "look_1": {
+          "type": "product",
+          "settings": {
+            "title": "THE CADDY POLO",
+            "price": "$148",
+            "subtitle": "PERFORMANCE - / 001",
+            "fallback_asset": "jf-product-01.jpg"
+          }
+        },
+        "look_2": {
+          "type": "product",
+          "settings": {
+            "title": "THE 18TH TROUSER",
+            "price": "$215",
+            "subtitle": "EVERYDAY - / 002",
+            "fallback_asset": "jf-product-02.jpg"
+          }
+        },
+        "look_3": {
+          "type": "product",
+          "settings": {
+            "title": "THE TEE TIME 1/4",
+            "price": "$185",
+            "subtitle": "PERFORMANCE - / 003",
+            "fallback_asset": "jf-product-03.jpg"
+          }
+        },
+        "look_4": {
+          "type": "product",
+          "settings": {
+            "title": "THE PUTTER BELT",
+            "price": "$95",
+            "subtitle": "ACCESSORIES - / 005",
+            "fallback_asset": "jf-product-04.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "look_1",
+        "look_2",
+        "look_3",
+        "look_4"
+      ],
+      "settings": {
+        "eyebrow": "/ 07 - STYLE WITH",
+        "heading": "COMPLETE THE LOOK.",
+        "link_label": "VIEW THE EDIT ->"
+      }
+    },
+    "jf_pdp_press": {
+      "type": "jf-pdp-press",
+      "settings": {
+        "eyebrow": "/ 08 - PRESS",
+        "quote": "THE FAIRWAY CAP IS THE FIRST PIECE OF GOLF HEADWEAR IN A DECADE THAT FEELS LIKE IT BELONGS OFF THE COURSE AS MUCH AS ON IT.",
+        "source": "HIGHSNOBIETY - ISSUE NO. 42",
+        "link_label": "READ MORE COVERAGE ->"
       }
     },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
+      "disabled": true,
       "blocks": {
         "text_cbcgyb": {
           "type": "text",
@@ -499,9 +817,14 @@
   },
   "order": [
     "main",
-    "jf_product_editorial",
-    "jf_product_metafields",
-    "jf_product_image_band",
+    "jf_pdp_hero",
+    "jf_pdp_story",
+    "jf_pdp_craft",
+    "jf_pdp_fit_purchase",
+    "jf_pdp_closeups",
+    "jf_pdp_lifestyle",
+    "jf_pdp_complete_look",
+    "jf_pdp_press",
     "product_recommendations_qggXJq"
   ]
 }

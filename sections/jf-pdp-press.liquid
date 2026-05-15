@@ -1,0 +1,22 @@
+<section class="jf-pdp-press">
+  <p class="jf-label">{{ section.settings.eyebrow }}</p>
+  <blockquote>{{ product.metafields.custom.pdp_press_quote.value | default: section.settings.quote }}</blockquote>
+  <div class="jf-pdp-press__footer">
+    <span>{{ section.settings.source }}</span>
+    <a href="{{ section.settings.link_url }}">{{ section.settings.link_label }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "JF PDP press",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "/ 08 - PRESS" },
+    { "type": "textarea", "id": "quote", "label": "Quote", "default": "THE FAIRWAY CAP IS THE FIRST PIECE OF GOLF HEADWEAR IN A DECADE THAT FEELS LIKE IT BELONGS OFF THE COURSE AS MUCH AS ON IT." },
+    { "type": "text", "id": "source", "label": "Source", "default": "HIGHSNOBIETY - ISSUE NO. 42" },
+    { "type": "url", "id": "link_url", "label": "Link URL" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "READ MORE COVERAGE ->" }
+  ],
+  "presets": [{ "name": "JF PDP press" }]
+}
+{% endschema %}
