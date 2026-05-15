@@ -25,6 +25,7 @@
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "right",
             "thumbnail_width": 44,
+            "thumbnail_radius": 0,
             "aspect_ratio": "adapt",
             "constrain_to_viewport": true,
             "media_fit": "contain",
@@ -98,7 +99,9 @@
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
                 "gradient_direction": "to top",
+                "link": "",
                 "open_in_new_tab": false,
+                "placeholder": "",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -189,6 +192,7 @@
               "settings": {
                 "stacking": true,
                 "show_pickup_availability": false,
+                "gift_card_form": true,
                 "padding-block-start": 0,
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
@@ -261,6 +265,7 @@
         "equal_columns": false,
         "limit_details_width": false,
         "gap": 48,
+        "enable_sticky_add_to_cart": true,
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
@@ -341,6 +346,7 @@
         "heading": "9 FLAG // CAMO",
         "copy": "A six-panel performance cap for the round and the after-round. Laser-perforated crown, JF wave embroidered at the front, structured brim broken in just enough.",
         "fallback_asset": "jf-pdp-cap-hero.png",
+        "info_width": "45",
         "add_to_cart_label": "ADD TO CART",
         "spec_label": "Product specifications"
       }
@@ -446,35 +452,40 @@
           "type": "swatch",
           "settings": {
             "label": "CAMO",
-            "color": "#3f4b3b"
+            "color": "#3f4b3b",
+            "variant_id": ""
           }
         },
         "color_2": {
           "type": "swatch",
           "settings": {
             "label": "BLACK",
-            "color": "#161716"
+            "color": "#161716",
+            "variant_id": ""
           }
         },
         "color_3": {
           "type": "swatch",
           "settings": {
             "label": "PINE",
-            "color": "#59664f"
+            "color": "#59664f",
+            "variant_id": ""
           }
         },
         "color_4": {
           "type": "swatch",
           "settings": {
             "label": "KHAKI",
-            "color": "#796f55"
+            "color": "#796f55",
+            "variant_id": ""
           }
         },
         "color_5": {
           "type": "swatch",
           "settings": {
             "label": "BONE",
-            "color": "#d8d7cb"
+            "color": "#d8d7cb",
+            "variant_id": ""
           }
         }
       },
@@ -618,37 +629,45 @@
         "look_1": {
           "type": "product",
           "settings": {
+            "product": "",
             "title": "THE CADDY POLO",
             "price": "$148",
             "subtitle": "PERFORMANCE - / 001",
-            "fallback_asset": "jf-product-01.jpg"
+            "fallback_asset": "jf-product-01.jpg",
+            "url": ""
           }
         },
         "look_2": {
           "type": "product",
           "settings": {
+            "product": "",
             "title": "THE 18TH TROUSER",
             "price": "$215",
             "subtitle": "EVERYDAY - / 002",
-            "fallback_asset": "jf-product-02.jpg"
+            "fallback_asset": "jf-product-02.jpg",
+            "url": ""
           }
         },
         "look_3": {
           "type": "product",
           "settings": {
+            "product": "",
             "title": "THE TEE TIME 1/4",
             "price": "$185",
             "subtitle": "PERFORMANCE - / 003",
-            "fallback_asset": "jf-product-03.jpg"
+            "fallback_asset": "jf-product-03.jpg",
+            "url": ""
           }
         },
         "look_4": {
           "type": "product",
           "settings": {
+            "product": "",
             "title": "THE PUTTER BELT",
             "price": "$95",
             "subtitle": "ACCESSORIES - / 005",
-            "fallback_asset": "jf-product-04.jpg"
+            "fallback_asset": "jf-product-04.jpg",
+            "url": ""
           }
         }
       },
@@ -661,6 +680,7 @@
       "settings": {
         "eyebrow": "/ 07 - STYLE WITH",
         "heading": "COMPLETE THE LOOK.",
+        "link_url": "",
         "link_label": "VIEW THE EDIT ->"
       }
     },
@@ -670,6 +690,7 @@
         "eyebrow": "/ 08 - PRESS",
         "quote": "THE FAIRWAY CAP IS THE FIRST PIECE OF GOLF HEADWEAR IN A DECADE THAT FEELS LIKE IT BELONGS OFF THE COURSE AS MUCH AS ON IT.",
         "source": "HIGHSNOBIETY - ISSUE NO. 42",
+        "link_url": "",
         "link_label": "READ MORE COVERAGE ->"
       }
     },
