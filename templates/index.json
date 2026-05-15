@@ -41,7 +41,7 @@
       ],
       "settings": {
         "image": "shopify://shop_images/DSC8897_f19b2c06-8c91-4a5c-ba97-60b60b62356e.jpg",
-        "height": "medium",
+        "height": "fit-screen",
         "barcode_text": "00 0123456 000001 8",
         "kicker": "NEW RELEASE",
         "heading": "BLADE COLLAR",
