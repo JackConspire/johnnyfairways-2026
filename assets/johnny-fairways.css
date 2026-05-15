@@ -51,7 +51,7 @@
 .jf-display {
   font-family: var(--jf-display);
   font-weight: 700;
-  letter-spacing: 0;
+  letter-spacing: -0.01em;
   line-height: 0.86;
   text-transform: uppercase;
 }
@@ -125,7 +125,9 @@
 }
 
 .jf-section-header__title {
-  font-size: clamp(44px, 5.2vw, 88px);
+  font-size: 44px;
+  letter-spacing: -0.01em;
+  line-height: 0.86;
   text-align: center;
 }
 
@@ -288,12 +290,16 @@
 
 .jf-hero__kicker {
   font-size: 16px;
+  letter-spacing: -0.01em;
+  line-height: 0.85;
   margin-bottom: 8px;
   opacity: 0.9;
 }
 
 .jf-hero__title {
-  font-size: clamp(72px, 6vw, 92px);
+  font-size: 80px;
+  letter-spacing: -0.02em;
+  line-height: 0.94;
   max-width: 640px;
 }
 
@@ -438,12 +444,14 @@
 
 .jf-product-card__title {
   font-size: 16px;
+  letter-spacing: 0.002em;
   line-height: 0.95;
 }
 
 .jf-product-card__price {
   font-size: 12px;
-  letter-spacing: 0.02em;
+  letter-spacing: -0.06em;
+  line-height: 1;
 }
 
 .jf-product-card__subtitle {
@@ -472,14 +480,16 @@
 }
 
 .jf-editorial__title {
-  font-size: clamp(42px, 4.5vw, 76px);
+  font-size: 44px;
+  letter-spacing: -0.01em;
+  line-height: 0.86;
   margin-top: 40px;
   max-width: 580px;
 }
 
 .jf-editorial__body {
   color: rgba(255, 255, 255, 0.72);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.55;
   margin: 32px 0 40px;
   max-width: 480px;
@@ -525,6 +535,8 @@
 
 .jf-category-card__title {
   font-size: 22px;
+  letter-spacing: -0.005em;
+  line-height: 0.88;
 }
 
 .jf-lookbook {
@@ -580,7 +592,9 @@
 }
 
 .jf-newsletter__title {
-  font-size: clamp(44px, 4.8vw, 88px);
+  font-size: 44px;
+  letter-spacing: -0.01em;
+  line-height: 0.86;
 }
 
 .jf-newsletter__form {
@@ -645,6 +659,8 @@
 
 .jf-footer__brand-title {
   font-size: 16px;
+  letter-spacing: 0.002em;
+  line-height: 0.95;
   margin-bottom: 24px;
 }
 
@@ -685,7 +701,9 @@
 
 .jf-footer__massive {
   color: rgba(255, 255, 255, 0.1);
-  font-size: clamp(56px, 7vw, 120px);
+  font-size: 56px;
+  letter-spacing: -0.01em;
+  line-height: 0.84;
   margin-top: 48px;
   text-align: center;
 }
@@ -742,15 +760,26 @@
     padding-bottom: 24px;
   }
 
+  .jf-hero__meta-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    margin-bottom: 4px;
+  }
+
   .jf-hero__title {
-    font-size: 38px;
-    line-height: 0.96;
+    font-size: 80px;
+    letter-spacing: -0.02em;
+    line-height: 0.94;
+    max-width: none;
   }
 
   .jf-hero__body {
-    font-size: 12px;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 1.55;
     margin-top: 16px;
     max-width: none;
+    text-transform: none;
   }
 
   .jf-hero__ctas {
@@ -808,11 +837,11 @@
   }
 
   .jf-product-card__title {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .jf-product-card__price {
-    font-size: 11px;
+    font-size: 12px;
   }
 
   .jf-editorial,
