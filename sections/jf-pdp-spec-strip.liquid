@@ -2,6 +2,11 @@
   assign metaobject_namespace = section.settings.metaobject_namespace | default: 'custom'
   assign metaobject_key = section.settings.metaobject_key | default: 'pdp_spec_bar'
   assign spec_metaobject_reference = product.metafields[metaobject_namespace][metaobject_key]
+
+  if spec_metaobject_reference == blank and metaobject_namespace == 'custom' and metaobject_key == 'pdp_spec_bar'
+    assign spec_metaobject_reference = product.metafields.custom.custom_pdp_spec_bar
+  endif
+
   assign spec_metaobject = spec_metaobject_reference.value
 -%}
 
@@ -20,12 +25,12 @@
         endif
       endif
 
-      if spec_value == blank
+      if spec_value == blank and spec_metaobject == blank
         assign spec_value = block.settings.value
       endif
     -%}
 
-    {%- if block.settings.label != blank or spec_value != blank -%}
+    {%- if spec_value != blank -%}
       <div class="jf-pdp-spec-strip__item" {{ block.shopify_attributes }}>
         {%- if block.settings.label != blank -%}
           <span>{{ block.settings.label | escape }}</span>
@@ -44,7 +49,7 @@
   "settings": [
     {
       "type": "paragraph",
-      "content": "Create a product metafield that references a metaobject. Default: custom.pdp_spec_bar. The metaobject should include fields for style, fabric, fit, closure, weight, and origin."
+      "content": "Create a product metafield that references a metaobject. Recommended key: custom.pdp_spec_bar. If Shopify generated custom.custom_pdp_spec_bar, this section will read that too. The metaobject should include fields for style, fabric, fit, closure, weight, and origin."
     },
     {
       "type": "text",
