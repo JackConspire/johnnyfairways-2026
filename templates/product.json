@@ -271,6 +271,72 @@
         "padding-block-end": 0
       }
     },
+    "jf_pdp_spec_bar": {
+      "type": "jf-pdp-spec-strip",
+      "blocks": {
+        "style": {
+          "type": "spec",
+          "settings": {
+            "label": "STYLE",
+            "metaobject_field_key": "style",
+            "value": "5-PANEL"
+          }
+        },
+        "fabric": {
+          "type": "spec",
+          "settings": {
+            "label": "FABRIC",
+            "metaobject_field_key": "fabric",
+            "value": "100% RECYCLED NYLON"
+          }
+        },
+        "fit": {
+          "type": "spec",
+          "settings": {
+            "label": "FIT",
+            "metaobject_field_key": "fit",
+            "value": "STRUCTURED"
+          }
+        },
+        "closure": {
+          "type": "spec",
+          "settings": {
+            "label": "CLOSURE",
+            "metaobject_field_key": "closure",
+            "value": "PLASTIC SNAP"
+          }
+        },
+        "weight": {
+          "type": "spec",
+          "settings": {
+            "label": "WEIGHT",
+            "metaobject_field_key": "weight",
+            "value": "54g"
+          }
+        },
+        "origin": {
+          "type": "spec",
+          "settings": {
+            "label": "ORIGIN",
+            "metaobject_field_key": "origin",
+            "value": "MADE IN PORTUGAL"
+          }
+        }
+      },
+      "block_order": [
+        "style",
+        "fabric",
+        "fit",
+        "closure",
+        "weight",
+        "origin"
+      ],
+      "settings": {
+        "spec_label": "Product specifications",
+        "metaobject_namespace": "custom",
+        "metaobject_key": "pdp_spec_bar"
+      }
+    },
     "jf_pdp_story": {
       "type": "jf-pdp-story",
       "settings": {
@@ -761,6 +827,7 @@
   },
   "order": [
     "main",
+    "jf_pdp_spec_bar",
     "jf_pdp_story",
     "jf_pdp_craft",
     "jf_pdp_fit_purchase",

@@ -1,9 +1,40 @@
+{%- liquid
+  assign metaobject_namespace = section.settings.metaobject_namespace | default: 'custom'
+  assign metaobject_key = section.settings.metaobject_key | default: 'pdp_spec_bar'
+  assign spec_metaobject_reference = product.metafields[metaobject_namespace][metaobject_key]
+  assign spec_metaobject = spec_metaobject_reference.value
+-%}
+
 <section class="jf-pdp-spec-strip" aria-label="{{ section.settings.spec_label | escape }}">
   {%- for block in section.blocks -%}
-    <div class="jf-pdp-spec-strip__item" {{ block.shopify_attributes }}>
-      <span>{{ block.settings.label | escape }}</span>
-      <strong>{% render 'jf-metafield-value', product: product, namespace: block.settings.namespace, key: block.settings.key, fallback: block.settings.value %}</strong>
-    </div>
+    {%- liquid
+      assign field_key = block.settings.metaobject_field_key
+      assign spec_field = blank
+      assign spec_value = blank
+
+      if spec_metaobject != blank and field_key != blank
+        assign spec_field = spec_metaobject[field_key]
+
+        if spec_field != blank
+          assign spec_value = spec_field.value | default: spec_field
+        endif
+      endif
+
+      if spec_value == blank
+        assign spec_value = block.settings.value
+      endif
+    -%}
+
+    {%- if block.settings.label != blank or spec_value != blank -%}
+      <div class="jf-pdp-spec-strip__item" {{ block.shopify_attributes }}>
+        {%- if block.settings.label != blank -%}
+          <span>{{ block.settings.label | escape }}</span>
+        {%- endif -%}
+        {%- if spec_value != blank -%}
+          <strong>{{ spec_value }}</strong>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
   {%- endfor -%}
 </section>
 
@@ -12,10 +43,26 @@
   "name": "JF PDP spec strip",
   "settings": [
     {
+      "type": "paragraph",
+      "content": "Create a product metafield that references a metaobject. Default: custom.pdp_spec_bar. The metaobject should include fields for style, fabric, fit, closure, weight, and origin."
+    },
+    {
       "type": "text",
       "id": "spec_label",
       "label": "Accessibility label",
       "default": "Product specifications"
+    },
+    {
+      "type": "text",
+      "id": "metaobject_namespace",
+      "label": "Product metafield namespace",
+      "default": "custom"
+    },
+    {
+      "type": "text",
+      "id": "metaobject_key",
+      "label": "Product metafield key",
+      "default": "pdp_spec_bar"
     }
   ],
   "blocks": [
@@ -31,15 +78,9 @@
         },
         {
           "type": "text",
-          "id": "namespace",
-          "label": "Metafield namespace",
-          "default": "custom"
-        },
-        {
-          "type": "text",
-          "id": "key",
-          "label": "Metafield key",
-          "default": "pdp_style"
+          "id": "metaobject_field_key",
+          "label": "Metaobject field key",
+          "default": "style"
         },
         {
           "type": "text",

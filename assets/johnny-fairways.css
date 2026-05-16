@@ -1652,28 +1652,35 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   border-bottom: 1px solid var(--jf-line-light);
   color: var(--jf-white);
   display: grid;
+  gap: clamp(24px, 3vw, 56px);
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  min-height: 80px;
-  padding: 18px 32px;
+  min-height: 112px;
+  padding: 0 clamp(32px, 3.4vw, 56px);
+  place-items: center stretch;
 }
 
 .jf-pdp-spec-strip__item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 7px;
+  min-width: 0;
 }
 
 .jf-pdp-spec-strip__item span {
+  color: rgba(255, 255, 255, 0.54);
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.2em;
-  opacity: 0.5;
+  line-height: 1;
   text-transform: uppercase;
 }
 
 .jf-pdp-spec-strip__item strong {
-  font-size: 14px;
+  color: var(--jf-white);
+  font-size: 15px;
+  font-weight: 700;
   letter-spacing: 0.06em;
+  line-height: 1;
   text-transform: uppercase;
 }
 
