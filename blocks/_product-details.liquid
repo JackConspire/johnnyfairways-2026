@@ -1,10 +1,44 @@
 
 
-{%- assign block_settings = block.settings -%}
+{%- liquid
+  assign block_settings = block.settings
+  assign product_resource = closest.product
+  assign current_variant = product_resource.selected_or_first_available_variant
+  assign use_jf_pdp_layout = false
+
+  if request.page_type == 'product' and product_resource != blank
+    assign use_jf_pdp_layout = true
+  endif
+
+  if use_jf_pdp_layout
+    assign jf_drop_no = product_resource.metafields.custom.pdp_drop_no.value | default: '/ 004'
+    assign jf_release = product_resource.metafields.custom.pdp_release.value | default: 'FW / 21'
+    assign jf_dropped = product_resource.metafields.custom.pdp_dropped.value | default: 'JAN 12 / 2:20 PM'
+    assign jf_eyebrow = product_resource.metafields.custom.pdp_hero_eyebrow.value | default: product_resource.metafields.custom.pdp_eyebrow.value | default: 'LIMITED EDITION - ACCESSORIES'
+    assign jf_title = product_resource.metafields.custom.pdp_hero_title.value | default: product_resource.metafields.custom.pdp_title.value | default: product_resource.title
+
+    if jf_title contains ':'
+      assign jf_title = jf_title | split: ':' | last | strip
+    endif
+
+    assign jf_title = jf_title | replace: ' - ', ' // ' | replace: ' – ', ' // ' | upcase
+    assign jf_title_html = jf_title | escape | replace: ' // ', ' //<br>'
+    assign jf_stock_message = product_resource.metafields.custom.pdp_stock_message.value
+
+    if jf_stock_message == blank
+      if current_variant.available
+        assign jf_stock_message = 'IN STOCK &middot; SHIPS WITHIN 24H'
+      else
+        assign jf_stock_message = 'SOLD OUT'
+      endif
+    endif
+  endif
+-%}
 <div
   id="ProductInformation-{{ section.id }}"
   class="
     product-details
+    {% if use_jf_pdp_layout %} jf-pdp-product-details{% endif %}
     {% if block_settings.sticky_details_desktop %} sticky-content--desktop{% endif %}
     {% if block_settings.height == 'fill' -%} full-height--desktop{% endif -%}
   "
@@ -26,7 +60,57 @@
     {% content_for 'blocks' %}
   {% endcapture %}
 
-  {% render 'group', children: children, settings: block_settings, shopify_attributes: block.shopify_attributes %}
+  {% if use_jf_pdp_layout %}
+    <div
+      class="jf-pdp-product-details__shell"
+    >
+      <div class="jf-pdp-product-details__meta">
+        <div>
+          <p>DROP NO.</p>
+          <p>{{ jf_drop_no }}</p>
+        </div>
+        <div>
+          <p>RELEASE</p>
+          <p>{{ jf_release }}</p>
+        </div>
+        <div>
+          <p>DROPPED</p>
+          <p>{{ jf_dropped }}</p>
+        </div>
+      </div>
+
+      <div class="jf-pdp-product-details__copy">
+        <p class="jf-pdp-product-details__eyebrow">{{ jf_eyebrow }}</p>
+        <h1>{{ jf_title_html }}</h1>
+        <div class="jf-pdp-product-details__description">
+          {% if product_resource.metafields.custom.pdp_hero_copy != blank %}
+            {{ product_resource.metafields.custom.pdp_hero_copy | metafield_tag }}
+          {% else %}
+            {{ product_resource.description }}
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="jf-pdp-product-details__purchase">
+        <div class="jf-pdp-product-details__purchase-row">
+          <div class="jf-pdp-product-details__price">
+            {% render 'price', product_resource: product_resource, show_sale_price_first: true %}
+          </div>
+          <p class="jf-pdp-product-details__stock">{{ jf_stock_message }}</p>
+        </div>
+
+        <div class="jf-pdp-product-details__native-controls">
+          {% render 'group',
+            children: children,
+            settings: block_settings,
+            shopify_attributes: block.shopify_attributes
+          %}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    {% render 'group', children: children, settings: block_settings, shopify_attributes: block.shopify_attributes %}
+  {% endif %}
 </div>
 
 {% stylesheet %}
