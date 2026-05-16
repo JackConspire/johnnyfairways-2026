@@ -4,7 +4,16 @@
   {% content_for 'blocks' %}
 {% endcapture %}
 
-{% render 'group', children: children, settings: block.settings, shopify_attributes: block.shopify_attributes %}
+{% liquid
+  assign group_block_class = 'group-block--' | append: block.id
+%}
+
+{% render 'group',
+  children: children,
+  settings: block.settings,
+  shopify_attributes: block.shopify_attributes,
+  class: group_block_class
+%}
 
 {% schema %}
 {
