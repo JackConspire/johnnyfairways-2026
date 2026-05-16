@@ -881,9 +881,10 @@ main[data-template^="product"] .jf-pdp-product-details {
 }
 
 main[data-template^="product"] .jf-pdp-product-details__shell {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
   height: 100%;
+  overflow: hidden;
   padding: 56px;
   width: 100%;
 }
@@ -923,12 +924,18 @@ main[data-template^="product"] .jf-pdp-product-details__meta p + p {
 }
 
 main[data-template^="product"] .jf-pdp-product-details__copy {
-  margin-top: clamp(86px, 9vw, 132px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 0;
+  min-height: 0;
+  overflow: hidden;
+  padding-block: clamp(42px, 7.2vh, 88px) clamp(24px, 4vh, 48px);
 }
 
 main[data-template^="product"] .jf-pdp-product-details__copy h1 {
   font-family: var(--jf-display);
-  font-size: clamp(42px, 3.9vw, 56px);
+  font-size: clamp(38px, 3.7vw, 56px);
   letter-spacing: -0.01em;
   line-height: 0.84;
   margin: 24px 0 0;
@@ -942,15 +949,33 @@ main[data-template^="product"] .jf-pdp-product-details__description {
   line-height: 1.55;
   margin-top: 24px;
   max-width: 488px;
+  max-height: 6.2em;
+  overflow: hidden;
 }
 
+main[data-template^="product"] .jf-pdp-product-details__description > *,
 main[data-template^="product"] .jf-pdp-product-details__description p {
   margin: 0;
 }
 
+main[data-template^="product"] .jf-pdp-product-details__shell--has-options .jf-pdp-product-details__copy {
+  padding-block: clamp(18px, 3vh, 34px) clamp(18px, 2vh, 28px);
+}
+
+main[data-template^="product"] .jf-pdp-product-details__shell--has-options .jf-pdp-product-details__copy h1 {
+  font-size: clamp(36px, 3.3vw, 50px);
+  margin-top: 24px;
+}
+
+main[data-template^="product"] .jf-pdp-product-details__shell--has-options .jf-pdp-product-details__description {
+  margin-top: 22px;
+  max-height: 4.65em;
+}
+
 main[data-template^="product"] .jf-pdp-product-details__purchase {
   border-top: 1px solid var(--jf-line-light);
-  margin-top: auto;
+  margin-top: 0;
+  min-height: 0;
   padding-top: 32px;
   width: 100%;
 }
@@ -980,6 +1005,15 @@ main[data-template^="product"] .jf-pdp-product-details__native-controls > .group
 main[data-template^="product"] .jf-pdp-product-details__native-controls > .group-block > .group-block-content {
   gap: 0 !important;
   width: 100%;
+}
+
+main[data-template^="product"] .jf-pdp-product-details__native-controls .variant-picker {
+  margin-bottom: 14px;
+  padding-top: 0 !important;
+}
+
+main[data-template^="product"] .jf-pdp-product-details__native-controls .variant-option {
+  margin: 0 0 14px;
 }
 
 main[data-template^="product"] .jf-pdp-product-details__native-controls > .group-block > .group-block-content > :is(
@@ -1259,6 +1293,52 @@ main[data-template^="product"] .add-to-cart-button {
 
 main[data-template^="product"] .shopify-payment-button__button {
   min-height: 56px;
+}
+
+main[data-template^="product"] .product-details .jf-pdp-product-details__copy h1 {
+  font-size: clamp(38px, 3.7vw, 56px);
+  margin: 24px 0 0;
+}
+
+main[data-template^="product"] .product-details .jf-pdp-product-details__shell--has-options .jf-pdp-product-details__copy h1 {
+  font-size: clamp(36px, 3.3vw, 50px);
+  margin-top: 24px;
+}
+
+main[data-template^="product"] .product-details .jf-pdp-product-details__native-controls .variant-picker {
+  margin-bottom: 14px;
+  padding-top: 0 !important;
+}
+
+main[data-template^="product"] .product-details .jf-pdp-product-details__native-controls .variant-option {
+  margin: 0 0 14px;
+}
+
+main[data-template^="product"] .product-details .jf-pdp-product-details__native-controls .variant-option__button-label {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+  color: var(--jf-white) !important;
+  min-height: 56px;
+  padding: 0 !important;
+}
+
+main[data-template^="product"] .product-details .jf-pdp-product-details__native-controls .variant-option__button-label__pill {
+  display: none;
+}
+
+main[data-template^="product"] .product-details .jf-pdp-product-details__native-controls .variant-option__button-label__text {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  min-height: 56px;
+  width: 100%;
+}
+
+main[data-template^="product"] .product-details .jf-pdp-product-details__native-controls .variant-option__button-label:has(input:checked) {
+  background: var(--jf-white) !important;
+  border-color: var(--jf-white);
+  color: var(--jf-black) !important;
 }
 
 .jf-product-editorial {

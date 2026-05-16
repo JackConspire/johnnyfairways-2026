@@ -24,6 +24,11 @@
     assign jf_title = jf_title | replace: ' - ', ' // ' | replace: ' – ', ' // ' | upcase
     assign jf_title_html = jf_title | escape | replace: ' // ', ' //<br>'
     assign jf_stock_message = product_resource.metafields.custom.pdp_stock_message.value
+    assign jf_has_variant_options = false
+
+    unless product_resource.has_only_default_variant
+      assign jf_has_variant_options = true
+    endunless
 
     if jf_stock_message == blank
       if current_variant.available
@@ -62,7 +67,7 @@
 
   {% if use_jf_pdp_layout %}
     <div
-      class="jf-pdp-product-details__shell"
+      class="jf-pdp-product-details__shell{% if jf_has_variant_options %} jf-pdp-product-details__shell--has-options{% endif %}"
     >
       <div class="jf-pdp-product-details__meta">
         <div>
@@ -86,7 +91,7 @@
           {% if product_resource.metafields.custom.pdp_hero_copy != blank %}
             {{ product_resource.metafields.custom.pdp_hero_copy | metafield_tag }}
           {% else %}
-            {{ product_resource.description }}
+            <p>{{ product_resource.description | strip_html | truncatewords: 42 }}</p>
           {% endif %}
         </div>
       </div>
