@@ -423,6 +423,35 @@
       "visible_if": "{{ section.settings.equal_columns }}"
     },
     {
+      "type": "select",
+      "id": "jf_info_width",
+      "label": "Product information width",
+      "info": "Desktop only. Product media uses the remaining width.",
+      "options": [
+        {
+          "value": "30",
+          "label": "30%"
+        },
+        {
+          "value": "35",
+          "label": "35%"
+        },
+        {
+          "value": "40",
+          "label": "40%"
+        },
+        {
+          "value": "45",
+          "label": "45%"
+        },
+        {
+          "value": "50",
+          "label": "50%"
+        }
+      ],
+      "default": "35"
+    },
+    {
       "type": "range",
       "id": "gap",
       "label": "t:settings.gap",

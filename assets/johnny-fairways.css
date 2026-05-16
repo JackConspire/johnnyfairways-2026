@@ -753,29 +753,115 @@ main[data-template^="product"] {
 
 main[data-template^="product"] .product-information {
   font-family: var(--jf-ui);
-  padding-left: 32px;
-  padding-right: 32px;
+  background: var(--jf-black);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: 750px) {
+  main[data-template^="product"] .product-information__grid:not(.product-information--media-none).product-information--media-left,
+  main[data-template^="product"] .product-information__grid:not(.product-information--media-none).product-information--media-right {
+    grid-template-columns: minmax(0, calc(100% - var(--jf-pdp-info-width, 35%))) minmax(320px, var(--jf-pdp-info-width, 35%));
+    min-height: 792px;
+  }
+
+  main[data-template^="product"] .product-information__grid:not(.product-information--media-none).product-information--media-right {
+    grid-template-columns: minmax(320px, var(--jf-pdp-info-width, 35%)) minmax(0, calc(100% - var(--jf-pdp-info-width, 35%)));
+  }
+
+  main[data-template^="product"] .product-information__media,
+  main[data-template^="product"] .product-details {
+    min-height: 792px;
+  }
+
+  main[data-template^="product"] .product-information__media {
+    padding: 0 !important;
+  }
+
+  main[data-template^="product"] .media-gallery--carousel,
+  main[data-template^="product"] .media-gallery--carousel slideshow-component,
+  main[data-template^="product"] .media-gallery--carousel slideshow-container,
+  main[data-template^="product"] .media-gallery--carousel slideshow-slide,
+  main[data-template^="product"] .media-gallery--carousel .product-media,
+  main[data-template^="product"] .media-gallery--carousel .product-media > *,
+  main[data-template^="product"] .media-gallery--carousel .product-media__image {
+    height: 100%;
+    min-height: 792px;
+  }
+
+  main[data-template^="product"] .media-gallery--carousel .product-media__image {
+    object-fit: cover;
+  }
 }
 
 main[data-template^="product"] .product-details {
-  color: var(--jf-ink);
+  background: var(--jf-black);
+  border-left: 1px solid var(--jf-line-light);
+  color: var(--jf-white);
   font-family: var(--jf-ui);
+}
+
+main[data-template^="product"] .product-details > .group-block {
+  width: 100%;
+}
+
+main[data-template^="product"] .product-details .group-block-content {
+  justify-content: center;
 }
 
 main[data-template^="product"] .product-details h1 {
   font-family: var(--jf-display);
-  font-size: 44px;
+  font-size: 56px;
   letter-spacing: -0.01em;
-  line-height: 0.86;
+  line-height: 0.84;
   margin: 0;
   text-transform: uppercase;
 }
 
 main[data-template^="product"] .product-details .price {
   font-family: var(--jf-display);
-  font-size: 16px;
+  font-size: 22px;
   letter-spacing: 0.002em;
   line-height: 0.95;
+}
+
+main[data-template^="product"] .product-details .text-block {
+  color: inherit;
+}
+
+main[data-template^="product"] .product-details .rte {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+main[data-template^="product"] .product-details .rte p {
+  margin: 0;
+}
+
+main[data-template^="product"] .product-details .text-block:not(.rte) p {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.2;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+main[data-template^="product"] .product-details .text-block:not(.rte) p:first-child {
+  opacity: 0.55;
+}
+
+main[data-template^="product"] .product-details .text-block:not(.rte) p + p {
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  margin-top: 8px;
+  opacity: 1;
+}
+
+main[data-template^="product"] .product-details .product-options,
+main[data-template^="product"] .product-details .variant-picker {
+  color: var(--jf-white);
 }
 
 main[data-template^="product"] .variant-picker,
@@ -791,6 +877,12 @@ main[data-template^="product"] .shopify-payment-button__button {
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+main[data-template^="product"] .add-to-cart-button {
+  background: var(--jf-white);
+  border-color: var(--jf-white);
+  color: var(--jf-black);
 }
 
 .jf-product-editorial {
@@ -1674,8 +1766,12 @@ main[data-template^="product"] .shopify-payment-button__button {
   }
 
   main[data-template^="product"] .product-information {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  main[data-template^="product"] .product-details {
+    border-left: 0;
   }
 
   main[data-template^="product"] .product-details h1 {

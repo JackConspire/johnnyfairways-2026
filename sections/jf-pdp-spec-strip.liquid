@@ -1,0 +1,59 @@
+<section class="jf-pdp-spec-strip" aria-label="{{ section.settings.spec_label | escape }}">
+  {%- for block in section.blocks -%}
+    <div class="jf-pdp-spec-strip__item" {{ block.shopify_attributes }}>
+      <span>{{ block.settings.label | escape }}</span>
+      <strong>{% render 'jf-metafield-value', product: product, namespace: block.settings.namespace, key: block.settings.key, fallback: block.settings.value %}</strong>
+    </div>
+  {%- endfor -%}
+</section>
+
+{% schema %}
+{
+  "name": "JF PDP spec strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "spec_label",
+      "label": "Accessibility label",
+      "default": "Product specifications"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "spec",
+      "name": "Spec",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "STYLE"
+        },
+        {
+          "type": "text",
+          "id": "namespace",
+          "label": "Metafield namespace",
+          "default": "custom"
+        },
+        {
+          "type": "text",
+          "id": "key",
+          "label": "Metafield key",
+          "default": "pdp_style"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Fallback value",
+          "default": "5-PANEL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "JF PDP spec strip"
+    }
+  ]
+}
+{% endschema %}
