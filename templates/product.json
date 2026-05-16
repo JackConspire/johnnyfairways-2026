@@ -271,6 +271,56 @@
         "padding-block-end": 0
       }
     },
+    "jf_meta_strip_yi6fET": {
+      "type": "jf-meta-strip",
+      "blocks": {
+        "item_BkEyUW": {
+          "type": "item",
+          "settings": {
+            "text": "ALL RIGHTS RESERVED",
+            "placement": "left"
+          }
+        },
+        "item_qmkxxY": {
+          "type": "item",
+          "settings": {
+            "text": "J.F CLOTHING",
+            "placement": "left"
+          }
+        },
+        "item_b4RPCU": {
+          "type": "item",
+          "settings": {
+            "text": "- LIMITED EDITION FW / 2021 -",
+            "placement": "center"
+          }
+        },
+        "item_X7UjBx": {
+          "type": "item",
+          "settings": {
+            "text": "INSPIRED BY - GOLF",
+            "placement": "right"
+          }
+        },
+        "item_YLMLMt": {
+          "type": "item",
+          "settings": {
+            "text": "EST. 2021",
+            "placement": "right"
+          }
+        }
+      },
+      "block_order": [
+        "item_BkEyUW",
+        "item_qmkxxY",
+        "item_b4RPCU",
+        "item_X7UjBx",
+        "item_YLMLMt"
+      ],
+      "settings": {
+        "label": "Drop details"
+      }
+    },
     "jf_pdp_spec_bar": {
       "type": "jf-pdp-spec-strip",
       "blocks": {
@@ -331,6 +381,7 @@
         "weight",
         "origin"
       ],
+      "disabled": true,
       "settings": {
         "spec_label": "Product specifications",
         "metaobject_namespace": "custom",
@@ -827,6 +878,7 @@
   },
   "order": [
     "main",
+    "jf_meta_strip_yi6fET",
     "jf_pdp_spec_bar",
     "jf_pdp_story",
     "jf_pdp_craft",
