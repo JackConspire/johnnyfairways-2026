@@ -77,6 +77,24 @@
 %}
 
 <div class="section-background color-{{ settings.color_scheme }}"></div>
+{% if request.page_type == 'product' and product != blank %}
+  {%- liquid
+    assign jf_breadcrumb_category = product.type | default: product.collections.first.title | default: 'PRODUCT'
+    assign jf_breadcrumb_title = product.metafields.custom.pdp_breadcrumb_title.value | default: product.title
+    if jf_breadcrumb_title contains ':'
+      assign jf_breadcrumb_title = jf_breadcrumb_title | split: ':' | last | strip
+    endif
+    assign jf_breadcrumb_count = product.metafields.custom.pdp_breadcrumb_count.value | default: '4 / 24'
+  -%}
+  <nav class="jf-pdp-mobile-crumb" aria-label="Product breadcrumb">
+    <span class="jf-pdp-mobile-crumb__trail">
+      <span>{{ jf_breadcrumb_category | upcase | escape }}</span>
+      <span>/</span>
+      <strong>{{ jf_breadcrumb_title | upcase | escape }}</strong>
+    </span>
+    <span>{{ jf_breadcrumb_count | escape }}</span>
+  </nav>
+{% endif %}
 <div
   class="product-information section section--{{ content_width }} spacing-style color-{{ settings.color_scheme }} relative"
   style="{% render 'spacing-style', settings: settings %} --gap: {{ settings.gap }}px; --jf-pdp-info-width: {{ settings.jf_info_width | default: 42 }}%;"
