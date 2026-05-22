@@ -1,11 +1,50 @@
-<section class="jf-pdp-image-row jf-pdp-image-row--{{ section.settings.theme }}">
+{%- liquid
+  assign metaobject_namespace = section.settings.metaobject_namespace | default: 'custom'
+  assign metaobject_key = section.settings.metaobject_key | default: 'pdp_lifestyle'
+  assign row_metaobject = product.metafields[metaobject_namespace][metaobject_key].value
+
+  assign eyebrow = section.settings.eyebrow
+  assign heading = section.settings.heading
+  assign kicker = section.settings.kicker
+  assign theme = section.settings.theme
+  assign image_items = blank
+
+  if row_metaobject != blank
+    assign eyebrow = row_metaobject.eyebrow.value | default: eyebrow
+    assign heading = row_metaobject.heading.value | default: heading
+    assign kicker = row_metaobject.kicker.value | default: kicker
+    assign theme = row_metaobject.theme.value | default: theme
+    assign image_items = row_metaobject.images.value
+  endif
+-%}
+
+<section class="jf-pdp-image-row jf-pdp-image-row--{{ theme }}">
   <div class="jf-pdp-section-head">
-    <p class="jf-label">{{ section.settings.eyebrow }}</p>
-    <h2>{{ section.settings.heading }}</h2>
-    <p class="jf-label">{{ section.settings.kicker }}</p>
+    <p class="jf-label">{{ eyebrow }}</p>
+    <h2>{{ heading }}</h2>
+    <p class="jf-label">{{ kicker }}</p>
   </div>
   <div class="jf-pdp-image-row__grid">
-    {%- for block in section.blocks -%}
+    {%- if image_items != blank -%}
+      {%- for image_item in image_items -%}
+        {%- liquid
+          assign item_image = image_item.image.value
+          assign image_url = ''
+
+          if item_image != blank
+            assign image_url = item_image | image_url: width: 900
+          endif
+        -%}
+        <figure class="jf-pdp-image-row__item">
+          <div class="jf-pdp-image-row__image"{% if image_url != blank %} style="--jf-image: url('{{ image_url }}');"{% endif %}></div>
+          <figcaption class="jf-label">
+            <span>{{ image_item.caption.value | default: image_item.caption }}</span>
+            <span>{{ image_item.meta.value | default: image_item.meta }}</span>
+          </figcaption>
+        </figure>
+      {%- endfor -%}
+    {%- else -%}
+      {%- for block in section.blocks -%}
       {%- liquid
         assign field_image = product.metafields[block.settings.namespace][block.settings.key].value
         if block.settings.image != blank
@@ -22,7 +61,8 @@
         <div class="jf-pdp-image-row__image"{% if image_url != blank %} style="--jf-image: url('{{ image_url }}');"{% endif %}></div>
         <figcaption class="jf-label"><span>{{ block.settings.caption }}</span><span>{{ block.settings.meta }}</span></figcaption>
       </figure>
-    {%- endfor -%}
+      {%- endfor -%}
+    {%- endif -%}
   </div>
 </section>
 
@@ -30,6 +70,12 @@
 {
   "name": "JF PDP image row",
   "settings": [
+    {
+      "type": "paragraph",
+      "content": "Optionally reads a product metafield that references a PDP Image Row metaobject. Use custom.pdp_closeups for The Closeups and custom.pdp_lifestyle for In The Wild. The metaobject can include eyebrow, heading, kicker, theme, and a list of PDP Image Item entries."
+    },
+    { "type": "text", "id": "metaobject_namespace", "label": "Product metafield namespace", "default": "custom" },
+    { "type": "text", "id": "metaobject_key", "label": "Product metafield key", "default": "pdp_lifestyle" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "/ 06 - ON THE COURSE" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "IN THE WILD." },
     { "type": "text", "id": "kicker", "label": "Right label", "default": "#JOHNNYFAIRWAYS" },

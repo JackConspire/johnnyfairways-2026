@@ -1814,7 +1814,8 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
 }
 
 .jf-pdp-feature__meta span,
-.jf-pdp-feature p,
+.jf-pdp-feature__copy,
+.jf-pdp-feature__copy p,
 .jf-pdp-look-card span span {
   font-size: 10px;
   font-weight: 700;
@@ -1824,10 +1825,14 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   text-transform: uppercase;
 }
 
-.jf-pdp-feature p {
+.jf-pdp-feature__copy {
   font-size: 11px;
   line-height: 1.55;
   max-width: 360px;
+}
+
+.jf-pdp-feature__copy p {
+  margin: 0;
 }
 
 .jf-pdp-fit-purchase {

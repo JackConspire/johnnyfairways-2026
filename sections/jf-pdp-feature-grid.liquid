@@ -1,11 +1,55 @@
-<section class="jf-pdp-feature-grid jf-pdp-feature-grid--{{ section.settings.theme }}">
+{%- liquid
+  assign metaobject_namespace = section.settings.metaobject_namespace | default: 'custom'
+  assign metaobject_key = section.settings.metaobject_key | default: 'pdp_craft'
+  assign grid_metaobject = product.metafields[metaobject_namespace][metaobject_key].value
+
+  assign eyebrow = section.settings.eyebrow
+  assign heading = section.settings.heading
+  assign kicker = section.settings.kicker
+  assign theme = section.settings.theme
+  assign features = blank
+
+  if grid_metaobject != blank
+    assign eyebrow = grid_metaobject.eyebrow.value | default: eyebrow
+    assign heading = grid_metaobject.heading.value | default: heading
+    assign kicker = grid_metaobject.kicker.value | default: kicker
+    assign theme = grid_metaobject.theme.value | default: theme
+    assign features = grid_metaobject.features.value
+  endif
+-%}
+
+<section class="jf-pdp-feature-grid jf-pdp-feature-grid--{{ theme }}">
   <div class="jf-pdp-section-head">
-    <p class="jf-label">{{ section.settings.eyebrow }}</p>
-    <h2>{{ section.settings.heading }}</h2>
-    <p class="jf-label">{{ section.settings.kicker }}</p>
+    <p class="jf-label">{{ eyebrow }}</p>
+    <h2>{{ heading }}</h2>
+    <p class="jf-label">{{ kicker }}</p>
   </div>
   <div class="jf-pdp-feature-grid__items">
-    {%- for block in section.blocks -%}
+    {%- if features != blank -%}
+      {%- for feature in features -%}
+        {%- liquid
+          assign feature_image = feature.image.value
+          assign image_url = ''
+          assign feature_copy = feature.copy | metafield_tag
+          if feature_copy == blank
+            assign feature_copy = feature.copy.value | default: feature.copy
+          endif
+
+          if feature_image != blank
+            assign image_url = feature_image | image_url: width: 900
+          endif
+        -%}
+        <article class="jf-pdp-feature">
+          <div class="jf-pdp-feature__image"{% if image_url != blank %} style="--jf-image: url('{{ image_url }}');"{% endif %}></div>
+          <div class="jf-pdp-feature__meta">
+            <h3>{{ feature.title.value | default: feature.title }}</h3>
+            <span>{{ feature.index.value | default: feature.index }}</span>
+          </div>
+          <div class="jf-pdp-feature__copy">{{ feature_copy }}</div>
+        </article>
+      {%- endfor -%}
+    {%- else -%}
+      {%- for block in section.blocks -%}
       {%- liquid
         assign field_image = product.metafields[block.settings.namespace][block.settings.key].value
         if block.settings.image != blank
@@ -24,9 +68,12 @@
           <h3>{{ block.settings.title }}</h3>
           <span>{{ block.settings.index }}</span>
         </div>
-        <p>{% render 'jf-metafield-value', product: product, namespace: block.settings.text_namespace, key: block.settings.text_key, fallback: block.settings.copy %}</p>
+        <div class="jf-pdp-feature__copy">
+          {% render 'jf-metafield-value', product: product, namespace: block.settings.text_namespace, key: block.settings.text_key, fallback: block.settings.copy %}
+        </div>
       </article>
-    {%- endfor -%}
+      {%- endfor -%}
+    {%- endif -%}
   </div>
 </section>
 
@@ -34,6 +81,12 @@
 {
   "name": "JF PDP feature grid",
   "settings": [
+    {
+      "type": "paragraph",
+      "content": "Optionally reads a product metafield that references a PDP Feature Grid metaobject. Default: custom.pdp_craft. The metaobject can include eyebrow, heading, kicker, theme, and a list of PDP Feature entries."
+    },
+    { "type": "text", "id": "metaobject_namespace", "label": "Product metafield namespace", "default": "custom" },
+    { "type": "text", "id": "metaobject_key", "label": "Product metafield key", "default": "pdp_craft" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "/ 02 - CRAFT" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "CRAFTSMANSHIP, GRAM BY GRAM." },
     { "type": "text", "id": "kicker", "label": "Right label", "default": "06 TECHNICAL NOTES" },

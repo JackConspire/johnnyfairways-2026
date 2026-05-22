@@ -1,9 +1,29 @@
 {%- liquid
+  assign story_metaobject = product.metafields.custom.pdp_story.value
+
+  assign eyebrow = section.settings.eyebrow
+  assign heading = product.metafields.custom.pdp_story_heading.value | default: section.settings.heading
   assign body = product.metafields.custom.pdp_story_body | metafield_tag
+  assign story_image = product.metafields.custom.pdp_story_image.value
+  assign image_alt = section.settings.image_alt
+  assign footer_left = section.settings.footer_left
+  assign footer_right = section.settings.footer_right
+
+  if story_metaobject != blank
+    assign eyebrow = story_metaobject.eyebrow.value | default: eyebrow
+    assign heading = story_metaobject.heading.value | default: heading
+    assign metaobject_body = story_metaobject.body | metafield_tag
+    assign body = metaobject_body | default: body
+    assign story_image = story_metaobject.image.value | default: story_image
+    assign image_alt = story_metaobject.image_alt.value | default: image_alt
+    assign footer_left = story_metaobject.footer_left.value | default: footer_left
+    assign footer_right = story_metaobject.footer_right.value | default: footer_right
+  endif
+
   if body == blank
     assign body = section.settings.body
   endif
-  assign story_image = product.metafields.custom.pdp_story_image.value
+
   if section.settings.image != blank
     assign image_url = section.settings.image | image_url: width: 1400
   elsif story_image != blank
@@ -15,16 +35,16 @@
 
 <section class="jf-pdp-story">
   <div class="jf-pdp-story__content">
-    <p class="jf-label">{{ section.settings.eyebrow }}</p>
-    <h2>{{ product.metafields.custom.pdp_story_heading.value | default: section.settings.heading }}</h2>
+    <p class="jf-label">{{ eyebrow }}</p>
+    <h2>{{ heading }}</h2>
     <div class="jf-pdp-story__body">{{ body }}</div>
     <div class="jf-pdp-story__meta jf-label">
-      <span>{{ section.settings.footer_left }}</span>
-      <span>{{ section.settings.footer_right }}</span>
+      <span>{{ footer_left }}</span>
+      <span>{{ footer_right }}</span>
     </div>
   </div>
   <div class="jf-pdp-story__image">
-    <img src="{{ image_url }}" alt="{{ section.settings.image_alt | escape }}" loading="lazy" width="1000" height="1000">
+    <img src="{{ image_url }}" alt="{{ image_alt | escape }}" loading="lazy" width="1000" height="1000">
   </div>
 </section>
 

@@ -449,6 +449,8 @@
         "feature_3"
       ],
       "settings": {
+        "metaobject_namespace": "custom",
+        "metaobject_key": "pdp_craft",
         "eyebrow": "/ 02 - CRAFT",
         "heading": "CRAFTSMANSHIP, GRAM BY GRAM.",
         "kicker": "06 TECHNICAL NOTES",
@@ -598,6 +600,8 @@
         "closeup_4"
       ],
       "settings": {
+        "metaobject_namespace": "custom",
+        "metaobject_key": "pdp_closeups",
         "eyebrow": "/ 05 - DETAILS",
         "heading": "THE CLOSE-UPS.",
         "kicker": "VIEW GALLERY",
@@ -656,6 +660,8 @@
       ],
       "disabled": true,
       "settings": {
+        "metaobject_namespace": "custom",
+        "metaobject_key": "pdp_lifestyle",
         "eyebrow": "/ 06 - ON THE COURSE",
         "heading": "IN THE WILD.",
         "kicker": "#JOHNNYFAIRWAYS",
