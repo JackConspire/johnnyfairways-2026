@@ -216,12 +216,27 @@
 }
 
 .jf-header__brand {
+  align-items: center;
+  display: inline-flex;
   font-family: var(--jf-display);
   font-size: 12px;
+  justify-content: center;
   letter-spacing: 0;
   line-height: 0.9;
   text-align: center;
   text-transform: uppercase;
+}
+
+.jf-header__brand-image {
+  display: block;
+  height: auto;
+  max-height: 40px;
+  object-fit: contain;
+  width: var(--jf-header-logo-width, 156px);
+}
+
+.jf-header__brand-text {
+  display: block;
 }
 
 .jf-header__menu-button {
@@ -2426,7 +2441,18 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
     white-space: nowrap;
   }
 
-  .jf-header__brand::before {
+  .jf-header__brand-image {
+    max-height: 32px;
+    width: var(--jf-header-logo-width-mobile, 132px);
+  }
+
+  .jf-header__brand--image::before,
+  .jf-header__brand--image::after {
+    content: none;
+    display: none;
+  }
+
+  .jf-header__brand:not(.jf-header__brand--image)::before {
     background-image: repeating-linear-gradient(
       0deg,
       var(--jf-white) 0 2.5px,
@@ -2440,7 +2466,7 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
     width: 28px;
   }
 
-  .jf-header__brand::after {
+  .jf-header__brand:not(.jf-header__brand--image)::after {
     content: "JOHNNY\A FAIRWAYS";
     display: inline-block;
     font-size: 16px;

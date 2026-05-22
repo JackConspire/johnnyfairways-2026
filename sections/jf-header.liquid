@@ -15,11 +15,27 @@
     {%- endfor -%}
   </nav>
 
-  <a class="jf-header__brand" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">
-    {%- if section.settings.logo_text != blank -%}
-      {{ section.settings.logo_text | escape }}
+  <a
+    class="jf-header__brand{% if section.settings.logo_image != blank %} jf-header__brand--image{% endif %}"
+    href="{{ routes.root_url }}"
+    aria-label="{{ shop.name | escape }}"
+    style="--jf-header-logo-width: {{ section.settings.logo_width }}px; --jf-header-logo-width-mobile: {{ section.settings.logo_width_mobile }}px;"
+  >
+    {%- if section.settings.logo_image != blank -%}
+      {{
+        section.settings.logo_image
+        | image_url: width: 600
+        | image_tag:
+          class: 'jf-header__brand-image',
+          widths: '120, 180, 240, 320, 480, 600',
+          sizes: '(max-width: 749px) var(--jf-header-logo-width-mobile), var(--jf-header-logo-width)',
+          alt: shop.name,
+          loading: 'eager'
+      }}
+    {%- elsif section.settings.logo_text != blank -%}
+      <span class="jf-header__brand-text">{{ section.settings.logo_text | escape }}</span>
     {%- else -%}
-      {{ shop.name | escape }}
+      <span class="jf-header__brand-text">{{ shop.name | escape }}</span>
     {%- endif -%}
   </a>
 
@@ -43,9 +59,34 @@
   },
   "settings": [
     {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 60,
+      "max": 320,
+      "step": 4,
+      "unit": "px",
+      "default": 156
+    },
+    {
+      "type": "range",
+      "id": "logo_width_mobile",
+      "label": "Mobile logo width",
+      "min": 48,
+      "max": 240,
+      "step": 4,
+      "unit": "px",
+      "default": 132
+    },
+    {
       "type": "text",
       "id": "logo_text",
-      "label": "Logo text",
+      "label": "Fallback logo text",
       "default": "JF1"
     },
     {
