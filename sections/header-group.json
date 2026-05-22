@@ -85,7 +85,7 @@
       "settings": {
         "logo_image": "shopify://shop_images/JF-White-Logo.png",
         "logo_width": 68,
-        "logo_width_mobile": 132,
+        "logo_width_mobile": 48,
         "logo_text": "Johnny Fairways",
         "mobile_menu_label": "/ MENU",
         "show_search": true,
