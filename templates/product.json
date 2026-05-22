@@ -599,9 +599,10 @@
         "closeup_3",
         "closeup_4"
       ],
+      "disabled": true,
       "settings": {
         "metaobject_namespace": "custom",
-        "metaobject_key": "pdp_closeups",
+        "metaobject_key": "pdp_lifestyle",
         "eyebrow": "/ 05 - DETAILS",
         "heading": "THE CLOSE-UPS.",
         "kicker": "VIEW GALLERY",
