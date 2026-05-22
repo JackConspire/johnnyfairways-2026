@@ -2154,6 +2154,21 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
 }
 
 @media (max-width: 989px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .jf-lookbook,
+  .jf-lookbook__strip,
+  .jf-pdp-image-row,
+  .jf-pdp-complete-look,
+  .jf-footer-section {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
   .jf-announcement {
     justify-content: center;
     min-height: 36px;
@@ -2711,6 +2726,7 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
 
   .jf-footer {
     padding: 48px 20px 24px;
+    overflow: hidden;
   }
 
   .jf-footer__grid {
@@ -2736,9 +2752,13 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   }
 
   .jf-footer__massive {
-    font-size: 80px;
+    font-size: clamp(42px, 18vw, 68px);
     line-height: 0.94;
     margin-top: 24px;
+    max-width: 100%;
+    overflow: hidden;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .jf-pdp-mobile-crumb {
@@ -2962,14 +2982,18 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   .jf-pdp-section-head h2 {
     grid-column: 1 / -1;
     grid-row: 2;
-    font-size: 44px;
+    font-size: clamp(30px, 8vw, 36px);
     line-height: 0.86;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .jf-pdp-story h2 {
-    font-size: 44px;
+    font-size: clamp(30px, 8vw, 36px);
     line-height: 0.86;
     margin-top: 24px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .jf-pdp-story__body {
@@ -2982,6 +3006,7 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   .jf-pdp-image-row__grid,
   .jf-pdp-look-grid {
     gap: 20px 12px;
+    min-width: 0;
     padding-top: 24px;
   }
 
