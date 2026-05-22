@@ -1,9 +1,71 @@
+<script
+  src="{{ 'header-drawer.js' | asset_url }}"
+  type="module"
+  fetchpriority="low"
+></script>
+
 <header class="jf-header" role="banner">
-  <button class="jf-header__menu-button" type="button" aria-label="Open menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
+  <header-drawer class="jf-header__drawer">
+    <details
+      id="Details-jf-menu-drawer-container"
+      class="menu-drawer-container jf-mobile-menu-container"
+      ref="details"
+      scroll-lock
+    >
+      <summary
+        class="jf-header__menu-button"
+        aria-label="{{ 'accessibility.menu' | t }}"
+        aria-expanded="false"
+        on:click="/toggle"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </summary>
+
+      <div
+        ref="menuDrawer"
+        class="menu-drawer jf-mobile-menu"
+      >
+        <div class="jf-mobile-menu__header">
+          <p class="jf-label">{{ section.settings.mobile_menu_label }}</p>
+          <button
+            class="jf-mobile-menu__close"
+            type="button"
+            aria-label="{{ 'actions.close' | t }}"
+            on:click="/close"
+          >
+            {{ 'icon-close.svg' | inline_asset_content }}
+          </button>
+        </div>
+
+        <nav class="jf-mobile-menu__nav" aria-label="{{ 'accessibility.header_navigation_label' | t }}">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'nav_link' -%}
+              <a
+                class="jf-mobile-menu__link menu-drawer__animated-element"
+                href="{{ block.settings.url | default: routes.root_url }}"
+                style="--menu-drawer-animation-index: {{ forloop.index }};"
+              >
+                <span>{{ block.settings.label | escape }}</span>
+                <span aria-hidden="true">/ {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+              </a>
+            {%- endif -%}
+          {%- endfor -%}
+        </nav>
+
+        <div class="jf-mobile-menu__utilities">
+          {%- if section.settings.show_search -%}
+            <a href="{{ routes.search_url }}">Search</a>
+          {%- endif -%}
+          {%- if section.settings.show_account and shop.customer_accounts_enabled -%}
+            <a href="{{ routes.account_url }}">Account</a>
+          {%- endif -%}
+          <a href="{{ routes.cart_url }}">Cart ({{ cart.item_count }})</a>
+        </div>
+      </div>
+    </details>
+  </header-drawer>
 
   <nav class="jf-header__nav" aria-label="Primary">
     {%- for block in section.blocks -%}
@@ -88,6 +150,12 @@
       "id": "logo_text",
       "label": "Fallback logo text",
       "default": "JF1"
+    },
+    {
+      "type": "text",
+      "id": "mobile_menu_label",
+      "label": "Mobile menu label",
+      "default": "/ MENU"
     },
     {
       "type": "checkbox",

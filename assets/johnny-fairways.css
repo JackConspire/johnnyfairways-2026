@@ -245,8 +245,13 @@
   color: inherit;
   display: none;
   height: 22px;
+  list-style: none;
   padding: 0;
   width: 22px;
+}
+
+.jf-header__menu-button::-webkit-details-marker {
+  display: none;
 }
 
 .jf-header__menu-button span {
@@ -255,6 +260,121 @@
   height: 1.5px;
   margin-bottom: 5px;
   width: 22px;
+}
+
+.jf-mobile-menu-container::after {
+  background: rgba(0, 0, 0, 0.56);
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity 180ms ease;
+  z-index: 17;
+}
+
+.jf-mobile-menu-container[open]::after {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.jf-mobile-menu {
+  background: var(--jf-black);
+  border-right: 1px solid var(--jf-line-light);
+  color: var(--jf-white);
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  left: 0;
+  max-width: 420px;
+  padding: 24px 20px 28px;
+  position: fixed;
+  top: 0;
+  transform: translateX(-100%);
+  transition: transform 220ms ease;
+  width: min(100vw, 420px);
+  z-index: 18;
+}
+
+.jf-mobile-menu-container[open].menu-open .jf-mobile-menu {
+  transform: translateX(0);
+}
+
+.jf-mobile-menu a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.jf-mobile-menu__header,
+.jf-mobile-menu__utilities {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.jf-mobile-menu__header {
+  border-bottom: 1px solid var(--jf-line-light);
+  padding-bottom: 20px;
+}
+
+.jf-mobile-menu__close {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  display: inline-flex;
+  height: 32px;
+  justify-content: center;
+  padding: 0;
+  width: 32px;
+}
+
+.jf-mobile-menu__close svg {
+  height: 18px;
+  width: 18px;
+}
+
+.jf-mobile-menu__nav {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+  padding: 48px 0;
+}
+
+.jf-mobile-menu__link {
+  align-items: baseline;
+  border-bottom: 1px solid var(--jf-line-light);
+  display: flex;
+  font-family: var(--jf-display);
+  font-size: 44px;
+  justify-content: space-between;
+  letter-spacing: -0.01em;
+  line-height: 0.9;
+  padding: 18px 0 14px;
+  text-transform: uppercase;
+}
+
+.jf-mobile-menu__link span + span {
+  font-family: var(--jf-ui);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  opacity: 0.6;
+}
+
+.jf-mobile-menu__utilities {
+  border-top: 1px solid var(--jf-line-light);
+  flex-wrap: wrap;
+  font-family: var(--jf-ui);
+  font-size: 10px;
+  font-weight: 700;
+  gap: 18px;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  padding-top: 20px;
+  text-transform: uppercase;
 }
 
 .jf-hero {
