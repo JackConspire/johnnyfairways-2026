@@ -2165,6 +2165,13 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
 }
 
 @media (max-width: 989px) {
+  :root {
+    --jf-mobile-h1: clamp(34px, 10vw, 42px);
+    --jf-mobile-h2: clamp(18px, 5.3vw, 22px);
+    --jf-mobile-h3: clamp(17px, 4.8vw, 20px);
+    --jf-mobile-h4: clamp(15px, 4.4vw, 17px);
+  }
+
   html,
   body {
     max-width: 100%;
@@ -2260,10 +2267,12 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   }
 
   .jf-hero__title {
-    font-size: 72px;
+    font-size: var(--jf-mobile-h1);
     letter-spacing: -0.02em;
-    line-height: 0.94;
+    line-height: 0.9;
     max-width: none;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .jf-hero__body {
@@ -2423,7 +2432,9 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   }
 
   main[data-template^="product"] .product-details h1 {
-    font-size: 44px;
+    font-size: var(--jf-mobile-h1);
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .jf-product-editorial {
@@ -2536,9 +2547,16 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
     gap: 16px;
   }
 
-  .jf-pdp-hero__copy h1,
+  .jf-pdp-hero__copy h1 {
+    font-size: var(--jf-mobile-h1);
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
   .jf-pdp-fit h2 {
-    font-size: 48px;
+    font-size: var(--jf-mobile-h2);
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .jf-pdp-spec-strip {
@@ -2548,7 +2566,7 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
 
   .jf-pdp-section-head h2,
   .jf-pdp-story h2 {
-    font-size: 36px;
+    font-size: var(--jf-mobile-h2);
     text-align: left;
   }
 
@@ -2686,9 +2704,11 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   .jf-editorial__title,
   .jf-categories .jf-section-header__title,
   .jf-lookbook .jf-section-header__title {
-    font-size: 44px;
+    font-size: var(--jf-mobile-h2);
     line-height: 0.86;
+    overflow-wrap: normal;
     text-align: left;
+    word-break: normal;
   }
 
   .jf-spacer-line {
@@ -2724,7 +2744,7 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   }
 
   .jf-category-card__title {
-    font-size: 28px;
+    font-size: var(--jf-mobile-h3);
   }
 
   .jf-lookbook-card {
@@ -2738,7 +2758,9 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   }
 
   .jf-newsletter__title {
-    font-size: 56px;
+    font-size: var(--jf-mobile-h1);
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .jf-footer {
@@ -2895,10 +2917,12 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
 
   main[data-template^="product"] .product-details .jf-pdp-product-details__copy h1,
   main[data-template^="product"] .product-details .jf-pdp-product-details__shell--has-options .jf-pdp-product-details__copy h1 {
-    font-size: 56px;
+    font-size: var(--jf-mobile-h1);
     letter-spacing: -0.01em;
-    line-height: 0.84;
+    line-height: 0.9;
     margin: 14px 0 0;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   main[data-template^="product"] .jf-pdp-product-details__description,
@@ -3000,18 +3024,20 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   .jf-pdp-section-head h2 {
     grid-column: 1 / -1;
     grid-row: 2;
-    font-size: clamp(30px, 8vw, 36px);
+    font-size: var(--jf-mobile-h2);
     line-height: 0.86;
     max-width: 100%;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .jf-pdp-story h2 {
-    font-size: clamp(30px, 8vw, 36px);
+    font-size: var(--jf-mobile-h2);
     line-height: 0.86;
     margin-top: 24px;
     max-width: 100%;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .jf-pdp-story__body {
@@ -3050,7 +3076,7 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
 
   .jf-pdp-press blockquote {
     font-family: var(--jf-display);
-    font-size: 22px;
+    font-size: var(--jf-mobile-h4);
     letter-spacing: -0.005em;
     line-height: 0.92;
   }
