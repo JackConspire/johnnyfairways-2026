@@ -566,7 +566,6 @@
   position: relative;
 }
 
-.jf-product-card__image::after,
 .jf-category-card::after {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.45));
   content: "";
