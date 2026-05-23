@@ -1,25 +1,54 @@
 {%- liquid
-  assign page_title = section.settings.heading
-  if page_title == blank
-    assign page_title = collection.title
+  assign page_title = collection.title
+  assign page_copy = collection.description
+
+  assign breadcrumb_label = collection.metafields.custom.breadcrumb_label.value | default: section.settings.breadcrumb_label
+  if breadcrumb_label == blank
+    assign breadcrumb_label = collection.title
   endif
 
-  assign page_copy = section.settings.copy
-  if page_copy == blank
-    assign page_copy = collection.description
+  assign header_eyebrow = collection.metafields.custom.collection_eyebrow.value | default: section.settings.eyebrow
+  assign release_label = collection.metafields.custom.release_label.value | default: section.settings.release_label
+  assign dropped_label = collection.metafields.custom.dropped_label.value | default: section.settings.dropped_label
+  assign piece_label = collection.metafields.custom.piece_label.value
+  if piece_label == blank
+    assign piece_label = collection.products_count | append: ' pieces'
+  endif
+  if collection.metafields.custom.collection_kicker.value != blank
+    assign piece_label = piece_label | append: ' — ' | append: collection.metafields.custom.collection_kicker.value
   endif
 
   assign product_total = collection.products_count
   assign result_label = product_total | append: ' results'
-  assign piece_label = product_total | append: ' pieces — inspired by golf'
+
+  assign active_filters_count = 0
 -%}
+
+{%- capture active_filter_chips -%}
+  {%- for filter in collection.filters -%}
+    {%- for value in filter.active_values -%}
+      {%- assign active_filters_count = active_filters_count | plus: 1 -%}
+      <a class="jf-active-filter" href="{{ value.url_to_remove }}">
+        {{ filter.label | escape }}: {{ value.label | escape }} <span aria-hidden="true">×</span>
+      </a>
+    {%- endfor -%}
+    {%- if filter.type == 'price_range' -%}
+      {%- if filter.min_value.value != blank or filter.max_value.value != blank -%}
+        {%- assign active_filters_count = active_filters_count | plus: 1 -%}
+        <a class="jf-active-filter" href="{{ filter.url_to_remove }}">
+          {{ filter.label | escape }} <span aria-hidden="true">×</span>
+        </a>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
 
 <section class="jf-collection jf-surface">
   <div class="jf-collection-breadcrumb">
     <div class="jf-collection-breadcrumb__trail">
       <span>Shop</span>
       <span>/</span>
-      <strong>{{ section.settings.breadcrumb_label | escape }}</strong>
+      <strong>{{ breadcrumb_label | escape }}</strong>
     </div>
     {%- if section.settings.back_label != blank -%}
       <a href="{{ section.settings.back_link | default: routes.all_products_collection_url }}">
@@ -30,10 +59,16 @@
 
   <header class="jf-collection-page-header jf-dark">
     <div class="jf-collection-page-header__top">
-      <div class="jf-label">{{ section.settings.eyebrow | escape }}</div>
+      {%- if header_eyebrow != blank -%}
+        <div class="jf-label">{{ header_eyebrow | escape }}</div>
+      {%- endif -%}
       <div class="jf-collection-page-header__drops">
-        <span>{{ section.settings.release_label | escape }}</span>
-        <span>{{ section.settings.dropped_label | escape }}</span>
+        {%- if release_label != blank -%}
+          <span>{{ release_label | escape }}</span>
+        {%- endif -%}
+        {%- if dropped_label != blank -%}
+          <span>{{ dropped_label | escape }}</span>
+        {%- endif -%}
       </div>
     </div>
     <div class="jf-collection-page-header__body">
@@ -49,13 +84,31 @@
 
   <div class="jf-collection-filter-bar">
     <div class="jf-collection-filter-bar__group" aria-label="Collection filters">
-      <button type="button" class="jf-filter-pill jf-filter-pill--outline">All filters</button>
-      <span class="jf-collection-filter-bar__divider" aria-hidden="true"></span>
-      <button type="button" class="jf-filter-pill jf-filter-pill--active">Category</button>
-      <button type="button" class="jf-filter-pill jf-filter-pill--outline">Size</button>
-      <button type="button" class="jf-filter-pill jf-filter-pill--outline">Color</button>
-      <button type="button" class="jf-filter-pill jf-filter-pill--outline">Price</button>
-      <button type="button" class="jf-filter-pill jf-filter-pill--outline">Fit</button>
+      <button type="button" class="jf-filter-pill jf-filter-pill--outline">
+        All filters
+        {%- if active_filters_count > 0 -%}
+          <span class="jf-filter-pill__count">{{ active_filters_count }}</span>
+        {%- endif -%}
+      </button>
+      {%- if collection.filters.size > 0 -%}
+        <span class="jf-collection-filter-bar__divider" aria-hidden="true"></span>
+        {%- for filter in collection.filters limit: 5 -%}
+          {%- liquid
+            assign filter_active = false
+            if filter.active_values.size > 0
+              assign filter_active = true
+            endif
+            if filter.type == 'price_range'
+              if filter.min_value.value != blank or filter.max_value.value != blank
+                assign filter_active = true
+              endif
+            endif
+          -%}
+          <button type="button" class="jf-filter-pill{% if filter_active %} jf-filter-pill--active{% else %} jf-filter-pill--outline{% endif %}">
+            {{ filter.label | escape }}
+          </button>
+        {%- endfor -%}
+      {%- endif -%}
     </div>
     <div class="jf-collection-filter-bar__sort">
       <span>{{ result_label }}</span>
@@ -73,43 +126,15 @@
     </div>
   </div>
 
-  {%- assign active_filters_count = 0 -%}
-  {%- capture active_filter_chips -%}
-    {%- for filter in collection.filters -%}
-      {%- for value in filter.active_values -%}
-        {%- assign active_filters_count = active_filters_count | plus: 1 -%}
-        <a class="jf-active-filter" href="{{ value.url_to_remove }}">
-          {{ filter.label | escape }}: {{ value.label | escape }} <span aria-hidden="true">×</span>
-        </a>
-      {%- endfor -%}
-      {%- if filter.type == 'price_range' -%}
-        {%- if filter.min_value.value != blank or filter.max_value.value != blank -%}
-          {%- assign active_filters_count = active_filters_count | plus: 1 -%}
-          <a class="jf-active-filter" href="{{ filter.url_to_remove }}">
-            {{ filter.label | escape }} <span aria-hidden="true">×</span>
-          </a>
-        {%- endif -%}
-      {%- endif -%}
-    {%- endfor -%}
-  {%- endcapture -%}
-
-  <div class="jf-collection-active-filters">
-    <div class="jf-collection-active-filters__chips">
-      <span>Active:</span>
-      {%- if active_filters_count > 0 -%}
+  {%- if active_filters_count > 0 -%}
+    <div class="jf-collection-active-filters">
+      <div class="jf-collection-active-filters__chips">
+        <span>Active:</span>
         {{ active_filter_chips }}
-      {%- else -%}
-        {%- assign default_chips = section.settings.default_filter_chips | split: ',' -%}
-        {%- for chip in default_chips -%}
-          {%- assign chip_label = chip | strip -%}
-          {%- if chip_label != blank -%}
-            <span class="jf-active-filter">{{ chip_label | escape }} <span aria-hidden="true">×</span></span>
-          {%- endif -%}
-        {%- endfor -%}
-      {%- endif -%}
+      </div>
+      <a href="{{ collection.url }}">Clear all -&gt;</a>
     </div>
-    <a href="{{ collection.url }}">Clear all -&gt;</a>
-  </div>
+  {%- endif -%}
 
   {%- paginate collection.products by section.settings.products_per_page -%}
     <div class="jf-collection-grid-section">
@@ -216,8 +241,7 @@
     {
       "type": "text",
       "id": "breadcrumb_label",
-      "label": "Breadcrumb label",
-      "default": "Shop all — FW '21 drop"
+      "label": "Fallback breadcrumb label"
     },
     {
       "type": "text",
@@ -233,42 +257,24 @@
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "Eyebrow",
+      "label": "Fallback eyebrow",
       "default": "/ Collection 001 — The Drop"
     },
     {
       "type": "text",
       "id": "release_label",
-      "label": "Release label",
+      "label": "Fallback release label",
       "default": "Release — FW / 21"
     },
     {
       "type": "text",
       "id": "dropped_label",
-      "label": "Dropped label",
+      "label": "Fallback dropped label",
       "default": "Dropped — Jan 12 / 2:20 PM"
-    },
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Heading",
-      "default": "Shop all."
-    },
-    {
-      "type": "richtext",
-      "id": "copy",
-      "label": "Copy",
-      "default": "<p>Performance and everyday pieces, drawn from the rhythm of the round. Limited release. Hand-finished in Porto. Free shipping over $150.</p>"
     },
     {
       "type": "header",
       "content": "Filters"
-    },
-    {
-      "type": "text",
-      "id": "default_filter_chips",
-      "label": "Default filter chips",
-      "default": "Category: Performance, Category: Everyday, Price: Under $200"
     },
     {
       "type": "range",

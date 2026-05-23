@@ -12,14 +12,10 @@
     "jf_collection_template": {
       "type": "jf-collection-template",
       "settings": {
-        "breadcrumb_label": "Shop all — FW '21 drop",
         "back_label": "Back to shop",
         "eyebrow": "/ Collection 001 — The Drop",
         "release_label": "Release — FW / 21",
         "dropped_label": "Dropped — Jan 12 / 2:20 PM",
-        "heading": "Shop all.",
-        "copy": "<p>Performance and everyday pieces, drawn from the rhythm of the round. Limited release. Hand-finished in Porto. Free shipping over $150.</p>",
-        "default_filter_chips": "Category: Performance, Category: Everyday, Price: Under $200",
         "products_per_page": 24,
         "end_label": "End of collection — browse other drops ->"
       }

@@ -777,6 +777,15 @@
   cursor: default;
 }
 
+.jf-filter-pill__count {
+  background: var(--jf-black);
+  color: var(--jf-white);
+  display: inline-flex;
+  justify-content: center;
+  min-width: 20px;
+  padding: 3px 0;
+}
+
 .jf-filter-pill::after,
 .jf-collection-sort::after {
   border-left: 4px solid transparent;
@@ -3009,19 +3018,6 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   .jf-filter-pill:first-child {
     display: inline-flex;
     min-height: 37px;
-  }
-
-  .jf-filter-pill:first-child::after {
-    background: var(--jf-black);
-    border: 0;
-    color: var(--jf-white);
-    content: "3";
-    display: inline-flex;
-    font-size: 9px;
-    justify-content: center;
-    letter-spacing: 0.18em;
-    min-width: 20px;
-    padding: 3px 0;
   }
 
   .jf-collection-filter-bar__divider {
