@@ -4,6 +4,15 @@
   fetchpriority="low"
 ></script>
 
+{%- liquid
+  assign menu_links = section.settings.menu.links
+  assign has_menu_links = false
+
+  if menu_links != blank
+    assign has_menu_links = true
+  endif
+-%}
+
 <header class="jf-header" role="banner">
   <header-drawer class="jf-header__drawer">
     <details
@@ -40,18 +49,56 @@
         </div>
 
         <nav class="jf-mobile-menu__nav" aria-label="{{ 'accessibility.header_navigation_label' | t }}">
-          {%- for block in section.blocks -%}
-            {%- if block.type == 'nav_link' -%}
-              <a
-                class="jf-mobile-menu__link menu-drawer__animated-element"
-                href="{{ block.settings.url | default: routes.root_url }}"
-                style="--menu-drawer-animation-index: {{ forloop.index }};"
-              >
-                <span>{{ block.settings.label | escape }}</span>
-                <span aria-hidden="true">/ {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-              </a>
-            {%- endif -%}
-          {%- endfor -%}
+          {%- if has_menu_links -%}
+            {%- for link in menu_links -%}
+              {%- if link.links != blank -%}
+                <details
+                  class="jf-mobile-menu__group menu-drawer__animated-element"
+                  style="--menu-drawer-animation-index: {{ forloop.index }};"
+                >
+                  <summary class="jf-mobile-menu__link jf-mobile-menu__summary">
+                    <span>{{ link.title | escape }}</span>
+                    <span aria-hidden="true">/ {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                  </summary>
+                  <div class="jf-mobile-menu__submenu">
+                    <a class="jf-mobile-menu__submenu-link" href="{{ link.url }}">View all {{ link.title | escape }}</a>
+                    {%- for child_link in link.links -%}
+                      <a class="jf-mobile-menu__submenu-link" href="{{ child_link.url }}">{{ child_link.title | escape }}</a>
+                      {%- if child_link.links != blank -%}
+                        <div class="jf-mobile-menu__grandchild">
+                          {%- for grandchild_link in child_link.links -%}
+                            <a class="jf-mobile-menu__grandchild-link" href="{{ grandchild_link.url }}">{{ grandchild_link.title | escape }}</a>
+                          {%- endfor -%}
+                        </div>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                </details>
+              {%- else -%}
+                <a
+                  class="jf-mobile-menu__link menu-drawer__animated-element"
+                  href="{{ link.url }}"
+                  style="--menu-drawer-animation-index: {{ forloop.index }};"
+                >
+                  <span>{{ link.title | escape }}</span>
+                  <span aria-hidden="true">/ {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- else -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'nav_link' -%}
+                <a
+                  class="jf-mobile-menu__link menu-drawer__animated-element"
+                  href="{{ block.settings.url | default: routes.root_url }}"
+                  style="--menu-drawer-animation-index: {{ forloop.index }};"
+                >
+                  <span>{{ block.settings.label | escape }}</span>
+                  <span aria-hidden="true">/ {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endif -%}
         </nav>
 
         <div class="jf-mobile-menu__utilities">
@@ -68,13 +115,51 @@
   </header-drawer>
 
   <nav class="jf-header__nav" aria-label="Primary">
-    {%- for block in section.blocks -%}
-      {%- if block.type == 'nav_link' -%}
-        <a class="jf-header__link" href="{{ block.settings.url | default: routes.root_url }}" {{ block.shopify_attributes }}>
-          {{ block.settings.label | escape }}
-        </a>
+    <ul class="jf-header__nav-list" role="list">
+      {%- if has_menu_links -%}
+        {%- for link in menu_links -%}
+          <li class="jf-header__nav-item{% if link.links != blank %} jf-header__nav-item--has-dropdown{% endif %}">
+            <a class="jf-header__link" href="{{ link.url }}" {% if link.current %}aria-current="page"{% endif %}>
+              {{ link.title | escape }}
+            </a>
+            {%- if link.links != blank -%}
+              <div class="jf-header__dropdown" aria-label="{{ link.title | escape }}">
+                <ul class="jf-header__dropdown-list" role="list">
+                  {%- for child_link in link.links -%}
+                    <li class="jf-header__dropdown-item">
+                      <a class="jf-header__dropdown-link" href="{{ child_link.url }}" {% if child_link.current %}aria-current="page"{% endif %}>
+                        {{ child_link.title | escape }}
+                      </a>
+                      {%- if child_link.links != blank -%}
+                        <ul class="jf-header__dropdown-sublist" role="list">
+                          {%- for grandchild_link in child_link.links -%}
+                            <li>
+                              <a class="jf-header__dropdown-sublink" href="{{ grandchild_link.url }}" {% if grandchild_link.current %}aria-current="page"{% endif %}>
+                                {{ grandchild_link.title | escape }}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'nav_link' -%}
+            <li class="jf-header__nav-item" {{ block.shopify_attributes }}>
+              <a class="jf-header__link" href="{{ block.settings.url | default: routes.root_url }}">
+                {{ block.settings.label | escape }}
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
       {%- endif -%}
-    {%- endfor -%}
+    </ul>
   </nav>
 
   <a
@@ -120,6 +205,12 @@
     "groups": ["header"]
   },
   "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main menu",
+      "default": "main-menu"
+    },
     {
       "type": "image_picker",
       "id": "logo_image",

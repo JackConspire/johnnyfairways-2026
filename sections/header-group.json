@@ -83,6 +83,7 @@
         "nav_journal"
       ],
       "settings": {
+        "menu": "main-menu",
         "logo_image": "shopify://shop_images/JF-White-Logo.png",
         "logo_width": 68,
         "logo_width_mobile": 48,
