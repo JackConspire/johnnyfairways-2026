@@ -12,16 +12,16 @@
     "jf_collection_template": {
       "type": "jf-collection-template",
       "settings": {
-        "hero_eyebrow": "Quick dry · perforated hats · new arrival",
-        "hero_button_label": "Shop now",
-        "grid_eyebrow": "/ 01 — Collection",
+        "breadcrumb_label": "Shop all — FW '21 drop",
+        "back_label": "Back to shop",
+        "eyebrow": "/ Collection 001 — The Drop",
+        "release_label": "Release — FW / 21",
+        "dropped_label": "Dropped — Jan 12 / 2:20 PM",
+        "heading": "Shop all.",
+        "copy": "<p>Performance and everyday pieces, drawn from the rhythm of the round. Limited release. Hand-finished in Porto. Free shipping over $150.</p>",
+        "default_filter_chips": "Category: Performance, Category: Everyday, Price: Under $200",
         "products_per_page": 24,
-        "show_newsletter": true,
-        "newsletter_eyebrow": "For the [ glory ]",
-        "newsletter_heading": "Join the tee time list.",
-        "newsletter_text": "<p>Drop announcements, early access to limited editions, and the occasional dispatch from the back nine.</p>",
-        "newsletter_placeholder": "Enter your email",
-        "newsletter_button_label": "Subscribe"
+        "end_label": "End of collection — browse other drops ->"
       }
     }
   },
