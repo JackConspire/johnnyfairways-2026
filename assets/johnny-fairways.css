@@ -1039,17 +1039,22 @@
 }
 
 .jf-collection-card__meta {
-  align-items: end;
+  align-items: flex-start;
   display: flex;
   gap: 16px;
   justify-content: space-between;
 }
 
 .jf-collection-card__title {
-  font-size: 16px;
+  flex: 1;
+  font-size: 14px;
+  line-height: 1;
   margin: 0;
-  max-width: 76%;
-  white-space: nowrap;
+  max-width: none;
+  min-width: 0;
+  overflow-wrap: normal;
+  white-space: normal;
+  word-break: normal;
 }
 
 .jf-collection-card__price {
@@ -3134,16 +3139,14 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   }
 
   .jf-collection-card__meta {
-    align-items: flex-end;
+    align-items: flex-start;
     flex-direction: row;
     gap: 8px;
   }
 
   .jf-collection-card__title {
-    font-size: 13px;
-    max-width: calc(100% - 34px);
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 14px;
+    max-width: none;
   }
 
   .jf-collection-card__price {
