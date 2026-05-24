@@ -193,7 +193,9 @@
     {%- if section.settings.show_account and shop.customer_accounts_enabled -%}
       <a class="jf-header__link" href="{{ routes.account_url }}">Account</a>
     {%- endif -%}
-    <a class="jf-header__link jf-header__cart" href="{{ routes.cart_url }}">Cart ({{ cart.item_count }})</a>
+    <div class="jf-header__cart-drawer">
+      {% render 'header-actions', section: section, display_style: 'text' %}
+    </div>
   </div>
 </header>
 
