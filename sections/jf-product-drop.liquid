@@ -15,8 +15,14 @@
       {%- if block.type == 'product_tile' -%}
         {%- liquid
           assign product = block.settings.product
+          assign is_sold_out = false
           assign image_url = ''
           assign hover_image_url = ''
+
+          if product != blank and product.available == false
+            assign is_sold_out = true
+          endif
+
           if block.settings.image != blank
             assign image_url = block.settings.image | image_url: width: 900
           elsif product.featured_image != blank
@@ -47,6 +53,11 @@
             assign price = product.price | money_without_trailing_zeros
           endif
 
+          assign badge = block.settings.badge
+          if is_sold_out
+            assign badge = 'Sold out'
+          endif
+
           assign href = block.settings.link
           if href == blank and product != blank
             assign href = product.url
@@ -55,13 +66,16 @@
             assign href = routes.all_products_collection_url
           endif
         -%}
-        <a class="jf-product-card" href="{{ href }}" {{ block.shopify_attributes }}>
+        <a class="jf-product-card{% if is_sold_out %} jf-product-card--sold-out{% endif %}" href="{{ href }}" {{ block.shopify_attributes }}>
           <div class="jf-product-card__image jf-image-cover" style="{% if image_url != blank %}--jf-image: url('{{ image_url }}');{% endif %}">
             {%- if hover_image_url != blank -%}
               <span class="jf-product-card__image-hover" style="--jf-hover-image: url('{{ hover_image_url }}');" aria-hidden="true"></span>
             {%- endif -%}
-            {%- if block.settings.badge != blank -%}
-              <span class="jf-product-card__badge">{{ block.settings.badge | escape }}</span>
+            {%- if badge != blank -%}
+              <span class="jf-product-card__badge">{{ badge | escape }}</span>
+            {%- endif -%}
+            {%- if is_sold_out -%}
+              <span class="jf-product-card__sold-out jf-display">Sold Out</span>
             {%- endif -%}
             {%- if block.settings.number != blank -%}
               <span class="jf-product-card__number">{{ block.settings.number | escape }}</span>
