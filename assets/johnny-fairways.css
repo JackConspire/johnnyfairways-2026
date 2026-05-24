@@ -1680,24 +1680,7 @@ main[data-template^="product"] .jf-pdp-gallery-thumbs {
 
   main[data-template^="product"] .product-information__media {
     padding: 0 !important;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scroll-snap-type: y mandatory;
-    scrollbar-color: rgba(0, 0, 0, 0.34) transparent;
-    scrollbar-width: thin;
-  }
-
-  main[data-template^="product"] .product-information__media::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  main[data-template^="product"] .product-information__media::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  main[data-template^="product"] .product-information__media::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.34);
-    border-radius: 999px;
+    overflow: hidden;
   }
 
   main[data-template^="product"] .product-details {
@@ -1729,12 +1712,9 @@ main[data-template^="product"] .jf-pdp-gallery-thumbs {
   main[data-template^="product"] .jf-pdp-gallery-thumbs {
     display: grid;
     gap: 10px;
-    height: 0;
-    left: 0;
-    pointer-events: none;
-    position: sticky;
+    left: 20px;
+    position: absolute;
     top: 20px;
-    transform: translate(20px, 20px);
     width: 58px;
     z-index: 5;
   }
@@ -1749,7 +1729,6 @@ main[data-template^="product"] .jf-pdp-gallery-thumbs {
     opacity: 0.62;
     overflow: hidden;
     padding: 0;
-    pointer-events: auto;
     transition:
       border-color 160ms ease,
       opacity 160ms ease,
@@ -1783,19 +1762,21 @@ main[data-template^="product"] .jf-pdp-gallery-thumbs {
   main[data-template^="product"] .media-gallery--grid .media-gallery__grid {
     display: block !important;
     gap: 0;
-    height: auto;
+    height: 100%;
     min-height: 792px;
     position: relative;
   }
 
   main[data-template^="product"] .media-gallery--grid .media-gallery__grid .product-media-container {
     background: var(--jf-white);
-    display: block !important;
+    display: none !important;
     height: 100%;
     min-height: 792px;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
     width: 100%;
+  }
+
+  main[data-template^="product"] .media-gallery--grid .media-gallery__grid .product-media-container.is-active {
+    display: block !important;
   }
 
   main[data-template^="product"] .media-gallery--carousel slideshow-controls,

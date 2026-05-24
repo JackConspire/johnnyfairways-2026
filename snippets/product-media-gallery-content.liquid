@@ -492,7 +492,7 @@
         {% for media in sorted_media %}
           <li
             ref="media[]"
-            class="{{ product_media_container_class }} product-media-container--{{ media.media_type }} {% unless block_settings.aspect_ratio == 'adapt' %}product-media-container--force-aspect{% endunless %}"
+            class="{{ product_media_container_class }} product-media-container--{{ media.media_type }}{% if forloop.first %} is-active{% endif %} {% unless block_settings.aspect_ratio == 'adapt' %}product-media-container--force-aspect{% endunless %}"
             data-jf-gallery-item="{{ forloop.index0 }}"
             style="{% if block_settings.aspect_ratio == 'adapt' %} --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};{% endif %} --media-radius: {{ block_settings.media_radius }}px;"
             {% if settings.transition_to_main_product and forloop.first %}
