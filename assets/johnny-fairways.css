@@ -730,6 +730,22 @@
   position: relative;
 }
 
+.jf-product-card__image-hover {
+  background-image: var(--jf-hover-image);
+  background-position: center;
+  background-size: cover;
+  inset: 0;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 180ms ease;
+  z-index: 1;
+}
+
+.jf-product-card:hover .jf-product-card__image-hover,
+.jf-product-card:focus-visible .jf-product-card__image-hover {
+  opacity: 1;
+}
+
 .jf-category-card::after {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0.45));
   content: "";
@@ -749,7 +765,7 @@
   position: absolute;
   text-transform: uppercase;
   top: 14px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .jf-product-card__number {
@@ -760,7 +776,7 @@
   line-height: 1;
   position: absolute;
   right: 14px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .jf-product-card__meta {
