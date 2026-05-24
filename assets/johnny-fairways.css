@@ -725,9 +725,22 @@
 
 .jf-product-card__image {
   aspect-ratio: 3 / 4;
+  background-image: none;
   margin-bottom: 16px;
   overflow: hidden;
   position: relative;
+}
+
+.jf-product-card__image::before {
+  background-image: var(--jf-image);
+  background-position: center;
+  background-size: cover;
+  content: "";
+  inset: 0;
+  opacity: 1;
+  position: absolute;
+  transition: opacity 180ms ease;
+  z-index: 0;
 }
 
 .jf-product-card__image-hover {
@@ -744,6 +757,11 @@
 .jf-product-card:hover .jf-product-card__image-hover,
 .jf-product-card:focus-visible .jf-product-card__image-hover {
   opacity: 1;
+}
+
+.jf-product-card:hover .jf-product-card__image:has(.jf-product-card__image-hover)::before,
+.jf-product-card:focus-visible .jf-product-card__image:has(.jf-product-card__image-hover)::before {
+  opacity: 0;
 }
 
 .jf-category-card::after {
@@ -1178,6 +1196,11 @@
 .jf-collection-card:hover .jf-collection-card__img--secondary,
 .jf-collection-card:focus-visible .jf-collection-card__img--secondary {
   opacity: 1;
+}
+
+.jf-collection-card:has(.jf-collection-card__img--secondary):hover .jf-collection-card__img:not(.jf-collection-card__img--secondary),
+.jf-collection-card:has(.jf-collection-card__img--secondary):focus-visible .jf-collection-card__img:not(.jf-collection-card__img--secondary) {
+  opacity: 0;
 }
 
 .jf-collection-card__badge {
