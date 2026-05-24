@@ -143,6 +143,14 @@
           {%- for product in collection.products -%}
             {%- liquid
               assign card_image = product.featured_image
+              assign card_hover_image = blank
+              for product_image in product.images
+                unless product_image == card_image
+                  assign card_hover_image = product_image
+                  break
+                endunless
+              endfor
+
               assign card_price = product.price | money_without_trailing_zeros
               assign card_subtitle = product.type
               if card_subtitle == blank
@@ -176,6 +184,17 @@
                         loading: 'lazy',
                         class: 'jf-collection-card__img'
                     }}
+                    {%- if card_hover_image != blank -%}
+                      {{
+                        card_hover_image
+                        | image_url: width: 900
+                        | image_tag:
+                          widths: '360, 520, 720, 900',
+                          sizes: '(min-width: 990px) 25vw, 50vw',
+                          loading: 'lazy',
+                          class: 'jf-collection-card__img jf-collection-card__img--secondary'
+                      }}
+                    {%- endif -%}
                   {%- else -%}
                     {{ 'product-apparel-1' | placeholder_svg_tag: 'jf-collection-card__placeholder' }}
                   {%- endif -%}
