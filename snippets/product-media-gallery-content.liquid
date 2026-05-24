@@ -182,6 +182,13 @@
   ></script>
 {%- endif -%}
 
+{%- if media_presentation == 'grid' and sorted_media.size > 1 -%}
+  <script
+    src="{{ 'jf-pdp-gallery.js' | asset_url }}"
+    type="module"
+  ></script>
+{%- endif -%}
+
 {% style %}
   {% unless block_settings.aspect_ratio == 'adapt' %}
     .product-media-container {
@@ -354,6 +361,39 @@
     data-presentation="{{ media_presentation }}"
     {{ block_shopify_attributes }}
   >
+    {% if media_presentation == 'grid' and sorted_media.size > 1 %}
+      <div
+        class="jf-pdp-gallery-thumbs"
+        data-jf-pdp-gallery-thumbs
+        aria-label="Product media gallery"
+      >
+        {% for media in sorted_media %}
+          {% if media.preview_image != blank %}
+            <button
+              type="button"
+              class="jf-pdp-gallery-thumbs__button{% if forloop.first %} is-active{% endif %}"
+              data-jf-gallery-index="{{ forloop.index0 }}"
+              aria-label="Show product media {{ forloop.index }} of {{ sorted_media.size }}"
+              {% if forloop.first %}
+                aria-current="true"
+              {% endif %}
+            >
+              {{
+                media.preview_image
+                | image_url: width: 180
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '72, 120, 180',
+                  sizes: '56px',
+                  alt: media.alt
+                | escape
+              }}
+            </button>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
     {% capture slides %}
       {% for media in sorted_media %}
         {% capture children %}
@@ -453,6 +493,7 @@
           <li
             ref="media[]"
             class="{{ product_media_container_class }} product-media-container--{{ media.media_type }} {% unless block_settings.aspect_ratio == 'adapt' %}product-media-container--force-aspect{% endunless %}"
+            data-jf-gallery-item="{{ forloop.index0 }}"
             style="{% if block_settings.aspect_ratio == 'adapt' %} --media-preview-ratio: {{ media.preview_image.aspect_ratio | default: 1.0 }};{% endif %} --media-radius: {{ block_settings.media_radius }}px;"
             {% if settings.transition_to_main_product and forloop.first %}
               data-view-transition-type="product-image-transition"
