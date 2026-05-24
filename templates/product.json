@@ -671,59 +671,10 @@
     },
     "jf_pdp_complete_look": {
       "type": "jf-pdp-complete-look",
-      "blocks": {
-        "look_1": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "title": "THE CADDY POLO",
-            "price": "$148",
-            "subtitle": "PERFORMANCE - / 001",
-            "fallback_asset": "jf-product-01.jpg",
-            "url": ""
-          }
-        },
-        "look_2": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "title": "THE 18TH TROUSER",
-            "price": "$215",
-            "subtitle": "EVERYDAY - / 002",
-            "fallback_asset": "jf-product-02.jpg",
-            "url": ""
-          }
-        },
-        "look_3": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "title": "THE TEE TIME 1/4",
-            "price": "$185",
-            "subtitle": "PERFORMANCE - / 003",
-            "fallback_asset": "jf-product-03.jpg",
-            "url": ""
-          }
-        },
-        "look_4": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "title": "THE PUTTER BELT",
-            "price": "$95",
-            "subtitle": "ACCESSORIES - / 005",
-            "fallback_asset": "jf-product-04.jpg",
-            "url": ""
-          }
-        }
-      },
-      "block_order": [
-        "look_1",
-        "look_2",
-        "look_3",
-        "look_4"
-      ],
       "settings": {
+        "product": "{{ closest.product }}",
+        "recommendation_type": "complementary",
+        "max_products": 4,
         "eyebrow": "/ 07 - STYLE WITH",
         "heading": "COMPLETE THE LOOK.",
         "link_url": "",
