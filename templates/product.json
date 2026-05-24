@@ -457,6 +457,18 @@
         "theme": "paper"
       }
     },
+    "jf_pdp_complete_look": {
+      "type": "jf-pdp-complete-look",
+      "settings": {
+        "product": "{{ closest.product }}",
+        "recommendation_type": "complementary",
+        "max_products": 4,
+        "eyebrow": "/ 07 - STYLE WITH",
+        "heading": "COMPLETE THE LOOK.",
+        "link_url": "",
+        "link_label": "VIEW THE EDIT ->"
+      }
+    },
     "jf_pdp_fit_purchase": {
       "type": "jf-pdp-fit-purchase",
       "blocks": {
@@ -669,29 +681,6 @@
         "theme": "paper"
       }
     },
-    "jf_pdp_complete_look": {
-      "type": "jf-pdp-complete-look",
-      "disabled": true,
-      "settings": {
-        "product": "{{ closest.product }}",
-        "recommendation_type": "complementary",
-        "max_products": 4,
-        "eyebrow": "/ 07 - STYLE WITH",
-        "heading": "COMPLETE THE LOOK.",
-        "link_url": "",
-        "link_label": "VIEW THE EDIT ->"
-      }
-    },
-    "jf_pdp_press": {
-      "type": "jf-pdp-press",
-      "settings": {
-        "eyebrow": "/ 08 - PRESS",
-        "quote": "THE FAIRWAY CAP IS THE FIRST PIECE OF GOLF HEADWEAR IN A DECADE THAT FEELS LIKE IT BELONGS OFF THE COURSE AS MUCH AS ON IT.",
-        "source": "HIGHSNOBIETY - ISSUE NO. 42",
-        "link_url": "",
-        "link_label": "READ MORE COVERAGE ->"
-      }
-    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -813,6 +802,7 @@
       "block_order": [
         "text_cbcgyb"
       ],
+      "disabled": true,
       "name": "t:names.product_recommendations",
       "settings": {
         "product": "{{ closest.product }}",
@@ -832,6 +822,17 @@
         "padding-block-start": 96,
         "padding-block-end": 96
       }
+    },
+    "jf_pdp_press": {
+      "type": "jf-pdp-press",
+      "disabled": true,
+      "settings": {
+        "eyebrow": "/ 08 - PRESS",
+        "quote": "THE FAIRWAY CAP IS THE FIRST PIECE OF GOLF HEADWEAR IN A DECADE THAT FEELS LIKE IT BELONGS OFF THE COURSE AS MUCH AS ON IT.",
+        "source": "HIGHSNOBIETY - ISSUE NO. 42",
+        "link_url": "",
+        "link_label": "READ MORE COVERAGE ->"
+      }
     }
   },
   "order": [
@@ -840,11 +841,11 @@
     "jf_pdp_spec_bar",
     "jf_pdp_story",
     "jf_pdp_craft",
+    "jf_pdp_complete_look",
     "jf_pdp_fit_purchase",
     "jf_pdp_closeups",
     "jf_pdp_lifestyle",
     "product_recommendations_qggXJq",
-    "jf_pdp_press",
-    "jf_pdp_complete_look"
+    "jf_pdp_press"
   ]
 }
