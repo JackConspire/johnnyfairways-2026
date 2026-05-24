@@ -1811,7 +1811,7 @@ main[data-template^="product"] .jf-pdp-gallery-thumbs {
   main[data-template^="product"] .media-gallery--carousel .product-media__image,
   main[data-template^="product"] .media-gallery--grid .product-media__image {
     background: var(--jf-white);
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -3958,7 +3958,7 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
 
   main[data-template^="product"] .product-information__media .product-media__image {
     background: var(--jf-white);
-    object-fit: contain;
+    object-fit: cover;
     width: 100%;
   }
 
