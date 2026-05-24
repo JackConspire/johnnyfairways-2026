@@ -105,6 +105,46 @@
     "jf_product_drop": {
       "type": "jf-product-drop",
       "blocks": {
+        "product_tile_iJDyUh": {
+          "type": "product_tile",
+          "disabled": true,
+          "settings": {
+            "product": "quickdry-perforated-hat-monogram-white",
+            "fallback_asset": "jf-product-01.jpg",
+            "badge": "NEW",
+            "number": "/ 001",
+            "title": "",
+            "price": "",
+            "subtitle": "PERFORMANCE - 3 COLORS",
+            "link": ""
+          }
+        },
+        "product_tile_PgGAwP": {
+          "type": "product_tile",
+          "settings": {
+            "product": "quickdry-perforated-hat-flag-white",
+            "fallback_asset": "jf-product-01.jpg",
+            "badge": "NEW",
+            "number": "/ 001",
+            "title": "",
+            "price": "",
+            "subtitle": "PERFORMANCE - 3 COLORS",
+            "link": ""
+          }
+        },
+        "product_tile_YQweDx": {
+          "type": "product_tile",
+          "settings": {
+            "product": "quickdry-perforated-hat-flag-black",
+            "fallback_asset": "jf-product-01.jpg",
+            "badge": "NEW",
+            "number": "/ 001",
+            "title": "",
+            "price": "$148",
+            "subtitle": "PERFORMANCE - 3 COLORS",
+            "link": ""
+          }
+        },
         "product_1": {
           "type": "product_tile",
           "settings": {
@@ -159,6 +199,9 @@
         }
       },
       "block_order": [
+        "product_tile_iJDyUh",
+        "product_tile_PgGAwP",
+        "product_tile_YQweDx",
         "product_1",
         "product_2",
         "product_3",
