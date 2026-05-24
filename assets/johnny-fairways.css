@@ -3236,9 +3236,11 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   }
 
   .jf-collection-page-header__title {
-    font-size: clamp(58px, 16.4vw, 64px);
-    line-height: 0.94;
-    max-width: 350px;
+    font-size: var(--jf-mobile-h1);
+    line-height: 0.9;
+    max-width: 100%;
+    overflow-wrap: normal;
+    word-break: normal;
   }
 
   .jf-collection-page-header__copy {
