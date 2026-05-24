@@ -1676,6 +1676,24 @@ main[data-template^="product"] .product-information {
 
   main[data-template^="product"] .product-information__media {
     padding: 0 !important;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-snap-type: y mandatory;
+    scrollbar-color: rgba(0, 0, 0, 0.34) transparent;
+    scrollbar-width: thin;
+  }
+
+  main[data-template^="product"] .product-information__media::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  main[data-template^="product"] .product-information__media::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  main[data-template^="product"] .product-information__media::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.34);
+    border-radius: 999px;
   }
 
   main[data-template^="product"] .product-details {
@@ -1709,19 +1727,17 @@ main[data-template^="product"] .product-information {
   main[data-template^="product"] .media-gallery--grid .media-gallery__grid {
     display: block !important;
     gap: 0;
-    height: 100%;
+    height: auto;
     min-height: 792px;
   }
 
   main[data-template^="product"] .media-gallery--grid .media-gallery__grid .product-media-container {
-    display: none !important;
-  }
-
-  main[data-template^="product"] .media-gallery--grid .media-gallery__grid .product-media-container:first-child {
     background: var(--jf-white);
     display: block !important;
     height: 100%;
     min-height: 792px;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
     width: 100%;
   }
 
