@@ -21,8 +21,7 @@
       assign jf_title = jf_title | split: ':' | last | strip
     endif
 
-    assign jf_title = jf_title | replace: ' - ', ' // ' | replace: ' – ', ' // ' | upcase
-    assign jf_title_html = jf_title | escape | replace: ' // ', ' //<br>'
+    assign jf_title_html = jf_title | upcase | escape
     assign jf_stock_message = product_resource.metafields.custom.pdp_stock_message.value
     assign jf_has_variant_options = false
 
