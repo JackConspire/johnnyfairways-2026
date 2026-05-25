@@ -459,6 +459,7 @@
     },
     "jf_pdp_complete_look": {
       "type": "jf-pdp-complete-look",
+      "disabled": true,
       "settings": {
         "product": "{{ closest.product }}",
         "recommendation_type": "complementary",
@@ -805,7 +806,7 @@
       "name": "t:names.product_recommendations",
       "settings": {
         "product": "{{ closest.product }}",
-        "recommendation_type": "complementary",
+        "recommendation_type": "related",
         "layout_type": "grid",
         "carousel_on_mobile": false,
         "max_products": 4,

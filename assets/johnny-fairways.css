@@ -3269,7 +3269,6 @@ main[data-template^="product"] product-recommendations.product-recommendations >
 main[data-template^="product"] product-recommendations.product-recommendations .section-resource-list {
   background: transparent;
   color: inherit;
-  padding: 96px 32px;
 }
 
 main[data-template^="product"] product-recommendations.product-recommendations .section-resource-list__content {
@@ -3295,14 +3294,7 @@ main[data-template^="product"] product-recommendations.product-recommendations .
 }
 
 main[data-template^="product"] product-recommendations.product-recommendations .resource-list {
-  --resource-list-column-gap: 16px;
-  --resource-list-row-gap: 16px;
-
   padding-top: 48px;
-}
-
-main[data-template^="product"] product-recommendations.product-recommendations .resource-list--grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 main[data-template^="product"] product-recommendations.product-recommendations .product-card {
@@ -4655,11 +4647,6 @@ main[data-template^="product"] product-recommendations.product-recommendations p
 
   main[data-template^="product"] product-recommendations.product-recommendations .resource-list {
     padding-top: 24px;
-  }
-
-  main[data-template^="product"] product-recommendations.product-recommendations .resource-list--grid {
-    gap: 20px 12px;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   main[data-template^="product"] product-recommendations.product-recommendations .product-card a.contents .text-block {
