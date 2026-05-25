@@ -977,6 +977,139 @@
   text-transform: uppercase;
 }
 
+.ui-test-product-list:has(.resource-list--grid) {
+  background: var(--jf-paper);
+  color: var(--jf-ink);
+  font-family: var(--jf-ui);
+}
+
+.ui-test-product-list:has(.resource-list--grid) .section-background {
+  display: none;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) {
+  background: transparent;
+  color: inherit;
+  padding: 96px 32px 80px;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) > * {
+  grid-column: 1 / -1;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header {
+  border-bottom: 1px solid rgba(10, 10, 10, 0.18);
+  margin-bottom: 48px;
+  padding-bottom: 24px;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header .group-block-content {
+  align-items: flex-end;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header :is(h1, h2, h3, h4, p) {
+  font-family: var(--jf-display);
+  font-size: 44px;
+  letter-spacing: -0.01em;
+  line-height: 0.86;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header :is(a, .button, .link) {
+  color: inherit;
+  font-family: var(--jf-ui);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .resource-list--grid {
+  gap: 24px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .product-card {
+  color: inherit;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .product-card__content {
+  display: grid;
+  gap: 0;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery {
+  background: var(--jf-white);
+  border: 1px solid rgba(10, 10, 10, 0.08);
+  grid-column: 1 / -1;
+  overflow: hidden;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery,
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery slideshow-component,
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery slideshow-container,
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery slideshow-slides,
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery slideshow-slide,
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery .product-media-container {
+  aspect-ratio: 3 / 4;
+  height: auto;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .product-card a.contents {
+  color: inherit;
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: 16px;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .product-card a.contents .text-block,
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .product-card a.contents .text-block > * {
+  width: 100%;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) .product-card a.contents p {
+  font-family: var(--jf-display);
+  font-size: 16px;
+  letter-spacing: 0.002em;
+  line-height: 0.95;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) product-price {
+  align-self: start;
+  color: var(--jf-ink);
+  font-family: var(--jf-ui);
+  font-size: 12px;
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-top: 16px;
+  width: auto;
+}
+
+.ui-test-product-list .section-resource-list:has(.resource-list--grid) product-price .price {
+  color: inherit;
+}
+
 .jf-collection {
   overflow-x: clip;
 }
@@ -4146,6 +4279,51 @@ main[data-template^="product"] product-recommendations.product-recommendations p
   .jf-lookbook-card__meta {
     font-size: 9px;
     letter-spacing: 0.2em;
+  }
+
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) {
+    padding: 64px 16px;
+  }
+
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header {
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+  }
+
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header .group-block-content {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header :is(h1, h2, h3, h4, p) {
+    font-size: var(--jf-mobile-h2);
+    line-height: 0.86;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .resource-list--grid {
+    gap: 28px 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery,
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery slideshow-component,
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery slideshow-container,
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery slideshow-slides,
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery slideshow-slide,
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery .product-media-container {
+    aspect-ratio: auto;
+    height: 231px;
+  }
+
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .product-card a.contents,
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) product-price {
+    margin-top: 10px;
+  }
+
+  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .product-card a.contents p {
+    font-size: 14px;
   }
 
   .jf-editorial__content {
