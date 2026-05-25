@@ -998,14 +998,6 @@
   padding-bottom: 24px;
 }
 
-.ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header .group-block-content {
-  align-items: flex-end;
-  display: flex;
-  gap: 24px;
-  justify-content: space-between;
-  width: 100%;
-}
-
 .ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header :is(h1, h2, h3, h4, p) {
   font-family: var(--jf-display);
   font-size: 44px;
@@ -4274,11 +4266,6 @@ main[data-template^="product"] product-recommendations.product-recommendations p
   .ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header {
     margin-bottom: 32px;
     padding-bottom: 20px;
-  }
-
-  .ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header .group-block-content {
-    align-items: flex-start;
-    gap: 16px;
   }
 
   .ui-test-product-list .section-resource-list:has(.resource-list--grid) .section-resource-list__header :is(h1, h2, h3, h4, p) {
