@@ -1023,9 +1023,10 @@
 }
 
 .ui-test-product-list .section-resource-list:has(.resource-list--grid) .product-card__content {
+  column-gap: clamp(20px, 2vw, 40px);
   display: grid;
-  gap: 0;
   grid-template-columns: minmax(0, 1fr) auto;
+  row-gap: 0;
 }
 
 .ui-test-product-list .section-resource-list:has(.resource-list--grid) .card-gallery {
@@ -1085,6 +1086,7 @@
   letter-spacing: -0.02em;
   line-height: 1;
   margin-top: 16px;
+  min-width: max-content;
   width: auto;
 }
 
