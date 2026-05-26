@@ -286,7 +286,7 @@
           "settings": {
             "fallback_asset": "jf-lookbook-01.jpg",
             "label": "FRAME / 01",
-            "season": "FW / 21"
+            "season": "SS / 26"
           }
         },
         "frame_2": {
@@ -294,7 +294,7 @@
           "settings": {
             "fallback_asset": "jf-lookbook-02.jpg",
             "label": "FRAME / 02",
-            "season": "FW / 21"
+            "season": "SS / 26"
           }
         },
         "frame_3": {
@@ -302,7 +302,7 @@
           "settings": {
             "fallback_asset": "jf-lookbook-03.jpg",
             "label": "FRAME / 03",
-            "season": "FW / 21"
+            "season": "SS / 26"
           }
         },
         "frame_4": {
@@ -310,7 +310,7 @@
           "settings": {
             "fallback_asset": "jf-lookbook-04.jpg",
             "label": "FRAME / 04",
-            "season": "FW / 21"
+            "season": "SS / 26"
           }
         },
         "frame_5": {
@@ -318,7 +318,7 @@
           "settings": {
             "fallback_asset": "jf-lookbook-05.jpg",
             "label": "FRAME / 05",
-            "season": "FW / 21"
+            "season": "SS / 26"
           }
         },
         "frame_6": {
@@ -326,7 +326,7 @@
           "settings": {
             "fallback_asset": "jf-lookbook-06.jpg",
             "label": "FRAME / 06",
-            "season": "FW / 21"
+            "season": "SS / 26"
           }
         }
       },
