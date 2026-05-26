@@ -641,7 +641,12 @@
   flex-direction: column;
   justify-content: center;
   min-height: 0;
+  overflow-y: auto;
   padding: 48px 0;
+}
+
+.jf-mobile-menu__nav:has(.jf-mobile-menu__group[open]) {
+  justify-content: flex-start;
 }
 
 .jf-mobile-menu__link {
@@ -660,6 +665,10 @@
 
 .jf-mobile-menu__group {
   border-bottom: 1px solid var(--jf-line-light);
+}
+
+.jf-mobile-menu__group[open] {
+  display: block;
 }
 
 .jf-mobile-menu__summary {
@@ -689,6 +698,13 @@
 
 .jf-mobile-menu__group[open] .jf-mobile-menu__summary::after {
   content: "-";
+}
+
+.jf-mobile-menu__group[open] .jf-mobile-menu__summary {
+  background: var(--jf-black);
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .jf-mobile-menu__link span:first-child {
