@@ -454,7 +454,8 @@
         "eyebrow": "/ 02 - CRAFT",
         "heading": "CRAFTSMANSHIP, GRAM BY GRAM.",
         "kicker": "06 TECHNICAL NOTES",
-        "theme": "paper"
+        "theme": "paper",
+        "mobile_layout": "grid"
       }
     },
     "jf_pdp_complete_look": {
