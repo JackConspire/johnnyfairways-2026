@@ -11,9 +11,9 @@
   endif
 
   if use_jf_pdp_layout
-    assign jf_drop_no = product_resource.metafields.custom.pdp_drop_no.value | default: '/ 004'
-    assign jf_release = product_resource.metafields.custom.pdp_release.value | default: 'FW / 21'
-    assign jf_dropped = product_resource.metafields.custom.pdp_dropped.value | default: 'JAN 12 / 2:20 PM'
+    assign jf_drop_no = product_resource.metafields.custom.pdp_drop_no.value | default: block_settings.jf_fallback_drop_no | default: '/ 004'
+    assign jf_release = product_resource.metafields.custom.pdp_release.value | default: block_settings.jf_fallback_release | default: 'SS / 26'
+    assign jf_dropped = product_resource.metafields.custom.pdp_dropped.value | default: block_settings.jf_fallback_dropped | default: 'JAN 12 / 2:20 PM'
     assign jf_eyebrow = product_resource.metafields.custom.pdp_hero_eyebrow.value | default: product_resource.metafields.custom.pdp_eyebrow.value | default: 'LIMITED EDITION - ACCESSORIES'
     assign jf_title = product_resource.metafields.custom.pdp_hero_title.value | default: product_resource.metafields.custom.pdp_title.value | default: product_resource.title
 
@@ -342,6 +342,32 @@
       "id": "sticky_details_desktop",
       "label": "t:settings.make_details_sticky_desktop",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "JF product meta"
+    },
+    {
+      "type": "paragraph",
+      "content": "Fallback values for Drop No., Release, and Dropped. Product metafields custom.pdp_drop_no, custom.pdp_release, and custom.pdp_dropped override these per product."
+    },
+    {
+      "type": "text",
+      "id": "jf_fallback_drop_no",
+      "label": "Fallback drop no.",
+      "default": "/ 004"
+    },
+    {
+      "type": "text",
+      "id": "jf_fallback_release",
+      "label": "Fallback release",
+      "default": "SS / 26"
+    },
+    {
+      "type": "text",
+      "id": "jf_fallback_dropped",
+      "label": "Fallback dropped",
+      "default": "JAN 12 / 2:20 PM"
     },
     {
       "type": "header",
