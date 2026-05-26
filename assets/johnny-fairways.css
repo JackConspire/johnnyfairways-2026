@@ -412,6 +412,8 @@
 
 .jf-header__cart-drawer .cart-items__table-row {
   border-color: var(--jf-line-light);
+  margin-bottom: 0;
+  padding-block: 24px 28px;
 }
 
 .jf-header__cart-drawer :is(.cart-items__title, .cart-items__price, .cart-items__details, .cart-items__quantity, .cart-totals, .cart__summary-totals, .cart-note) {
