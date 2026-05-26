@@ -1858,11 +1858,6 @@
   animation: jf-lookbook-scroll var(--jf-lookbook-speed, 35s) linear infinite;
 }
 
-.jf-lookbook--autoplay:hover .jf-lookbook__track,
-.jf-lookbook--autoplay:focus-within .jf-lookbook__track {
-  animation-play-state: paused;
-}
-
 @keyframes jf-lookbook-scroll {
   from {
     transform: translateX(0);
