@@ -214,6 +214,75 @@
         "link": "shopify://collections/hats"
       }
     },
+    "jf_lookbook": {
+      "type": "jf-lookbook-strip",
+      "blocks": {
+        "frame_1": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-01.jpg",
+            "label": "FRAME / 01",
+            "season": "SS / 26"
+          }
+        },
+        "frame_2": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-02.jpg",
+            "label": "FRAME / 02",
+            "season": "SS / 26"
+          }
+        },
+        "frame_3": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-03.jpg",
+            "label": "FRAME / 03",
+            "season": "SS / 26"
+          }
+        },
+        "frame_4": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-04.jpg",
+            "label": "FRAME / 04",
+            "season": "SS / 26"
+          }
+        },
+        "frame_5": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-05.jpg",
+            "label": "FRAME / 05",
+            "season": "SS / 26"
+          }
+        },
+        "frame_6": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-06.jpg",
+            "label": "FRAME / 06",
+            "season": "SS / 26"
+          }
+        }
+      },
+      "block_order": [
+        "frame_1",
+        "frame_2",
+        "frame_3",
+        "frame_4",
+        "frame_5",
+        "frame_6"
+      ],
+      "settings": {
+        "eyebrow": "/ 04 - LOOKBOOK",
+        "heading": "SS '26",
+        "link_label": "SEE FULL LOOKBOOK ->",
+        "link": "",
+        "auto_rotate": true,
+        "rotation_speed": 35
+      }
+    },
     "product_list_kJpgbb": {
       "type": "product-list",
       "blocks": {
@@ -473,75 +542,6 @@
         "link": "shopify://collections/all"
       }
     },
-    "jf_lookbook": {
-      "type": "jf-lookbook-strip",
-      "blocks": {
-        "frame_1": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-01.jpg",
-            "label": "FRAME / 01",
-            "season": "SS / 26"
-          }
-        },
-        "frame_2": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-02.jpg",
-            "label": "FRAME / 02",
-            "season": "SS / 26"
-          }
-        },
-        "frame_3": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-03.jpg",
-            "label": "FRAME / 03",
-            "season": "SS / 26"
-          }
-        },
-        "frame_4": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-04.jpg",
-            "label": "FRAME / 04",
-            "season": "SS / 26"
-          }
-        },
-        "frame_5": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-05.jpg",
-            "label": "FRAME / 05",
-            "season": "SS / 26"
-          }
-        },
-        "frame_6": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-06.jpg",
-            "label": "FRAME / 06",
-            "season": "SS / 26"
-          }
-        }
-      },
-      "block_order": [
-        "frame_1",
-        "frame_2",
-        "frame_3",
-        "frame_4",
-        "frame_5",
-        "frame_6"
-      ],
-      "settings": {
-        "eyebrow": "/ 04 - LOOKBOOK",
-        "heading": "SS '26",
-        "link_label": "SEE FULL LOOKBOOK ->",
-        "link": "",
-        "auto_rotate": true,
-        "rotation_speed": 35
-      }
-    },
     "jf_newsletter": {
       "type": "jf-newsletter",
       "settings": {
@@ -557,10 +557,10 @@
     "jf_drop_hero",
     "jf_meta_strip",
     "jf_product_drop",
+    "jf_lookbook",
     "product_list_kJpgbb",
     "jf_editorial",
     "jf_categories",
-    "jf_lookbook",
     "jf_newsletter"
   ]
 }
