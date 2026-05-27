@@ -114,6 +114,23 @@
   color: var(--jf-black);
 }
 
+#header-group {
+  position: sticky;
+  top: 0;
+  transform: translateY(0);
+  transition: transform 220ms ease;
+  will-change: transform;
+  z-index: calc(var(--layer-sticky, 8) + 4);
+}
+
+#header-group.jf-header-group--hidden {
+  transform: translateY(-100%);
+}
+
+.shopify-design-mode #header-group {
+  transform: translateY(0);
+}
+
 :is(.button, .button-secondary, .jf-btn, .jf-newsletter__submit, button.shopify-payment-button__button--unbranded):where(:not(.button-unstyled, .skip-to-content-link, [disabled], [aria-disabled="true"])) {
   isolation: isolate;
   overflow: hidden;
