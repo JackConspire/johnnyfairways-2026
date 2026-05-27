@@ -214,150 +214,6 @@
         "link": "shopify://collections/hats"
       }
     },
-    "jf_editorial": {
-      "type": "jf-editorial-split",
-      "settings": {
-        "image": "shopify://shop_images/DSC00941.jpg",
-        "eyebrow": "/ 02 - THE STORY",
-        "heading": "BORN OUT OF A DESIRE TO HONOR THE GAME.",
-        "text": "Our products aren't designed in a cubicle and tested in a factory. They're born out of a quiet obsession with the rhythm of the round - the early tee times, the long walks, the dress codes worth keeping.",
-        "link_label": "READ THE MANIFESTO",
-        "link": "",
-        "credit": "PHOTOGRAPHED AT CHERRY HILLS, CO - SS '26",
-        "index_text": "/ 02 - 04"
-      }
-    },
-    "jf_categories": {
-      "type": "jf-category-tiles",
-      "blocks": {
-        "cat_1": {
-          "type": "category",
-          "settings": {
-            "index": "/ 01",
-            "count": "",
-            "title": "PERFORMANCE",
-            "cta": "SHOP ->",
-            "link": "",
-            "image": "shopify://shop_images/DSC8897_f19b2c06-8c91-4a5c-ba97-60b60b62356e.jpg",
-            "fallback_asset": "jf-category-01.jpg"
-          }
-        },
-        "cat_2": {
-          "type": "category",
-          "settings": {
-            "index": "/ 02",
-            "count": "",
-            "title": "EVERYDAY",
-            "cta": "SHOP ->",
-            "link": "",
-            "image": "shopify://shop_images/camo-lifestyle-1.png",
-            "fallback_asset": "jf-category-02.jpg"
-          }
-        },
-        "cat_3": {
-          "type": "category",
-          "settings": {
-            "index": "/ 03",
-            "count": "",
-            "title": "ACCESSORIES",
-            "cta": "SHOP ->",
-            "link": "",
-            "image": "shopify://shop_images/Screen_Shot_2022-12-06_at_7.37.48_PM.jpg",
-            "fallback_asset": "jf-category-03.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "cat_1",
-        "cat_2",
-        "cat_3"
-      ],
-      "settings": {
-        "eyebrow": "/ 03 - SHOP BY PURSUIT",
-        "heading": "BUILT FOR THE ROUND.",
-        "link_label": "ALL CATEGORIES ->",
-        "link": "shopify://collections/all"
-      }
-    },
-    "jf_lookbook": {
-      "type": "jf-lookbook-strip",
-      "blocks": {
-        "frame_1": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-01.jpg",
-            "label": "FRAME / 01",
-            "season": "SS / 26"
-          }
-        },
-        "frame_2": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-02.jpg",
-            "label": "FRAME / 02",
-            "season": "SS / 26"
-          }
-        },
-        "frame_3": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-03.jpg",
-            "label": "FRAME / 03",
-            "season": "SS / 26"
-          }
-        },
-        "frame_4": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-04.jpg",
-            "label": "FRAME / 04",
-            "season": "SS / 26"
-          }
-        },
-        "frame_5": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-05.jpg",
-            "label": "FRAME / 05",
-            "season": "SS / 26"
-          }
-        },
-        "frame_6": {
-          "type": "frame",
-          "settings": {
-            "fallback_asset": "jf-lookbook-06.jpg",
-            "label": "FRAME / 06",
-            "season": "SS / 26"
-          }
-        }
-      },
-      "block_order": [
-        "frame_1",
-        "frame_2",
-        "frame_3",
-        "frame_4",
-        "frame_5",
-        "frame_6"
-      ],
-      "settings": {
-        "eyebrow": "/ 04 - LOOKBOOK",
-        "heading": "SS '26",
-        "link_label": "SEE FULL LOOKBOOK ->",
-        "link": "",
-        "auto_rotate": true,
-        "rotation_speed": 35
-      }
-    },
-    "jf_newsletter": {
-      "type": "jf-newsletter",
-      "settings": {
-        "heading": "JOIN THE TEE TIME LIST.",
-        "eyebrow": "/ 05 - EARLY ACCESS",
-        "placeholder": "ENTER YOUR EMAIL",
-        "button_label": "SUBSCRIBE",
-        "text": "Drop announcements, early access to limited editions, and the occasional dispatch from the back nine. No filler."
-      }
-    },
     "product_list_kJpgbb": {
       "type": "product-list",
       "blocks": {
@@ -551,16 +407,160 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "jf_editorial": {
+      "type": "jf-editorial-split",
+      "settings": {
+        "image": "shopify://shop_images/DSC00941.jpg",
+        "eyebrow": "/ 02 - THE STORY",
+        "heading": "BORN OUT OF A DESIRE TO HONOR THE GAME.",
+        "text": "Our products aren't designed in a cubicle and tested in a factory. They're born out of a quiet obsession with the rhythm of the round - the early tee times, the long walks, the dress codes worth keeping.",
+        "link_label": "READ THE MANIFESTO",
+        "link": "",
+        "credit": "PHOTOGRAPHED AT CHERRY HILLS, CO - SS '26",
+        "index_text": "/ 02 - 04"
+      }
+    },
+    "jf_categories": {
+      "type": "jf-category-tiles",
+      "blocks": {
+        "cat_1": {
+          "type": "category",
+          "settings": {
+            "index": "/ 01",
+            "count": "",
+            "title": "PERFORMANCE",
+            "cta": "SHOP ->",
+            "link": "",
+            "image": "shopify://shop_images/DSC8897_f19b2c06-8c91-4a5c-ba97-60b60b62356e.jpg",
+            "fallback_asset": "jf-category-01.jpg"
+          }
+        },
+        "cat_2": {
+          "type": "category",
+          "settings": {
+            "index": "/ 02",
+            "count": "",
+            "title": "EVERYDAY",
+            "cta": "SHOP ->",
+            "link": "",
+            "image": "shopify://shop_images/camo-lifestyle-1.png",
+            "fallback_asset": "jf-category-02.jpg"
+          }
+        },
+        "cat_3": {
+          "type": "category",
+          "settings": {
+            "index": "/ 03",
+            "count": "",
+            "title": "ACCESSORIES",
+            "cta": "SHOP ->",
+            "link": "",
+            "image": "shopify://shop_images/Screen_Shot_2022-12-06_at_7.37.48_PM.jpg",
+            "fallback_asset": "jf-category-03.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3"
+      ],
+      "settings": {
+        "eyebrow": "/ 03 - SHOP BY PURSUIT",
+        "heading": "BUILT FOR THE ROUND.",
+        "link_label": "ALL CATEGORIES ->",
+        "link": "shopify://collections/all"
+      }
+    },
+    "jf_lookbook": {
+      "type": "jf-lookbook-strip",
+      "blocks": {
+        "frame_1": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-01.jpg",
+            "label": "FRAME / 01",
+            "season": "SS / 26"
+          }
+        },
+        "frame_2": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-02.jpg",
+            "label": "FRAME / 02",
+            "season": "SS / 26"
+          }
+        },
+        "frame_3": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-03.jpg",
+            "label": "FRAME / 03",
+            "season": "SS / 26"
+          }
+        },
+        "frame_4": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-04.jpg",
+            "label": "FRAME / 04",
+            "season": "SS / 26"
+          }
+        },
+        "frame_5": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-05.jpg",
+            "label": "FRAME / 05",
+            "season": "SS / 26"
+          }
+        },
+        "frame_6": {
+          "type": "frame",
+          "settings": {
+            "fallback_asset": "jf-lookbook-06.jpg",
+            "label": "FRAME / 06",
+            "season": "SS / 26"
+          }
+        }
+      },
+      "block_order": [
+        "frame_1",
+        "frame_2",
+        "frame_3",
+        "frame_4",
+        "frame_5",
+        "frame_6"
+      ],
+      "settings": {
+        "eyebrow": "/ 04 - LOOKBOOK",
+        "heading": "SS '26",
+        "link_label": "SEE FULL LOOKBOOK ->",
+        "link": "",
+        "auto_rotate": true,
+        "rotation_speed": 35
+      }
+    },
+    "jf_newsletter": {
+      "type": "jf-newsletter",
+      "settings": {
+        "heading": "JOIN THE TEE TIME LIST.",
+        "eyebrow": "/ 05 - EARLY ACCESS",
+        "placeholder": "ENTER YOUR EMAIL",
+        "button_label": "SUBSCRIBE",
+        "text": "Drop announcements, early access to limited editions, and the occasional dispatch from the back nine. No filler."
+      }
     }
   },
   "order": [
     "jf_drop_hero",
     "jf_meta_strip",
     "jf_product_drop",
+    "product_list_kJpgbb",
     "jf_editorial",
     "jf_categories",
     "jf_lookbook",
-    "jf_newsletter",
-    "product_list_kJpgbb"
+    "jf_newsletter"
   ]
 }
