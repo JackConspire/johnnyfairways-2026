@@ -131,6 +131,19 @@
   transform: translateY(0);
 }
 
+@media screen and (max-width: 749px) {
+  body:not(.shopify-design-mode) #header-group {
+    left: 0;
+    position: fixed;
+    right: 0;
+    width: 100%;
+  }
+
+  body:not(.shopify-design-mode) .content-for-layout {
+    padding-top: var(--header-group-height, 92px);
+  }
+}
+
 :is(.button, .button-secondary, .jf-btn, .jf-newsletter__submit, button.shopify-payment-button__button--unbranded):where(:not(.button-unstyled, .skip-to-content-link, [disabled], [aria-disabled="true"])) {
   isolation: isolate;
   overflow: hidden;
