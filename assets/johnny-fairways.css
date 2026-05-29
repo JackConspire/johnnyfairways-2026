@@ -2118,6 +2118,20 @@
   gap: 32px;
 }
 
+.jf-footer__bottom-links a {
+  color: rgba(255, 255, 255, 0.72);
+  display: inline-flex;
+  font: inherit;
+  letter-spacing: inherit;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: inherit;
+}
+
+.jf-footer__bottom-links a:hover {
+  color: var(--jf-white);
+}
+
 .jf-footer__massive {
   color: rgba(255, 255, 255, 0.1);
   font-size: 56px;
