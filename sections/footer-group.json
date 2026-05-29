@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer",
@@ -5,60 +14,78 @@
     "jf_footer": {
       "type": "jf-footer",
       "blocks": {
+        "help": {
+          "type": "link_column",
+          "settings": {
+            "heading": "HELP",
+            "menu": "footer",
+            "links": ""
+          }
+        },
         "shop": {
           "type": "link_column",
           "settings": {
             "heading": "SHOP",
+            "menu": "main-menu",
             "links": "FW '21\nPerformance\nEveryday\nAccessories\nSale"
           }
         },
         "brand": {
           "type": "link_column",
+          "disabled": true,
           "settings": {
             "heading": "BRAND",
-            "links": "Story\nLookbook\nJournal\nPress"
-          }
-        },
-        "help": {
-          "type": "link_column",
-          "settings": {
-            "heading": "HELP",
-            "links": "Shipping\nReturns\nSize Guide\nContact"
+            "menu": "",
+            "links": ""
           }
         },
         "follow": {
           "type": "link_column",
           "settings": {
             "heading": "FOLLOW",
-            "links": "Instagram\nYouTube\nTikTok\nSpotify"
+            "menu": "",
+            "links": "Instagram"
           }
         },
         "privacy": {
           "type": "utility_link",
           "settings": {
-            "label": "PRIVACY"
+            "label": "PRIVACY",
+            "url": ""
           }
         },
         "terms": {
           "type": "utility_link",
           "settings": {
-            "label": "TERMS"
+            "label": "TERMS",
+            "url": ""
           }
         },
         "accessibility": {
           "type": "utility_link",
           "settings": {
-            "label": "ACCESSIBILITY"
+            "label": "ACCESSIBILITY",
+            "url": ""
           }
         },
         "version": {
           "type": "utility_link",
           "settings": {
-            "label": "V.1.0 - SS / 26"
+            "label": "V.1.0 - SS / 26",
+            "url": ""
           }
         }
       },
-      "block_order": ["shop", "brand", "help", "follow", "privacy", "terms", "accessibility", "version"],
+      "block_order": [
+        "help",
+        "shop",
+        "brand",
+        "follow",
+        "privacy",
+        "terms",
+        "accessibility",
+        "version"
+      ],
       "settings": {
         "brand_text": "JOHNNY FAIRWAYS",
         "address": "Metrotech Center<br>Brooklyn, NY 11201<br>info@johnnyfairways.com<br>(416) 456 78 90",
@@ -67,5 +94,7 @@
       }
     }
   },
-  "order": ["jf_footer"]
+  "order": [
+    "jf_footer"
+  ]
 }
