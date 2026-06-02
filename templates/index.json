@@ -481,11 +481,11 @@
       "type": "jf-editorial-split",
       "settings": {
         "image": "shopify://shop_images/DSC00941.jpg",
-        "eyebrow": "/ 02 - THE STORY",
-        "heading": "BORN OUT OF A DESIRE TO HONOR THE GAME.",
-        "text": "Our products aren't designed in a cubicle and tested in a factory. They're born out of a quiet obsession with the rhythm of the round - the early tee times, the long walks, the dress codes worth keeping.",
-        "link_label": "",
-        "link": "",
+        "eyebrow": "/ 02 - Product Feature",
+        "heading": "SIGNATURE BLADE COLLAR. CUSTOM PANEL DESIGN.",
+        "text": "Built with elevated construction and premium finishes for a cleaner, more intentional look.",
+        "link_label": "Shop Blade Collars",
+        "link": "shopify://collections/blade-collars",
         "credit": "PHOTOGRAPHED AT CHERRY HILLS, CO - SS '26",
         "index_text": "/ 02 - 04"
       }
