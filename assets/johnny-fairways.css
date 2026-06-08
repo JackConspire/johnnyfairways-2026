@@ -2311,7 +2311,7 @@ main[data-template^="product"] .jf-pdp-gallery-thumbs {
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    padding: clamp(16px, 2.5vh, 32px) clamp(20px, 3vw, 56px);
+    padding: 0 clamp(20px, 3vw, 56px);
   }
 
   main[data-template^="product"] .media-gallery--carousel .product-media__image,
