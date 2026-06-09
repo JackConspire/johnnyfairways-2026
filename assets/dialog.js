@@ -53,11 +53,22 @@ export class DialogComponent extends Component {
 
     // Prevent layout thrashing by separating DOM reads from DOM writes
     requestAnimationFrame(() => {
+      if (!document.contains(dialog)) return;
+
       document.body.style.width = '100%';
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY}px`;
 
-      dialog.showModal();
+      try {
+        dialog.showModal();
+      } catch (error) {
+        document.body.style.width = '';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        console.error(error);
+        return;
+      }
+
       this.dispatchEvent(new DialogOpenEvent());
 
       this.addEventListener('click', this.#handleClick);

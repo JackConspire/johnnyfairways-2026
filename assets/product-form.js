@@ -383,13 +383,13 @@ class ProductFormComponent extends Component {
     }
 
     const cartItemsComponents = document.querySelectorAll('cart-items-component');
-    let cartItemComponentsSectionIds = [];
+    const cartItemComponentsSectionIds = [];
     cartItemsComponents.forEach((item) => {
       if (item instanceof HTMLElement && item.dataset.sectionId) {
         cartItemComponentsSectionIds.push(item.dataset.sectionId);
       }
-      formData.append('sections', cartItemComponentsSectionIds.join(','));
     });
+    formData.append('sections', cartItemComponentsSectionIds.join(','));
 
     const fetchCfg = fetchConfig('javascript', { body: formData });
 
@@ -397,7 +397,7 @@ class ProductFormComponent extends Component {
       ...fetchCfg,
       headers: {
         ...fetchCfg.headers,
-        Accept: 'text/html',
+        Accept: 'application/json',
       },
     })
       .then((response) => response.json())
@@ -466,17 +466,18 @@ class ProductFormComponent extends Component {
             }, SUCCESS_MESSAGE_DISPLAY_DURATION);
           }
 
-          // Fetch the updated cart to get the actual total quantity for this variant
-          const cart = await this.#fetchAndUpdateCartQuantity();
+          this.#fetchAndUpdateCartQuantity();
 
           this.dispatchEvent(
-            new CartAddEvent(cart ?? undefined, id.toString(), {
+            new CartAddEvent(response, id.toString(), {
               source: 'product-form-component',
               itemCount: Number(formData.get('quantity')) || Number(this.dataset.quantityDefault),
               productId: this.dataset.productId,
               sections: response.sections,
             })
           );
+
+          this.#openCartDrawer();
         }
       })
       .catch((error) => {
@@ -487,6 +488,16 @@ class ProductFormComponent extends Component {
           cartPerformance.measureFromEvent('add:user-action', event);
         }
       });
+  }
+
+  #openCartDrawer() {
+    requestAnimationFrame(() => {
+      const drawer = /** @type {HTMLElement & { open?: () => void }} */ (
+        document.querySelector('cart-drawer-component[auto-open]')
+      );
+
+      drawer?.open?.();
+    });
   }
 
   /** @param {Array<{variantId: string, quantity: number}>} items */
@@ -582,6 +593,8 @@ class ProductFormComponent extends Component {
             sections: response.sections,
           })
         );
+
+        this.#openCartDrawer();
       })
       .catch((error) => {
         console.error(error);

@@ -10,7 +10,7 @@ export const requestIdleCallback =
  * @see https://web.dev/articles/optimize-long-tasks#scheduler-yield
  */
 export const yieldToMainThread = () => {
-  if ('yield' in scheduler) {
+  if (typeof scheduler !== 'undefined' && 'yield' in scheduler) {
     // @ts-ignore - TypeScript doesn't recognize the yield method yet.
     return scheduler.yield();
   }
