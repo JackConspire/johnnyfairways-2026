@@ -2842,6 +2842,25 @@ main[data-template^="product"] .product-details .jf-pdp-product-details__native-
   width: 100%;
 }
 
+main[data-template^="product"] .product-details .variant-option__button-label:has(input[data-option-available="false"]) {
+  color: rgb(255 255 255 / 0.55) !important;
+}
+
+main[data-template^="product"] .product-details .variant-option__button-label:has(input[data-option-available="false"]:checked) {
+  color: var(--jf-black) !important;
+}
+
+main[data-template^="product"] .product-details .variant-option__strikethrough {
+  inset: 0;
+  z-index: 4;
+  stroke: currentColor !important;
+  stroke-width: 1.5px;
+}
+
+main[data-template^="product"] .product-details .variant-option__strikethrough line {
+  clip-path: none !important;
+}
+
 main[data-template^="product"] .product-details .jf-pdp-product-details__native-controls .variant-option__button-label:has(input:checked) {
   background: var(--jf-white) !important;
   border-color: var(--jf-white);
