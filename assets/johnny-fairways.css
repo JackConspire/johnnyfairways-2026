@@ -453,6 +453,10 @@
 
 .jf-header__cart-drawer .cart-items__quantity .quantity-selector {
   --quantity-selector-width: 150px;
+  --color-input-background: transparent;
+  --color-input-border: var(--jf-white);
+  --color-input-hover-background: transparent;
+  --color-input-text: var(--jf-white);
 
   align-self: auto;
   flex: 0 0 var(--quantity-selector-width);
@@ -461,12 +465,28 @@
 }
 
 .jf-header__cart-drawer .cart-items__quantity .quantity-selector :is(.quantity-minus, .quantity-plus) {
+  color: var(--jf-white);
   height: 48px;
   width: 48px;
 }
 
+.jf-header__cart-drawer .cart-items__quantity .quantity-selector :is(.quantity-minus, .quantity-plus):is(:hover, :focus-visible) {
+  background-color: rgb(255 255 255 / 0.12);
+  color: var(--jf-white);
+}
+
 .jf-header__cart-drawer .cart-items__quantity .quantity-selector input[type="number"] {
+  color: var(--jf-white);
   max-width: calc(var(--quantity-selector-width) - 96px);
+}
+
+.jf-header__cart-drawer .cart-items__quantity .quantity-selector input[type="number"]:is(:hover, :focus) {
+  color: var(--jf-white);
+}
+
+.jf-header__cart-drawer .cart-items__quantity .quantity-selector :is(button, input):disabled {
+  color: rgb(255 255 255 / 0.65);
+  opacity: 1;
 }
 
 .jf-header__cart-drawer :is(.cart-items__title, .cart-items__price, .cart-items__details, .cart-items__quantity, .cart-totals, .cart__summary-totals, .cart-note) {
