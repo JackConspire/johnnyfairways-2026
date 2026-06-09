@@ -1052,44 +1052,15 @@
 }
 
 .jf-product-card__image {
+  align-items: center;
   aspect-ratio: 3 / 4;
-  background-image: none;
+  background: var(--jf-white);
+  border: 1px solid rgba(10, 10, 10, 0.08);
+  display: flex;
+  justify-content: center;
   margin-bottom: 16px;
   overflow: hidden;
   position: relative;
-}
-
-.jf-product-card__image::before {
-  background-image: var(--jf-image);
-  background-position: center;
-  background-size: cover;
-  content: "";
-  inset: 0;
-  opacity: 1;
-  position: absolute;
-  transition: opacity 180ms ease;
-  z-index: 0;
-}
-
-.jf-product-card__image-hover {
-  background-image: var(--jf-hover-image);
-  background-position: center;
-  background-size: cover;
-  inset: 0;
-  opacity: 0;
-  position: absolute;
-  transition: opacity 180ms ease;
-  z-index: 1;
-}
-
-.jf-product-card:hover .jf-product-card__image-hover,
-.jf-product-card:focus-visible .jf-product-card__image-hover {
-  opacity: 1;
-}
-
-.jf-product-card:hover .jf-product-card__image:has(.jf-product-card__image-hover)::before,
-.jf-product-card:focus-visible .jf-product-card__image:has(.jf-product-card__image-hover)::before {
-  opacity: 0;
 }
 
 .jf-product-card--sold-out .jf-product-card__image::after {
@@ -1647,7 +1618,9 @@
   position: relative;
 }
 
+.jf-product-card__img,
 .jf-collection-card__img,
+.jf-product-card__placeholder,
 .jf-collection-card__placeholder {
   height: 100%;
   object-fit: cover;
@@ -1655,6 +1628,7 @@
   width: 100%;
 }
 
+.jf-product-card__img--secondary,
 .jf-collection-card__img--secondary {
   inset: 0;
   opacity: 0;
@@ -1662,11 +1636,15 @@
   z-index: 1;
 }
 
+.jf-product-card:hover .jf-product-card__img--secondary,
+.jf-product-card:focus-visible .jf-product-card__img--secondary,
 .jf-collection-card:hover .jf-collection-card__img--secondary,
 .jf-collection-card:focus-visible .jf-collection-card__img--secondary {
   opacity: 1;
 }
 
+.jf-product-card:has(.jf-product-card__img--secondary):hover .jf-product-card__img:not(.jf-product-card__img--secondary),
+.jf-product-card:has(.jf-product-card__img--secondary):focus-visible .jf-product-card__img:not(.jf-product-card__img--secondary),
 .jf-collection-card:has(.jf-collection-card__img--secondary):hover .jf-collection-card__img:not(.jf-collection-card__img--secondary),
 .jf-collection-card:has(.jf-collection-card__img--secondary):focus-visible .jf-collection-card__img:not(.jf-collection-card__img--secondary) {
   opacity: 0;

@@ -16,28 +16,29 @@
         {%- liquid
           assign product = block.settings.product
           assign is_sold_out = false
-          assign image_url = ''
-          assign hover_image_url = ''
+          assign card_image = blank
+          assign card_hover_image = blank
+          assign fallback_image_url = ''
 
           if product != blank and product.available == false
             assign is_sold_out = true
           endif
 
           if block.settings.image != blank
-            assign image_url = block.settings.image | image_url: width: 900
+            assign card_image = block.settings.image
           elsif product.featured_image != blank
-            assign image_url = product.featured_image | image_url: width: 900
+            assign card_image = product.featured_image
           elsif block.settings.fallback_asset != blank
-            assign image_url = block.settings.fallback_asset | asset_url
+            assign fallback_image_url = block.settings.fallback_asset | asset_url
           endif
 
           if block.settings.hover_image != blank
-            assign hover_image_url = block.settings.hover_image | image_url: width: 900
+            assign card_hover_image = block.settings.hover_image
           elsif product != blank
             assign featured_image = product.featured_image
             for product_image in product.images
               unless product_image == featured_image
-                assign hover_image_url = product_image | image_url: width: 900
+                assign card_hover_image = product_image
                 break
               endunless
             endfor
@@ -67,9 +68,37 @@
           endif
         -%}
         <a class="jf-product-card{% if is_sold_out %} jf-product-card--sold-out{% endif %}" href="{{ href }}" {{ block.shopify_attributes }}>
-          <div class="jf-product-card__image jf-image-cover" style="{% if image_url != blank %}--jf-image: url('{{ image_url }}');{% endif %}">
-            {%- if hover_image_url != blank -%}
-              <span class="jf-product-card__image-hover" style="--jf-hover-image: url('{{ hover_image_url }}');" aria-hidden="true"></span>
+          <div class="jf-product-card__image">
+            {%- if card_image != blank -%}
+              {{
+                card_image
+                | image_url: width: 900
+                | image_tag:
+                  widths: '360, 520, 720, 900',
+                  sizes: '(min-width: 990px) 25vw, 50vw',
+                  loading: 'lazy',
+                  class: 'jf-product-card__img'
+              }}
+              {%- if card_hover_image != blank -%}
+                {{
+                  card_hover_image
+                  | image_url: width: 900
+                  | image_tag:
+                    widths: '360, 520, 720, 900',
+                    sizes: '(min-width: 990px) 25vw, 50vw',
+                    loading: 'lazy',
+                    class: 'jf-product-card__img jf-product-card__img--secondary'
+                }}
+              {%- endif -%}
+            {%- elsif fallback_image_url != blank -%}
+              <img
+                src="{{ fallback_image_url }}"
+                alt="{{ title | escape }}"
+                class="jf-product-card__img"
+                width="900"
+                height="1200"
+                loading="lazy"
+              >
             {%- endif -%}
             {%- if badge != blank -%}
               <span class="jf-product-card__badge">{{ badge | escape }}</span>
