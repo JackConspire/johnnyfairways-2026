@@ -2139,7 +2139,9 @@
 .jf-footer__link {
   color: var(--jf-white);
   display: block;
+  letter-spacing: 0.04em;
   text-decoration: none;
+  text-transform: uppercase;
 }
 
 .jf-footer__heading {
