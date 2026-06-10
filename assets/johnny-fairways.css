@@ -2071,8 +2071,12 @@
 }
 
 .jf-newsletter__input {
-  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent !important;
   border: 0;
+  border-radius: 0;
+  box-shadow: none !important;
   color: var(--jf-white);
   flex: 1;
   font-family: var(--jf-ui);
@@ -2080,6 +2084,14 @@
   letter-spacing: 0.06em;
   min-width: 0;
   text-transform: uppercase;
+}
+
+.jf-newsletter__input:-webkit-autofill,
+.jf-newsletter__input:-webkit-autofill:hover,
+.jf-newsletter__input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--jf-white);
+  box-shadow: 0 0 0 1000px var(--jf-black) inset !important;
+  caret-color: var(--jf-white);
 }
 
 .jf-newsletter__input::placeholder {
