@@ -18,6 +18,7 @@
     <details
       id="Details-jf-menu-drawer-container"
       class="menu-drawer-container jf-mobile-menu-container"
+      data-skip-node-update="true"
       ref="details"
       scroll-lock
     >
@@ -49,56 +50,97 @@
         </div>
 
         <nav class="jf-mobile-menu__nav" aria-label="{{ 'accessibility.header_navigation_label' | t }}">
+          <ul class="jf-mobile-menu__list menu-drawer__menu has-submenu" role="list">
           {%- if has_menu_links -%}
             {%- for link in menu_links -%}
-              {%- if link.links != blank -%}
+              <li
+                class="jf-mobile-menu__item menu-drawer__list-item"
+                style="--menu-drawer-animation-index: {{ forloop.index }};"
+              >
+                {%- if link.links != blank -%}
                 <details
-                  class="jf-mobile-menu__group menu-drawer__animated-element"
-                  style="--menu-drawer-animation-index: {{ forloop.index }};"
+                  id="Details-jf-menu-drawer-{{ link.handle }}"
+                  class="jf-mobile-menu__group menu-drawer__menu-container"
                 >
-                  <summary class="jf-mobile-menu__link jf-mobile-menu__summary">
+                  <summary
+                    id="JfHeaderDrawer-{{ link.handle }}"
+                    class="jf-mobile-menu__link jf-mobile-menu__summary menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element focus-inset"
+                    on:click="header-drawer/open/submenu"
+                  >
                     <span>{{ link.title | escape }}</span>
                     <span aria-hidden="true">/ {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
                   </summary>
-                  <div class="jf-mobile-menu__submenu">
-                    <a class="jf-mobile-menu__submenu-link" href="{{ link.url }}">View all {{ link.title | escape }}</a>
-                    {%- for child_link in link.links -%}
-                      <a class="jf-mobile-menu__submenu-link" href="{{ child_link.url }}">{{ child_link.title | escape }}</a>
-                      {%- if child_link.links != blank -%}
-                        <div class="jf-mobile-menu__grandchild">
-                          {%- for grandchild_link in child_link.links -%}
-                            <a class="jf-mobile-menu__grandchild-link" href="{{ grandchild_link.url }}">{{ grandchild_link.title | escape }}</a>
-                          {%- endfor -%}
-                        </div>
-                      {%- endif -%}
-                    {%- endfor -%}
+                  <div
+                    id="JfHeaderDrawer-{{ link.handle }}-submenu"
+                    class="jf-mobile-menu__submenu menu-drawer__submenu has-submenu"
+                    tabindex="-1"
+                  >
+                    <div class="jf-mobile-menu__submenu-inner menu-drawer__inner-submenu">
+                      <div class="jf-mobile-menu__submenu-header menu-drawer__nav-buttons">
+                        <button
+                          class="jf-mobile-menu__back menu-drawer__back-button focus-inset"
+                          type="button"
+                          on:click="header-drawer/back"
+                          aria-label="{{ 'actions.back_to' | t: title: link.title }}"
+                        >
+                          <span aria-hidden="true">&lt;-</span>
+                          <span>{{ link.title | escape }}</span>
+                        </button>
+                        <button
+                          class="jf-mobile-menu__close"
+                          type="button"
+                          aria-label="{{ 'actions.close' | t }}"
+                          on:click="header-drawer/close"
+                        >
+                          {{ 'icon-close.svg' | inline_asset_content }}
+                        </button>
+                      </div>
+                      <div class="jf-mobile-menu__submenu-links">
+                        <a class="jf-mobile-menu__submenu-link" href="{{ link.url }}">View all {{ link.title | escape }}</a>
+                        {%- for child_link in link.links -%}
+                          <a class="jf-mobile-menu__submenu-link" href="{{ child_link.url }}">{{ child_link.title | escape }}</a>
+                          {%- if child_link.links != blank -%}
+                            <div class="jf-mobile-menu__grandchild">
+                              {%- for grandchild_link in child_link.links -%}
+                                <a class="jf-mobile-menu__grandchild-link" href="{{ grandchild_link.url }}">{{ grandchild_link.title | escape }}</a>
+                              {%- endfor -%}
+                            </div>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </div>
+                    </div>
                   </div>
                 </details>
-              {%- else -%}
-                <a
-                  class="jf-mobile-menu__link menu-drawer__animated-element"
-                  href="{{ link.url }}"
-                  style="--menu-drawer-animation-index: {{ forloop.index }};"
-                >
-                  <span>{{ link.title | escape }}</span>
-                  <span aria-hidden="true">/ {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-                </a>
-              {%- endif -%}
+                {%- else -%}
+                  <a
+                    class="jf-mobile-menu__link menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element"
+                    href="{{ link.url }}"
+                  >
+                    <span>{{ link.title | escape }}</span>
+                    <span aria-hidden="true">/ {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                  </a>
+                {%- endif -%}
+              </li>
             {%- endfor -%}
           {%- else -%}
             {%- for block in section.blocks -%}
               {%- if block.type == 'nav_link' -%}
-                <a
-                  class="jf-mobile-menu__link menu-drawer__animated-element"
-                  href="{{ block.settings.url | default: routes.root_url }}"
+                <li
+                  class="jf-mobile-menu__item menu-drawer__list-item"
                   style="--menu-drawer-animation-index: {{ forloop.index }};"
                 >
-                  <span>{{ block.settings.label | escape }}</span>
-                  <span aria-hidden="true">/ {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
-                </a>
+                  <a
+                    class="jf-mobile-menu__link menu-drawer__menu-item menu-drawer__menu-item--mainlist menu-drawer__animated-element"
+                    href="{{ block.settings.url | default: routes.root_url }}"
+                  >
+                    <span>{{ block.settings.label | escape }}</span>
+                    <span aria-hidden="true">/ {{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                  </a>
+                </li>
               {%- endif -%}
             {%- endfor -%}
           {%- endif -%}
+          </ul>
         </nav>
 
         <div class="jf-mobile-menu__utilities">

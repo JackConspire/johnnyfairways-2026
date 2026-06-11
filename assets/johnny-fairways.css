@@ -807,8 +807,15 @@
   padding: 48px 0;
 }
 
-.jf-mobile-menu__nav:has(.jf-mobile-menu__group[open]) {
-  justify-content: flex-start;
+.jf-mobile-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.jf-mobile-menu__item {
+  width: 100%;
 }
 
 .jf-mobile-menu__link {
@@ -827,10 +834,7 @@
 
 .jf-mobile-menu__group {
   border-bottom: 1px solid var(--jf-line-light);
-}
-
-.jf-mobile-menu__group[open] {
-  display: block;
+  width: 100%;
 }
 
 .jf-mobile-menu__summary {
@@ -847,26 +851,17 @@
 }
 
 .jf-mobile-menu__summary::after {
-  content: "+";
+  content: "->";
   font-family: var(--jf-ui);
-  font-size: 16px;
+  font-size: 11px;
   font-weight: 700;
+  letter-spacing: 0;
   line-height: 1;
   opacity: 0.72;
   position: absolute;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.jf-mobile-menu__group[open] .jf-mobile-menu__summary::after {
-  content: "-";
-}
-
-.jf-mobile-menu__group[open] .jf-mobile-menu__summary {
-  background: var(--jf-black);
-  color: var(--jf-white);
-  position: relative;
 }
 
 .jf-mobile-menu__link span:first-child {
@@ -883,9 +878,77 @@
 }
 
 .jf-mobile-menu__submenu {
+  background: var(--jf-black);
+  background-color: var(--jf-black);
+  color: var(--jf-white);
+  display: flex;
+  height: 100%;
+  inset: 0;
+  opacity: 0;
+  padding: 24px 20px 28px;
+  position: absolute;
+  transform: translateX(100%);
+  transition:
+    transform 220ms ease,
+    visibility 220ms ease,
+    opacity 220ms ease;
+  visibility: hidden;
+  width: 100%;
+  z-index: 2;
+}
+
+.jf-mobile-menu.menu-drawer .jf-mobile-menu__submenu.menu-drawer__submenu {
+  background-color: var(--jf-black);
+}
+
+.jf-mobile-menu__group.menu-open > .jf-mobile-menu__submenu {
+  opacity: 1;
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.jf-mobile-menu__submenu-inner {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.jf-mobile-menu__submenu-header {
+  align-items: center;
+  border-bottom: 1px solid var(--jf-line-light);
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.jf-mobile-menu__back {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: var(--jf-ui);
+  font-size: 11px;
+  font-weight: 700;
+  gap: 12px;
+  letter-spacing: 0.18em;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.jf-mobile-menu.menu-drawer .jf-mobile-menu__back.menu-drawer__back-button {
+  background: transparent;
+  color: var(--jf-white);
+}
+
+.jf-mobile-menu__submenu-links {
   display: grid;
   gap: 12px;
-  padding: 0 0 20px;
+  padding: 48px 0;
 }
 
 .jf-mobile-menu__submenu-link,
