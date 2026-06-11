@@ -361,6 +361,11 @@
   gap: 8px;
 }
 
+.jf-header__cart-drawer .header-actions__cart-icon.header-actions__cart-icon--has-cart svg {
+  -webkit-mask: none;
+  mask: none;
+}
+
 .jf-header__cart-drawer .header-actions__cart-icon .cart-bubble {
   --cart-bubble-size: auto;
 
