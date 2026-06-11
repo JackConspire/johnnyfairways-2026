@@ -835,6 +835,7 @@
 
 .jf-mobile-menu__summary {
   border-bottom: 0;
+  color: inherit;
   cursor: pointer;
   list-style: none;
   padding-right: 24px;
@@ -864,9 +865,8 @@
 
 .jf-mobile-menu__group[open] .jf-mobile-menu__summary {
   background: var(--jf-black);
-  position: sticky;
-  top: 0;
-  z-index: 1;
+  color: var(--jf-white);
+  position: relative;
 }
 
 .jf-mobile-menu__link span:first-child {
