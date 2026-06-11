@@ -842,26 +842,11 @@
   color: inherit;
   cursor: pointer;
   list-style: none;
-  padding-right: 24px;
   position: relative;
 }
 
 .jf-mobile-menu__summary::-webkit-details-marker {
   display: none;
-}
-
-.jf-mobile-menu__summary::after {
-  content: "->";
-  font-family: var(--jf-ui);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 1;
-  opacity: 0.72;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .jf-mobile-menu__link span:first-child {
