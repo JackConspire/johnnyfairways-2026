@@ -487,6 +487,24 @@
   align-self: center;
 }
 
+/* Keep the cart line layout stable while the drawer hydrates after an add-to-cart.
+   On the first paint the item container can be laid out before the cart <form> is
+   recognized, which activates the `:not(:has(.cart-form))` centering rules and
+   collapses the inline-size container. With the container near zero, the row's
+   `15cqi` media column drops to its floor and the title, price and quantity squash
+   to a sliver. Forcing the container to fill the drawer and pinning the media column
+   keeps the row intact no matter when it paints. */
+.jf-header__cart-drawer .cart-items__wrapper,
+.jf-header__cart-drawer .cart-form,
+.jf-header__cart-drawer .cart-items {
+  width: 100%;
+}
+
+.jf-header__cart-drawer .cart-drawer__items .cart-items__table-row,
+.jf-header__cart-drawer .cart-drawer__items .cart-items__table-row--full-width-variants {
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+}
+
 .jf-header__cart-drawer .cart-items__quantity .quantity-selector {
   --quantity-selector-width: 150px;
   --color-input-background: transparent;
