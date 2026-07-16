@@ -107,6 +107,7 @@ class CartItemsComponent extends Component {
 
       startViewTransition(() => {
         this.replaceChildren(clone);
+        this.#syncDrawerEmptyState();
       }, [this.isDrawer ? 'empty-cart-drawer' : 'empty-cart-page']);
 
       return;
@@ -193,6 +194,7 @@ class CartItemsComponent extends Component {
         );
 
         morphSection(this.sectionId, parsedResponseText.sections[this.sectionId], { mode: this.isDrawer ? 'hydration' : 'full' });
+        this.#syncDrawerEmptyState();
 
         this.#updateCartQuantitySelectorButtonStates();
       })
@@ -252,6 +254,7 @@ class CartItemsComponent extends Component {
     const cartItemsHtml = event.detail.data.sections?.[this.sectionId];
     if (cartItemsHtml) {
       morphSection(this.sectionId, cartItemsHtml, { mode: this.isDrawer ? 'hydration' : 'full' });
+      this.#syncDrawerEmptyState();
 
       // Update button states for all cart quantity selectors after morph
       this.#updateCartQuantitySelectorButtonStates();
@@ -259,6 +262,23 @@ class CartItemsComponent extends Component {
       sectionRenderer.renderSection(this.sectionId, { cache: false });
     }
   };
+
+  /**
+   * Syncs the drawer dialog's empty-state class with the actual cart contents.
+   *
+   * The drawer is hydrated via a keyed morph that only updates `.cart-drawer__inner`,
+   * so the `cart-drawer--empty` class on the ancestor `<dialog>` (rendered from the
+   * cart state at page load) is never touched by the morph. Without this, adding the
+   * first item leaves the stale `cart-drawer--empty` class in place, and its
+   * `align-items: center` rules stop the cart line from stretching — collapsing the
+   * inline-size cart container to a sliver. Keep the class in sync after every update.
+   */
+  #syncDrawerEmptyState() {
+    if (!this.isDrawer) return;
+
+    const dialog = this.closest('.cart-drawer__dialog');
+    dialog?.classList.toggle('cart-drawer--empty', this.querySelector('.cart-form') == null);
+  }
 
   /**
    * Disables the cart items.
