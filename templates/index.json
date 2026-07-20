@@ -545,7 +545,7 @@
     "jf_newsletter": {
       "type": "jf-newsletter",
       "settings": {
-        "heading": "Joint the List",
+        "heading": "Join the List",
         "eyebrow": "/ 05 - EARLY ACCESS",
         "placeholder": "ENTER YOUR EMAIL",
         "button_label": "SUBSCRIBE",
