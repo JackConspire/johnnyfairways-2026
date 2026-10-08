@@ -320,6 +320,7 @@
         "item_X7UjBx",
         "item_YLMLMt"
       ],
+      "disabled": true,
       "settings": {
         "label": "Drop details"
       }
@@ -393,6 +394,7 @@
     },
     "jf_pdp_story": {
       "type": "jf-pdp-story",
+      "disabled": true,
       "settings": {
         "eyebrow": "/ 01 - THE STORY",
         "heading": "BUILT FOR WALKING.",
@@ -451,6 +453,7 @@
         "feature_2",
         "feature_3"
       ],
+      "disabled": true,
       "settings": {
         "metaobject_namespace": "custom",
         "metaobject_key": "pdp_craft",
