@@ -12,6 +12,31 @@
     "main": {
       "type": "product-information",
       "blocks": {
+        "bonde_subscriptions_bundles_subscription_widget_JWFKFX": {
+          "type": "shopify://apps/bonde-subscriptions-bundles/blocks/subscription-widget/f5e7a7d6-d952-4df6-9abf-8146b71778ca",
+          "disabled": true,
+          "settings": {
+            "layout": "auto",
+            "show_journey": true,
+            "journey_title": "What you get",
+            "preselect_subscription": true,
+            "ribbon_text": "Free shipping + save up to {discount}",
+            "show_compare_price": true,
+            "benefits": "Save {discount}\nFree shipping\nNo commitment. Cancel anytime",
+            "learn_more_text": "Learn more",
+            "learn_more_url": "",
+            "deliver_every_label": "Deliver every:",
+            "quantity_and_button": "none",
+            "subscribe_button_text": "Subscribe · {price}",
+            "one_time_button_text": "Add to cart · {price}",
+            "typography": "bonde",
+            "text_color": "#333333",
+            "background": "#ffffff",
+            "accent_color": "#3b5998",
+            "border_color": "#e0e0e0",
+            "border_radius": 8
+          }
+        },
         "media-gallery": {
           "type": "_product-media-gallery",
           "static": true,
@@ -261,6 +286,9 @@
           ]
         }
       },
+      "block_order": [
+        "bonde_subscriptions_bundles_subscription_widget_JWFKFX"
+      ],
       "settings": {
         "content_width": "content-center-aligned",
         "desktop_media_position": "left",
