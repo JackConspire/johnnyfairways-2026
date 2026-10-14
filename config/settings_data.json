@@ -80,6 +80,22 @@
     "variant_button_radius": 14,
     "variant_button_width": "equal-width-buttons",
     "content_for_index": [],
+    "blocks": {
+      "4308064663874972733": {
+        "type": "shopify://apps/bonde-subscriptions-bundles/blocks/main/f5e7a7d6-d952-4df6-9abf-8146b71778ca",
+        "disabled": false,
+        "settings": {
+          "text_color": "#333333",
+          "background": "#ffffff",
+          "button_text_color": "#ffffff",
+          "button_background_color": "#000000",
+          "button_border_color": "#000000",
+          "button_border_radius": 0,
+          "input_border_radius": 0,
+          "proxy_path": "/apps/conspire-bundle"
+        }
+      }
+    },
     "color_schemes": {
       "scheme-1": {
         "settings": {
